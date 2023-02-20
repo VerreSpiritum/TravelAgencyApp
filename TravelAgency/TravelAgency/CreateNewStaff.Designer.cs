@@ -34,11 +34,12 @@
             this.secondNameL = new System.Windows.Forms.Label();
             this.surnameL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.customDate4 = new TravelAgency.Design.CustomDate();
             this.customTextBox3 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox2 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox1 = new TravelAgency.Design.CustomTextBox();
-            this.customDate4 = new TravelAgency.Design.CustomDate();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.customComboBox1 = new TravelAgency.Design.CustomComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +91,29 @@
             this.label2.Size = new System.Drawing.Size(348, 49);
             this.label2.TabIndex = 7;
             this.label2.Text = "Дата народження";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(365, 291);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(276, 37);
+            this.comboBox1.TabIndex = 12;
+            // 
+            // customDate4
+            // 
+            this.customDate4.BorderColor = System.Drawing.Color.Black;
+            this.customDate4.BorderRadius = 12;
+            this.customDate4.BorderSize = 1;
+            this.customDate4.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customDate4.Location = new System.Drawing.Point(53, 291);
+            this.customDate4.MinimumSize = new System.Drawing.Size(4, 46);
+            this.customDate4.Name = "customDate4";
+            this.customDate4.Size = new System.Drawing.Size(263, 46);
+            this.customDate4.SkinColor = System.Drawing.Color.White;
+            this.customDate4.TabIndex = 11;
+            this.customDate4.TextColor = System.Drawing.Color.Black;
             // 
             // customTextBox3
             // 
@@ -154,28 +178,17 @@
             this.customTextBox1.Texts = "";
             this.customTextBox1.UnderlineStyle = false;
             // 
-            // customDate4
+            // customComboBox1
             // 
-            this.customDate4.BorderColor = System.Drawing.Color.Black;
-            this.customDate4.BorderRadius = 12;
-            this.customDate4.BorderSize = 1;
-            this.customDate4.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.customDate4.Location = new System.Drawing.Point(53, 291);
-            this.customDate4.MinimumSize = new System.Drawing.Size(4, 46);
-            this.customDate4.Name = "customDate4";
-            this.customDate4.Size = new System.Drawing.Size(263, 46);
-            this.customDate4.SkinColor = System.Drawing.Color.White;
-            this.customDate4.TabIndex = 11;
-            this.customDate4.TextColor = System.Drawing.Color.Black;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(365, 291);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(276, 37);
-            this.comboBox1.TabIndex = 12;
+            this.customComboBox1.BorderColor = System.Drawing.Color.Green;
+            this.customComboBox1.BorderRadius = 0;
+            this.customComboBox1.BorderSize = 2;
+            this.customComboBox1.FormattingEnabled = true;
+            this.customComboBox1.Location = new System.Drawing.Point(730, 303);
+            this.customComboBox1.Name = "customComboBox1";
+            this.customComboBox1.Size = new System.Drawing.Size(121, 24);
+            this.customComboBox1.SkinColor = System.Drawing.Color.White;
+            this.customComboBox1.TabIndex = 13;
             // 
             // CreateNewStaff
             // 
@@ -183,6 +196,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1260, 712);
+            this.Controls.Add(this.customComboBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.customDate4);
             this.Controls.Add(this.label2);
@@ -215,5 +229,6 @@
         private System.Windows.Forms.Label label2;
         private Design.CustomDate customDate4;
         private System.Windows.Forms.ComboBox comboBox1;
+        private Design.CustomComboBox customComboBox1;
     }
 }

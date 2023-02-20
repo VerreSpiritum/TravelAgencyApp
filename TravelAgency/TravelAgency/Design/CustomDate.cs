@@ -127,7 +127,6 @@ namespace TravelAgency.Design
                     using (GraphicsPath pathBorderSmooth = Rounding.GetFigurePath(rectBorderSmooth, borderRadius))
                     using (GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - borderSize))
                     using (Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
-                    //using (Pen penBorder = new Pen(borderColor, borderSize))
                     {
                         //Draw
                         this.Region = new Region(pathBorderSmooth);

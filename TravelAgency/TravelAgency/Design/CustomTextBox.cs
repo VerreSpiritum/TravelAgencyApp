@@ -151,22 +151,7 @@ namespace TravelAgency.Design
         [Category("Myself added")]
         public bool IsPasswordChar { get => isPasswordChar; set => isPasswordChar = value; }
 
-        //Overridden methods
-        private GraphicsPath GetFigurePath(RectangleF rect, int radius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            float curveSize = radius * 2F;
 
-            path.StartFigure();
-            path.AddArc(rect.X, rect.Y, curveSize, curveSize, 180, 90);
-            path.AddArc(rect.Width - curveSize, rect.Y, curveSize, curveSize, 270, 90);
-            path.AddArc(rect.Width - curveSize, rect.Bottom - curveSize, curveSize, curveSize, 0, 90);
-            path.AddArc(rect.X, rect.Bottom - curveSize, curveSize, curveSize, 90, 90);
-
-            path.CloseFigure();
-
-            return path;
-        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -180,8 +165,8 @@ namespace TravelAgency.Design
                 var rectBorder = Rectangle.Inflate(rectBorderSmooth, -borderSize, -borderSize);
                 int smoothSize = borderSize > 0 ? borderSize : 1;
 
-                using(GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, borderRadius))
-                using(GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
+                using(GraphicsPath pathBorderSmooth = Rounding.GetFigurePath(rectBorderSmooth, borderRadius))
+                using(GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - borderSize))
                 using(Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
                 using(Pen penBorder = new Pen(borderColor, borderSize))
                 {
@@ -255,12 +240,12 @@ namespace TravelAgency.Design
             GraphicsPath pathText;
             if(Multiline)
             {
-                pathText = GetFigurePath(textBox1.ClientRectangle, borderRadius - borderSize);
+                pathText = Rounding.GetFigurePath(textBox1.ClientRectangle, borderRadius - borderSize);
                 textBox1.Region = new Region(pathText);
             }
             else
             {
-                pathText = GetFigurePath(textBox1.ClientRectangle, borderSize);
+                pathText = Rounding.GetFigurePath(textBox1.ClientRectangle, borderSize);
                 textBox1.Region = new Region(pathText);
             }
         }

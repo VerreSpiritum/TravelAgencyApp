@@ -92,19 +92,7 @@ namespace TravelAgency.Design
 
         //Methods
 
-        private GraphicsPath GetFigurePath(RectangleF rect, float radius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-            path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);
-            path.AddArc(rect.Width - radius, rect.Y, radius, radius, 270, 90);
-            path.AddArc(rect.Width - radius, rect.Height - radius, radius, radius, 0, 90);
-            path.AddArc(rect.X, rect.Height - radius, radius, radius, 90, 90);
-
-            path.CloseFigure();
-
-            return path;
-        }
+        
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
@@ -114,8 +102,8 @@ namespace TravelAgency.Design
 
             if(borderRadius > 2) //Round Button
             {
-                using (GraphicsPath pathSurface = GetFigurePath(rectSurface, borderRadius))
-                using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - 1F))
+                using (GraphicsPath pathSurface = Rounding.GetFigurePath(rectSurface, borderRadius))
+                using (GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - 1F))
                 using (Pen penSurface = new Pen(Parent.BackColor, 2))
                 using (Pen penBorder = new Pen(borderColor, borderSize))
                 {

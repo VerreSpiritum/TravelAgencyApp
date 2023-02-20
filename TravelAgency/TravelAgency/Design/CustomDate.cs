@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -96,21 +92,6 @@ namespace TravelAgency.Design
             base.OnKeyPress(e);
             e.Handled = true;
         }
-        private GraphicsPath GetFigurePath(RectangleF rect, int radius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            float curveSize = radius * 2F;
-
-            path.StartFigure();
-            path.AddArc(rect.X, rect.Y, curveSize, curveSize, 180, 90);
-            path.AddArc(rect.Width - curveSize, rect.Y, curveSize, curveSize, 270, 90);
-            path.AddArc(rect.Width - curveSize, rect.Bottom - curveSize, curveSize, curveSize, 0, 90);
-            path.AddArc(rect.X, rect.Bottom - curveSize, curveSize, curveSize, 90, 90);
-
-            path.CloseFigure();
-
-            return path;
-        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -143,8 +124,8 @@ namespace TravelAgency.Design
                     var rectBorder = Rectangle.Inflate(rectBorderSmooth, -borderSize, -borderSize);
                     int smoothSize = borderSize > 0 ? borderSize : 1;
 
-                    using (GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, borderRadius))
-                    using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
+                    using (GraphicsPath pathBorderSmooth = Rounding.GetFigurePath(rectBorderSmooth, borderRadius))
+                    using (GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - borderSize))
                     using (Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
                     //using (Pen penBorder = new Pen(borderColor, borderSize))
                     {

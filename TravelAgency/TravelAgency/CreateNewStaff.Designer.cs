@@ -161,7 +161,7 @@
             this.customDate4.BorderSize = 1;
             this.customDate4.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customDate4.Location = new System.Drawing.Point(53, 291);
-            this.customDate4.MinimumSize = new System.Drawing.Size(0, 46);
+            this.customDate4.MinimumSize = new System.Drawing.Size(4, 46);
             this.customDate4.Name = "customDate4";
             this.customDate4.Size = new System.Drawing.Size(263, 46);
             this.customDate4.SkinColor = System.Drawing.Color.White;

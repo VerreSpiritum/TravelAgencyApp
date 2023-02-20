@@ -61,7 +61,7 @@
             // 
             this.editEmployeeL.AutoSize = true;
             this.editEmployeeL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editEmployeeL.Location = new System.Drawing.Point(344, 42);
+            this.editEmployeeL.Location = new System.Drawing.Point(365, 42);
             this.editEmployeeL.Name = "editEmployeeL";
             this.editEmployeeL.Size = new System.Drawing.Size(326, 36);
             this.editEmployeeL.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             this.deleteEmployeeL.AutoSize = true;
             this.deleteEmployeeL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteEmployeeL.Location = new System.Drawing.Point(743, 42);
+            this.deleteEmployeeL.Location = new System.Drawing.Point(788, 42);
             this.deleteEmployeeL.Name = "deleteEmployeeL";
             this.deleteEmployeeL.Size = new System.Drawing.Size(306, 36);
             this.deleteEmployeeL.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             this.newUserL.AutoSize = true;
             this.newUserL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newUserL.Location = new System.Drawing.Point(1115, 42);
+            this.newUserL.Location = new System.Drawing.Point(1212, 42);
             this.newUserL.Name = "newUserL";
             this.newUserL.Size = new System.Drawing.Size(216, 36);
             this.newUserL.TabIndex = 4;

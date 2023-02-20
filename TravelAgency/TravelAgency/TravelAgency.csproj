@@ -107,6 +107,9 @@
     <Compile Include="CreateNewStaff.Designer.cs">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Design\CustomDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Design\CustomMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\DirectorForms\Menu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\Icons\blackCalendar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

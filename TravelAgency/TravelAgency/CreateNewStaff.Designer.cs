@@ -33,9 +33,12 @@
             this.nameL = new System.Windows.Forms.Label();
             this.secondNameL = new System.Windows.Forms.Label();
             this.surnameL = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.customTextBox3 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox2 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox1 = new TravelAgency.Design.CustomTextBox();
+            this.customDate4 = new TravelAgency.Design.CustomDate();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -78,13 +81,23 @@
             this.surnameL.TabIndex = 6;
             this.surnameL.Text = "Прізвище";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(50, 214);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(348, 49);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Дата народження";
+            // 
             // customTextBox3
             // 
             this.customTextBox3.BackColor = System.Drawing.Color.White;
             this.customTextBox3.BorderColor = System.Drawing.Color.Black;
             this.customTextBox3.BorderRadius = 12;
             this.customTextBox3.BorderSize = 1;
-            this.customTextBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customTextBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customTextBox3.IsPasswordChar = false;
             this.customTextBox3.IsPlaceHolder = false;
             this.customTextBox3.Location = new System.Drawing.Point(894, 96);
@@ -94,7 +107,7 @@
             this.customTextBox3.PasswordChar = false;
             this.customTextBox3.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.customTextBox3.PlaceHolderText = "";
-            this.customTextBox3.Size = new System.Drawing.Size(263, 47);
+            this.customTextBox3.Size = new System.Drawing.Size(263, 46);
             this.customTextBox3.TabIndex = 2;
             this.customTextBox3.Texts = "";
             this.customTextBox3.UnderlineStyle = false;
@@ -105,7 +118,7 @@
             this.customTextBox2.BorderColor = System.Drawing.Color.Black;
             this.customTextBox2.BorderRadius = 12;
             this.customTextBox2.BorderSize = 1;
-            this.customTextBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customTextBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customTextBox2.IsPasswordChar = false;
             this.customTextBox2.IsPlaceHolder = false;
             this.customTextBox2.Location = new System.Drawing.Point(454, 96);
@@ -115,7 +128,7 @@
             this.customTextBox2.PasswordChar = false;
             this.customTextBox2.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.customTextBox2.PlaceHolderText = "";
-            this.customTextBox2.Size = new System.Drawing.Size(263, 47);
+            this.customTextBox2.Size = new System.Drawing.Size(263, 46);
             this.customTextBox2.TabIndex = 1;
             this.customTextBox2.Texts = "";
             this.customTextBox2.UnderlineStyle = false;
@@ -126,7 +139,7 @@
             this.customTextBox1.BorderColor = System.Drawing.Color.Black;
             this.customTextBox1.BorderRadius = 12;
             this.customTextBox1.BorderSize = 1;
-            this.customTextBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customTextBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customTextBox1.IsPasswordChar = false;
             this.customTextBox1.IsPlaceHolder = false;
             this.customTextBox1.Location = new System.Drawing.Point(53, 96);
@@ -136,17 +149,43 @@
             this.customTextBox1.PasswordChar = false;
             this.customTextBox1.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.customTextBox1.PlaceHolderText = "";
-            this.customTextBox1.Size = new System.Drawing.Size(263, 47);
+            this.customTextBox1.Size = new System.Drawing.Size(263, 46);
             this.customTextBox1.TabIndex = 0;
             this.customTextBox1.Texts = "";
             this.customTextBox1.UnderlineStyle = false;
+            // 
+            // customDate4
+            // 
+            this.customDate4.BorderColor = System.Drawing.Color.Black;
+            this.customDate4.BorderRadius = 12;
+            this.customDate4.BorderSize = 1;
+            this.customDate4.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customDate4.Location = new System.Drawing.Point(53, 291);
+            this.customDate4.MinimumSize = new System.Drawing.Size(0, 46);
+            this.customDate4.Name = "customDate4";
+            this.customDate4.Size = new System.Drawing.Size(263, 46);
+            this.customDate4.SkinColor = System.Drawing.Color.White;
+            this.customDate4.TabIndex = 11;
+            this.customDate4.TextColor = System.Drawing.Color.Black;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(365, 291);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(276, 37);
+            this.comboBox1.TabIndex = 12;
             // 
             // CreateNewStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1260, 600);
+            this.ClientSize = new System.Drawing.Size(1260, 712);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.customDate4);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.surnameL);
             this.Controls.Add(this.secondNameL);
             this.Controls.Add(this.nameL);
@@ -173,5 +212,8 @@
         private System.Windows.Forms.Label nameL;
         private System.Windows.Forms.Label secondNameL;
         private System.Windows.Forms.Label surnameL;
+        private System.Windows.Forms.Label label2;
+        private Design.CustomDate customDate4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

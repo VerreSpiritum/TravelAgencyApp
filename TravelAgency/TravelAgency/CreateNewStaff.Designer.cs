@@ -34,12 +34,13 @@
             this.secondNameL = new System.Windows.Forms.Label();
             this.surnameL = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.customMaskTextBox1 = new TravelAgency.Design.CustomMaskTextBox();
             this.customDate4 = new TravelAgency.Design.CustomDate();
             this.customTextBox3 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox2 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox1 = new TravelAgency.Design.CustomTextBox();
-            this.customComboBox1 = new TravelAgency.Design.CustomComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +67,7 @@
             // 
             this.secondNameL.AutoSize = true;
             this.secondNameL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.secondNameL.Location = new System.Drawing.Point(458, 146);
+            this.secondNameL.Location = new System.Drawing.Point(459, 146);
             this.secondNameL.Name = "secondNameL";
             this.secondNameL.Size = new System.Drawing.Size(157, 36);
             this.secondNameL.TabIndex = 5;
@@ -86,26 +87,59 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(50, 214);
+            this.label2.Location = new System.Drawing.Point(51, 214);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(348, 49);
             this.label2.TabIndex = 7;
             this.label2.Text = "Дата народження";
             // 
-            // comboBox1
+            // label3
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(365, 291);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(276, 37);
-            this.comboBox1.TabIndex = 12;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(506, 214);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(122, 49);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Стать";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(884, 214);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(327, 49);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Номер телефону";
+            // 
+            // customMaskTextBox1
+            // 
+            this.customMaskTextBox1.BackColor = System.Drawing.Color.White;
+            this.customMaskTextBox1.BorderColor = System.Drawing.Color.Black;
+            this.customMaskTextBox1.BorderRadius = 12;
+            this.customMaskTextBox1.BorderSize = 1;
+            this.customMaskTextBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customMaskTextBox1.IsPasswordChar = false;
+            this.customMaskTextBox1.IsPlaceHolder = false;
+            this.customMaskTextBox1.Location = new System.Drawing.Point(893, 291);
+            this.customMaskTextBox1.Mask = "+38 (000) 000-00-00";
+            this.customMaskTextBox1.Multiline = false;
+            this.customMaskTextBox1.Name = "customMaskTextBox1";
+            this.customMaskTextBox1.PasswordChar = false;
+            this.customMaskTextBox1.PlaceHolderColor = System.Drawing.Color.DarkGray;
+            this.customMaskTextBox1.PlaceHolderText = "";
+            this.customMaskTextBox1.Size = new System.Drawing.Size(263, 46);
+            this.customMaskTextBox1.TabIndex = 16;
+            this.customMaskTextBox1.Texts = "+38 (___) ___-__-__";
+            this.customMaskTextBox1.UnderlineStyle = false;
             // 
             // customDate4
             // 
             this.customDate4.BorderColor = System.Drawing.Color.Black;
             this.customDate4.BorderRadius = 12;
             this.customDate4.BorderSize = 1;
+            this.customDate4.CalendarTitleBackColor = System.Drawing.Color.MediumTurquoise;
             this.customDate4.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customDate4.Location = new System.Drawing.Point(53, 291);
             this.customDate4.MinimumSize = new System.Drawing.Size(4, 46);
@@ -124,16 +158,16 @@
             this.customTextBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customTextBox3.IsPasswordChar = false;
             this.customTextBox3.IsPlaceHolder = false;
-            this.customTextBox3.Location = new System.Drawing.Point(894, 96);
+            this.customTextBox3.Location = new System.Drawing.Point(893, 96);
             this.customTextBox3.Multiline = false;
             this.customTextBox3.Name = "customTextBox3";
-            this.customTextBox3.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.customTextBox3.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.customTextBox3.PasswordChar = false;
             this.customTextBox3.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.customTextBox3.PlaceHolderText = "";
             this.customTextBox3.Size = new System.Drawing.Size(263, 46);
             this.customTextBox3.TabIndex = 2;
-            this.customTextBox3.Texts = "";
+            this.customTextBox3.Texts = "kdfjg";
             this.customTextBox3.UnderlineStyle = false;
             // 
             // customTextBox2
@@ -145,10 +179,10 @@
             this.customTextBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.customTextBox2.IsPasswordChar = false;
             this.customTextBox2.IsPlaceHolder = false;
-            this.customTextBox2.Location = new System.Drawing.Point(454, 96);
+            this.customTextBox2.Location = new System.Drawing.Point(453, 96);
             this.customTextBox2.Multiline = false;
             this.customTextBox2.Name = "customTextBox2";
-            this.customTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.customTextBox2.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.customTextBox2.PasswordChar = false;
             this.customTextBox2.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.customTextBox2.PlaceHolderText = "";
@@ -169,7 +203,7 @@
             this.customTextBox1.Location = new System.Drawing.Point(53, 96);
             this.customTextBox1.Multiline = false;
             this.customTextBox1.Name = "customTextBox1";
-            this.customTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.customTextBox1.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.customTextBox1.PasswordChar = false;
             this.customTextBox1.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.customTextBox1.PlaceHolderText = "";
@@ -178,26 +212,15 @@
             this.customTextBox1.Texts = "";
             this.customTextBox1.UnderlineStyle = false;
             // 
-            // customComboBox1
-            // 
-            this.customComboBox1.BorderColor = System.Drawing.Color.Green;
-            this.customComboBox1.BorderRadius = 0;
-            this.customComboBox1.BorderSize = 2;
-            this.customComboBox1.FormattingEnabled = true;
-            this.customComboBox1.Location = new System.Drawing.Point(730, 303);
-            this.customComboBox1.Name = "customComboBox1";
-            this.customComboBox1.Size = new System.Drawing.Size(121, 24);
-            this.customComboBox1.SkinColor = System.Drawing.Color.White;
-            this.customComboBox1.TabIndex = 13;
-            // 
             // CreateNewStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1260, 712);
-            this.Controls.Add(this.customComboBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.customMaskTextBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.customDate4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.surnameL);
@@ -228,7 +251,8 @@
         private System.Windows.Forms.Label surnameL;
         private System.Windows.Forms.Label label2;
         private Design.CustomDate customDate4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private Design.CustomComboBox customComboBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private Design.CustomMaskTextBox customMaskTextBox1;
     }
 }

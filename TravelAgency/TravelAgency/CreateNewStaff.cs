@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,11 @@ namespace TravelAgency
         public CreateNewStaff()
         {
             InitializeComponent();
-
+            
             nameL.ForeColor = surnameL.ForeColor = secondNameL.ForeColor = ColorTranslator.FromHtml("#7B7B7B");
         }
 
+       
         public void CloseForm()
         {
             this.Hide();
@@ -29,5 +31,12 @@ namespace TravelAgency
         {
             this.Show();
         }
+
+        private void customComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

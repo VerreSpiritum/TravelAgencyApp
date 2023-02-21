@@ -1,153 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace TravelAgency.Design
 {
     internal class CustomComboBox : ComboBox
     {
-        //What i need to do
-        /*Make field to 
-         * To change size
-         * To set border size
-         * To set border color
-         * To set border radius
-         * To set color of control
-         * To set color of text;
-         */
-        #region --- Fields ---
-        private int borderSize = 1;
-        private Color borderColor = Color.Green;
-        private int borderRadius = 0;
-        private Color skinColor = Color.White;
-        private Color textColor = Color.Green;
-
-        //properties
-
-        public int BorderSize
-        {
-            get
-            {
-                return borderSize;
-            }
-            set
-            {
-                borderSize = value;
-                this.Invalidate();
-            }
-        }
-        public Color BorderColor
-        {
-            get
-            {
-                return borderColor;
-            }
-            set
-            {
-                borderColor = value;
-                this.Invalidate();
-            }
-        }
-        public int BorderRadius
-        {
-            get
-            {
-                return borderRadius;
-            }
-            set
-            {
-                borderRadius = value;
-                this.Invalidate();
-            }
-        }
-        public Color SkinColor
-        {
-            get
-            {
-                return skinColor;
-            }
-            set
-            {
-                skinColor = value;
-                this.Invalidate();
-            }
-        }
-        public Color TextColor
-        {
-            get
-            {
-                return textColor;
-            }
-            set
-            {
-                textColor = value;
-                this.Invalidate();
-            }
-        }
-        #endregion
-
-        //Constructor
         public CustomComboBox()
         {
-            this.SetStyle(ControlStyles.UserPaint, true); //to have opportunity create own style of control
-            this.MinimumSize = new Size(0, 46);
-            this.Font = new Font("Franclin Gothic Book", 14F);
+          
+            SetStyle(ControlStyles.UserPaint, true);
+            
         }
-
-        #region --- Override methods ---
-
-        protected override void OnPaint(PaintEventArgs e)
+        private int cornerRadius = 12;
+        protected override void OnPaint(PaintEventArgs paintEvent)
         {
-            RectangleF clientArea = new RectangleF(0, 0, this.Width, this.Height);
+            Graphics graphics = paintEvent.Graphics;
 
-            using (Graphics graphics = this.CreateGraphics())
-            using (Pen borderPen = new Pen(borderColor, borderSize))
-            using (SolidBrush backBrush = new SolidBrush(skinColor))
-            using (SolidBrush textBrush = new SolidBrush(textColor))
-            using (StringFormat textFormat = new StringFormat())
-            {
-                borderPen.Alignment = PenAlignment.Inset; //border painting out of rectangle
+            SolidBrush backgroundBrush = new SolidBrush(this.BackColor);
+            graphics.FillRectangle(backgroundBrush, ClientRectangle);
 
-                //draw surface
-                graphics.FillRectangle(backBrush, clientArea);
-                //Draw text
-                graphics.DrawString("   " + this.Text, this.Font, textBrush, clientArea, textFormat);
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-                
-                if(borderRadius > 1) //if rounded
-                {
-                    var rectBorderSmooth = this.ClientRectangle;
-                    var rectBorder = Rectangle.Inflate(rectBorderSmooth, -borderSize, -borderSize);
-                    int smoothSize = borderSize > 0? borderSize : 1;
+            Rectangle rectangle = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
+            GraphicsPath graphicsPath = RoundedRectangle(rectangle, cornerRadius, 0);
+            SolidBrush brush = new SolidBrush(Color.Red);
+            graphics.FillPath(brush, graphicsPath);
 
-                    using (GraphicsPath pathBorderSmooth = Rounding.GetFigurePath(rectBorder, borderRadius))
-                    using (GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - borderSize))
-                    using (Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
-                    {
-                        this.Region = new Region(pathBorderSmooth);
-                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-                        graphics.DrawPath(penBorderSmooth, pathBorderSmooth);
-                        graphics.DrawPath(borderPen, pathBorder);
-
-                    }
-                }
-                else
-                {
-                    if (borderSize >= 1) graphics.DrawRectangle(borderPen, clientArea.X, clientArea.Y, clientArea.Width, clientArea.Height);
-                }
-            }
+            rectangle = new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 100);
+            graphicsPath = RoundedRectangle(rectangle, cornerRadius, 2);
+            brush = new SolidBrush(Color.Green);
+            graphics.FillPath(brush, graphicsPath);
         }
-        #endregion
-        #region --- Overriding events ---
 
+        private GraphicsPath RoundedRectangle(Rectangle rectangle, int cornerRadius, int margin)
+        {
+            GraphicsPath roundedRectangle = new GraphicsPath();
+            roundedRectangle.AddArc(rectangle.X + margin, rectangle.Y + margin, cornerRadius * 2, cornerRadius * 2, 180, 90);
+            roundedRectangle.AddArc(rectangle.X + rectangle.Width - margin - cornerRadius * 2, rectangle.Y + margin, cornerRadius * 2, cornerRadius * 2, 270, 90);
+            roundedRectangle.AddArc(rectangle.X + rectangle.Width - margin - cornerRadius * 2, rectangle.Y + rectangle.Height - margin - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2, 0, 90);
+            roundedRectangle.AddArc(rectangle.X + margin, rectangle.Y + rectangle.Height - margin - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2, 90, 90);
+            roundedRectangle.CloseFigure();
+            return roundedRectangle;
+        }
 
-        #endregion
+        // Constructor
+        //    public CustomComboBox()
+        //    {
+        //        // Set the control style to enable double buffering
+        //        this.SetStyle(ControlStyles.UserPaint, true);
+        //        this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
+        //    }
 
+        //    // Override the OnPaint method to draw the rounded appearance
+        //    protected override void OnPaint(PaintEventArgs e)
+        //    {
+        //        base.OnPaint(e);
+
+        //        // Draw a rounded rectangle around the control
+        //        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+        //        using (GraphicsPath path = CreateRoundedRectanglePath(this.ClientRectangle, 12))
+        //        {
+        //            using (Pen pen = new Pen(Color.Red, 1))
+        //            {
+        //                e.Graphics.DrawPath(pen, path);
+        //            }
+        //        }
+        //    }
+
+        //    // Method for creating a rounded rectangle path
+        //    private GraphicsPath CreateRoundedRectanglePath(Rectangle rect, int radius)
+        //    {
+        //        GraphicsPath path = new GraphicsPath();
+        //        path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);
+        //        path.AddArc(rect.X + rect.Width - radius, rect.Y, radius, radius, 270, 90);
+        //        path.AddArc(rect.X + rect.Width - radius, rect.Y + rect.Height - radius, radius, radius, 0, 90);
+        //        path.AddArc(rect.X, rect.Y + rect.Height - radius, radius, radius, 90, 90);
+        //        path.CloseFigure();
+        //        return path;
+        //    }
+        //}
     }
 }

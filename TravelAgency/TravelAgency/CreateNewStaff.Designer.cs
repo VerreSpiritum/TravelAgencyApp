@@ -36,11 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.customDate4 = new TravelAgency.Design.CustomDate();
             this.customTextBox2 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox1 = new TravelAgency.Design.CustomTextBox();
             this.customMaskedTextBox1 = new TravelAgency.Design.CustomMaskedTextBox();
             this.customTextBox3 = new TravelAgency.Design.CustomTextBox();
+            this.customDate1 = new TravelAgency.Design.CustomDate();
             this.SuspendLayout();
             // 
             // label1
@@ -113,21 +113,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Номер телефону";
             // 
-            // customDate4
-            // 
-            this.customDate4.BorderColor = System.Drawing.Color.Black;
-            this.customDate4.BorderRadius = 12;
-            this.customDate4.BorderSize = 1;
-            this.customDate4.CalendarTitleBackColor = System.Drawing.Color.MediumTurquoise;
-            this.customDate4.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.customDate4.Location = new System.Drawing.Point(53, 291);
-            this.customDate4.MinimumSize = new System.Drawing.Size(4, 46);
-            this.customDate4.Name = "customDate4";
-            this.customDate4.Size = new System.Drawing.Size(263, 46);
-            this.customDate4.SkinColor = System.Drawing.Color.White;
-            this.customDate4.TabIndex = 11;
-            this.customDate4.TextColor = System.Drawing.Color.Black;
-            // 
             // customTextBox2
             // 
             this.customTextBox2.BackColor = System.Drawing.Color.White;
@@ -179,7 +164,7 @@
             this.customMaskedTextBox1.IsPasswordChar = false;
             this.customMaskedTextBox1.IsPlaceHolder = false;
             this.customMaskedTextBox1.Location = new System.Drawing.Point(893, 291);
-            this.customMaskedTextBox1.Mask = "+238 (999) 000-00-00";
+            this.customMaskedTextBox1.Mask = "+38 (999) 000-00-00";
             this.customMaskedTextBox1.Multiline = false;
             this.customMaskedTextBox1.Name = "customMaskedTextBox1";
             this.customMaskedTextBox1.PasswordChar = false;
@@ -187,7 +172,7 @@
             this.customMaskedTextBox1.PlaceHolderText = "";
             this.customMaskedTextBox1.Size = new System.Drawing.Size(281, 48);
             this.customMaskedTextBox1.TabIndex = 14;
-            this.customMaskedTextBox1.Texts = "+238 (   )    -  -";
+            this.customMaskedTextBox1.Texts = "+38 (   )    -  -";
             this.customMaskedTextBox1.UnderlineStyle = false;
             this.customMaskedTextBox1._TextChanged += new System.EventHandler(this.customMaskedTextBox1__TextChanged);
             // 
@@ -209,8 +194,22 @@
             this.customTextBox3.PlaceHolderText = "";
             this.customTextBox3.Size = new System.Drawing.Size(263, 47);
             this.customTextBox3.TabIndex = 15;
-            this.customTextBox3.Texts = "sad";
+            this.customTextBox3.Texts = "";
             this.customTextBox3.UnderlineStyle = false;
+            // 
+            // customDate1
+            // 
+            this.customDate1.BorderColor = System.Drawing.Color.Black;
+            this.customDate1.BorderRadius = 12;
+            this.customDate1.BorderSize = 1;
+            this.customDate1.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customDate1.Location = new System.Drawing.Point(56, 291);
+            this.customDate1.MinimumSize = new System.Drawing.Size(0, 46);
+            this.customDate1.Name = "customDate1";
+            this.customDate1.Size = new System.Drawing.Size(260, 46);
+            this.customDate1.SkinColor = System.Drawing.Color.White;
+            this.customDate1.TabIndex = 16;
+            this.customDate1.TextColor = System.Drawing.Color.Black;
             // 
             // CreateNewStaff
             // 
@@ -218,11 +217,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1260, 712);
+            this.Controls.Add(this.customDate1);
             this.Controls.Add(this.customTextBox3);
             this.Controls.Add(this.customMaskedTextBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.customDate4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.surnameL);
             this.Controls.Add(this.secondNameL);
@@ -249,10 +248,10 @@
         private System.Windows.Forms.Label secondNameL;
         private System.Windows.Forms.Label surnameL;
         private System.Windows.Forms.Label label2;
-        private Design.CustomDate customDate4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private Design.CustomMaskedTextBox customMaskedTextBox1;
         private Design.CustomTextBox customTextBox3;
+        private Design.CustomDate customDate1;
     }
 }

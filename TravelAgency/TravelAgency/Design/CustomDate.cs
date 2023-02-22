@@ -113,7 +113,7 @@ namespace TravelAgency.Design
                 //Draw surface
                 graphics.FillRectangle(skinBrush, clientArea);
                 //Draw text
-                graphics.DrawString("   " + this.Text, this.Font, textBrush, clientArea, textFormat);
+                graphics.DrawString(" " + this.Text, this.Font, textBrush, clientArea, textFormat);
                 //Draw open calendar icon highlight
                 if (droppedDown == true) graphics.FillRectangle(openIconBrush, iconArea);
 

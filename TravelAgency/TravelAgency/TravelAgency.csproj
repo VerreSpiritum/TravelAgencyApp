@@ -113,11 +113,11 @@
     <Compile Include="Design\CustomDate.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\CustomMaskTextBox.cs">
+    <Compile Include="Design\CustomMaskedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\CustomMaskTextBox.Designer.cs">
-      <DependentUpon>CustomMaskTextBox.cs</DependentUpon>
+    <Compile Include="Design\CustomMaskedTextBox.Designer.cs">
+      <DependentUpon>CustomMaskedTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\CustomTextBox.cs">
       <SubType>UserControl</SubType>
@@ -166,8 +166,8 @@
     <EmbeddedResource Include="CreateNewStaff.resx">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\CustomMaskTextBox.resx">
-      <DependentUpon>CustomMaskTextBox.cs</DependentUpon>
+    <EmbeddedResource Include="Design\CustomMaskedTextBox.resx">
+      <DependentUpon>CustomMaskedTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\CustomTextBox.resx">
       <DependentUpon>CustomTextBox.cs</DependentUpon>

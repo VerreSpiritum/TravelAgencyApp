@@ -8,29 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TravelAgency.Design
 {
-    public partial class CustomMaskTextBox : UserControl
+    [DefaultEvent("_TextChanged")]
+    public partial class CustomMaskedTextBox : UserControl
     {
         private Color borderColor = Color.White;
         private int borderSize = 2;
         private bool underlineStyle = false;
-        
+
         private int borderRadius = 0;
         private Color placeHolderColor = Color.DarkGray;
         private string placeHolderText = "";
         private bool isPlaceHolder = false;
         private bool isPasswordChar = false;
-        private string mask = string.Empty;
-        
-        public CustomMaskTextBox()
+
+        //Constructor
+        public CustomMaskedTextBox()
         {
             InitializeComponent();
-            maskedTextBox1.Font = new Font("Franklin Gothic Book", 14F);
-    }
+        }
 
+        //Events
         public event EventHandler _TextChanged;
 
 
@@ -152,23 +152,16 @@ namespace TravelAgency.Design
         [Category("Myself added")]
         public new string Mask
         {
-            get { return maskedTextBox1.Mask; }
-            set 
-            { 
-                maskedTextBox1.Mask = value;
-                this.Invalidate();
+            get
+            {
+                return maskedTextBox1.Mask;
             }
-        }
-        [Category("Myself added")]
-        public new Font textFont
-        {
-            get { return textFont; }
             set
             {
-                maskedTextBox1.Font = value;
-                this.Invalidate();
+                maskedTextBox1.Mask = value;
             }
         }
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -223,6 +216,7 @@ namespace TravelAgency.Design
                         graphics.DrawRectangle(penBorder, 0, 0, this.Width - 0.5f, this.Height - 0.5F);
                 }
             }
+
         }
 
         private void SetPlaceHolder()

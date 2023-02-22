@@ -37,6 +37,14 @@ namespace TravelAgency
 
         }
 
+        private void customMaskedTextBox1__TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void customTextBox3__TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

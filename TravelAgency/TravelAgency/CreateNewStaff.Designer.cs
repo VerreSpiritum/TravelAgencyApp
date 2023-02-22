@@ -36,11 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.customMaskTextBox1 = new TravelAgency.Design.CustomMaskTextBox();
             this.customDate4 = new TravelAgency.Design.CustomDate();
-            this.customTextBox3 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox2 = new TravelAgency.Design.CustomTextBox();
             this.customTextBox1 = new TravelAgency.Design.CustomTextBox();
+            this.customMaskedTextBox1 = new TravelAgency.Design.CustomMaskedTextBox();
+            this.customTextBox3 = new TravelAgency.Design.CustomTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -113,27 +113,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Номер телефону";
             // 
-            // customMaskTextBox1
-            // 
-            this.customMaskTextBox1.BackColor = System.Drawing.Color.White;
-            this.customMaskTextBox1.BorderColor = System.Drawing.Color.Black;
-            this.customMaskTextBox1.BorderRadius = 12;
-            this.customMaskTextBox1.BorderSize = 1;
-            this.customMaskTextBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.customMaskTextBox1.IsPasswordChar = false;
-            this.customMaskTextBox1.IsPlaceHolder = false;
-            this.customMaskTextBox1.Location = new System.Drawing.Point(893, 291);
-            this.customMaskTextBox1.Mask = "+38 (000) 000-00-00";
-            this.customMaskTextBox1.Multiline = false;
-            this.customMaskTextBox1.Name = "customMaskTextBox1";
-            this.customMaskTextBox1.PasswordChar = false;
-            this.customMaskTextBox1.PlaceHolderColor = System.Drawing.Color.DarkGray;
-            this.customMaskTextBox1.PlaceHolderText = "";
-            this.customMaskTextBox1.Size = new System.Drawing.Size(263, 46);
-            this.customMaskTextBox1.TabIndex = 16;
-            this.customMaskTextBox1.Texts = "+38 (___) ___-__-__";
-            this.customMaskTextBox1.UnderlineStyle = false;
-            // 
             // customDate4
             // 
             this.customDate4.BorderColor = System.Drawing.Color.Black;
@@ -148,27 +127,6 @@
             this.customDate4.SkinColor = System.Drawing.Color.White;
             this.customDate4.TabIndex = 11;
             this.customDate4.TextColor = System.Drawing.Color.Black;
-            // 
-            // customTextBox3
-            // 
-            this.customTextBox3.BackColor = System.Drawing.Color.White;
-            this.customTextBox3.BorderColor = System.Drawing.Color.Black;
-            this.customTextBox3.BorderRadius = 12;
-            this.customTextBox3.BorderSize = 1;
-            this.customTextBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.customTextBox3.IsPasswordChar = false;
-            this.customTextBox3.IsPlaceHolder = false;
-            this.customTextBox3.Location = new System.Drawing.Point(893, 96);
-            this.customTextBox3.Multiline = false;
-            this.customTextBox3.Name = "customTextBox3";
-            this.customTextBox3.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
-            this.customTextBox3.PasswordChar = false;
-            this.customTextBox3.PlaceHolderColor = System.Drawing.Color.DarkGray;
-            this.customTextBox3.PlaceHolderText = "";
-            this.customTextBox3.Size = new System.Drawing.Size(263, 46);
-            this.customTextBox3.TabIndex = 2;
-            this.customTextBox3.Texts = "kdfjg";
-            this.customTextBox3.UnderlineStyle = false;
             // 
             // customTextBox2
             // 
@@ -212,13 +170,56 @@
             this.customTextBox1.Texts = "";
             this.customTextBox1.UnderlineStyle = false;
             // 
+            // customMaskedTextBox1
+            // 
+            this.customMaskedTextBox1.BackColor = System.Drawing.Color.White;
+            this.customMaskedTextBox1.BorderColor = System.Drawing.Color.Black;
+            this.customMaskedTextBox1.BorderRadius = 12;
+            this.customMaskedTextBox1.BorderSize = 1;
+            this.customMaskedTextBox1.IsPasswordChar = false;
+            this.customMaskedTextBox1.IsPlaceHolder = false;
+            this.customMaskedTextBox1.Location = new System.Drawing.Point(893, 291);
+            this.customMaskedTextBox1.Mask = "+238 (999) 000-00-00";
+            this.customMaskedTextBox1.Multiline = false;
+            this.customMaskedTextBox1.Name = "customMaskedTextBox1";
+            this.customMaskedTextBox1.PasswordChar = false;
+            this.customMaskedTextBox1.PlaceHolderColor = System.Drawing.Color.DarkGray;
+            this.customMaskedTextBox1.PlaceHolderText = "";
+            this.customMaskedTextBox1.Size = new System.Drawing.Size(281, 48);
+            this.customMaskedTextBox1.TabIndex = 14;
+            this.customMaskedTextBox1.Texts = "+238 (   )    -  -";
+            this.customMaskedTextBox1.UnderlineStyle = false;
+            this.customMaskedTextBox1._TextChanged += new System.EventHandler(this.customMaskedTextBox1__TextChanged);
+            // 
+            // customTextBox3
+            // 
+            this.customTextBox3.BackColor = System.Drawing.Color.White;
+            this.customTextBox3.BorderColor = System.Drawing.Color.Black;
+            this.customTextBox3.BorderRadius = 12;
+            this.customTextBox3.BorderSize = 1;
+            this.customTextBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.customTextBox3.IsPasswordChar = false;
+            this.customTextBox3.IsPlaceHolder = false;
+            this.customTextBox3.Location = new System.Drawing.Point(893, 96);
+            this.customTextBox3.Multiline = false;
+            this.customTextBox3.Name = "customTextBox3";
+            this.customTextBox3.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.customTextBox3.PasswordChar = false;
+            this.customTextBox3.PlaceHolderColor = System.Drawing.Color.DarkGray;
+            this.customTextBox3.PlaceHolderText = "";
+            this.customTextBox3.Size = new System.Drawing.Size(263, 47);
+            this.customTextBox3.TabIndex = 15;
+            this.customTextBox3.Texts = "sad";
+            this.customTextBox3.UnderlineStyle = false;
+            // 
             // CreateNewStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1260, 712);
-            this.Controls.Add(this.customMaskTextBox1);
+            this.Controls.Add(this.customTextBox3);
+            this.Controls.Add(this.customMaskedTextBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.customDate4);
@@ -227,7 +228,6 @@
             this.Controls.Add(this.secondNameL);
             this.Controls.Add(this.nameL);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.customTextBox3);
             this.Controls.Add(this.customTextBox2);
             this.Controls.Add(this.customTextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -244,7 +244,6 @@
 
         private Design.CustomTextBox customTextBox1;
         private Design.CustomTextBox customTextBox2;
-        private Design.CustomTextBox customTextBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label nameL;
         private System.Windows.Forms.Label secondNameL;
@@ -253,6 +252,7 @@
         private Design.CustomDate customDate4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private Design.CustomMaskTextBox customMaskTextBox1;
+        private Design.CustomMaskedTextBox customMaskedTextBox1;
+        private Design.CustomTextBox customTextBox3;
     }
 }

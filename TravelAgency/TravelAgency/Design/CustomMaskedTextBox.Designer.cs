@@ -1,6 +1,6 @@
 ﻿namespace TravelAgency.Design
 {
-    partial class CustomMaskTextBox
+    partial class CustomMaskedTextBox
     {
         /// <summary> 
         /// Required designer variable.
@@ -33,26 +33,24 @@
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.maskedTextBox1.BackColor = System.Drawing.Color.White;
             this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.maskedTextBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(10, 10);
+            this.maskedTextBox1.Location = new System.Drawing.Point(10, 7);
             this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.maskedTextBox1.Mask = "+38 (000) 000-00-00";
+            this.maskedTextBox1.Mask = "+38 (999) 000-00-00";
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(243, 27);
+            this.maskedTextBox1.Size = new System.Drawing.Size(261, 27);
             this.maskedTextBox1.TabIndex = 0;
-            this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
-            // CustomMaskTextBox
+            // CustomMaskedTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.maskedTextBox1);
-            this.Name = "CustomMaskTextBox";
-            this.Size = new System.Drawing.Size(263, 47);
+            this.Name = "CustomMaskedTextBox";
+            this.Size = new System.Drawing.Size(281, 48);
             this.ResumeLayout(false);
             this.PerformLayout();
 

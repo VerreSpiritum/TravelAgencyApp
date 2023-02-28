@@ -43,7 +43,7 @@
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1637, 2);
+            this.label1.Size = new System.Drawing.Size(1651, 2);
             this.label1.TabIndex = 0;
             // 
             // newEmployeeL
@@ -94,7 +94,7 @@
             // 
             this.panelToWork.Location = new System.Drawing.Point(0, 94);
             this.panelToWork.Name = "panelToWork";
-            this.panelToWork.Size = new System.Drawing.Size(1631, 579);
+            this.panelToWork.Size = new System.Drawing.Size(1646, 980);
             this.panelToWork.TabIndex = 5;
             // 
             // HumanResoucesForm
@@ -102,7 +102,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1632, 673);
+            this.ClientSize = new System.Drawing.Size(1646, 1080);
             this.Controls.Add(this.panelToWork);
             this.Controls.Add(this.newUserL);
             this.Controls.Add(this.deleteEmployeeL);

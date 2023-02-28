@@ -108,7 +108,7 @@
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\CustomComboBox.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Design\CustomDate.cs">
       <SubType>Component</SubType>
@@ -118,6 +118,9 @@
     </Compile>
     <Compile Include="Design\CustomMaskedTextBox.Designer.cs">
       <DependentUpon>CustomMaskedTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\CustomRadioButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Design\CustomTextBox.cs">
       <SubType>UserControl</SubType>
@@ -129,6 +132,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Design\Rounding.cs" />
+    <Compile Include="Design\TestComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DirectorMainPage.cs">
       <SubType>Form</SubType>
     </Compile>

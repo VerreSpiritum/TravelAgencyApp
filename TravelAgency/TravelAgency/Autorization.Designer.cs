@@ -94,7 +94,7 @@
             this.loginTB.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.loginTB.PlaceHolderText = "Логін";
             this.loginTB.Size = new System.Drawing.Size(304, 47);
-            this.loginTB.TabIndex = 10;
+            this.loginTB.TabIndex = 1;
             this.loginTB.Texts = "";
             this.loginTB.UnderlineStyle = true;
             // 
@@ -118,7 +118,7 @@
             this.passwordTB.PlaceHolderColor = System.Drawing.Color.DarkGray;
             this.passwordTB.PlaceHolderText = "Пароль";
             this.passwordTB.Size = new System.Drawing.Size(302, 47);
-            this.passwordTB.TabIndex = 9;
+            this.passwordTB.TabIndex = 2;
             this.passwordTB.Texts = "";
             this.passwordTB.UnderlineStyle = true;
             // 
@@ -136,7 +136,7 @@
             this.ConnectingBtn.Location = new System.Drawing.Point(179, 427);
             this.ConnectingBtn.Name = "ConnectingBtn";
             this.ConnectingBtn.Size = new System.Drawing.Size(165, 55);
-            this.ConnectingBtn.TabIndex = 5;
+            this.ConnectingBtn.TabIndex = 3;
             this.ConnectingBtn.Text = "Вхід";
             this.ConnectingBtn.TextColor = System.Drawing.Color.WhiteSmoke;
             this.ConnectingBtn.UseVisualStyleBackColor = false;

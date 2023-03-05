@@ -213,6 +213,7 @@
             this.startDateDT.BorderRadius = 12;
             this.startDateDT.BorderSize = 1;
             this.startDateDT.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.startDateDT.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.startDateDT.Location = new System.Drawing.Point(59, 590);
             this.startDateDT.MinimumSize = new System.Drawing.Size(4, 46);
             this.startDateDT.Name = "startDateDT";
@@ -304,6 +305,7 @@
             this.birthDateDT.BorderSize = 1;
             this.birthDateDT.CalendarFont = new System.Drawing.Font("Franklin Gothic Book", 16F);
             this.birthDateDT.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.birthDateDT.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthDateDT.Location = new System.Drawing.Point(53, 342);
             this.birthDateDT.MinimumSize = new System.Drawing.Size(4, 46);
             this.birthDateDT.Name = "birthDateDT";

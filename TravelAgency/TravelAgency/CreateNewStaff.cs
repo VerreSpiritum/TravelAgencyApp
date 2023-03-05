@@ -31,7 +31,7 @@ namespace TravelAgency
             
             nameL.ForeColor = surnameL.ForeColor = secondNameL.ForeColor = ColorTranslator.FromHtml("#7B7B7B");
             createNewStaffB.BackgroundColor = ColorTranslator.FromHtml("#5AACB8");
-            
+            startDateDT.MinDate = DateTime.Now;
         }
         #region --- Interface ---
         public string Name
@@ -102,6 +102,8 @@ namespace TravelAgency
         {
             phoneNum = phoneNumber.Texts;
             salary = salaryMTB.Texts;
+            startDate = startDateDT.Text;
+            post = postTB.Texts;
             
             if (!String.IsNullOrEmpty(name) || !String.IsNullOrEmpty(secondName) || !String.IsNullOrEmpty(surname) || !String.IsNullOrEmpty(phoneNum)
                 || !String.IsNullOrEmpty(birthDate) || !String.IsNullOrEmpty(startDate) || !String.IsNullOrEmpty(gender) || !String.IsNullOrEmpty(salary)
@@ -122,15 +124,18 @@ namespace TravelAgency
 
         private void nameTB__TextChanged(object sender, EventArgs e)
         {
-            name = nameTB.Texts;
+            if(nameTB.Texts.All(Char.IsLetter))
+                name = nameTB.Texts;
         }
         private void secondNameTB_TextChanged(object sender, EventArgs e)
         {
-            secondName = secondNameTB.Texts;
+            if (secondNameTB.Texts.All(Char.IsLetter))
+                secondName = secondNameTB.Texts;
         }
         private void surnameTB_TextChanged(object sender, EventArgs args)
         {
-            surname = surnameTB.Texts;
+            if (surnameTB.Texts.All(Char.IsLetter))
+                surname = surnameTB.Texts;
         }
         private void phoneNumber_TextChanged(object sender, EventArgs e)
         {
@@ -160,7 +165,8 @@ namespace TravelAgency
         }
         private void postTB__TextChanged(object sender, EventArgs e)
         {
-            post = postTB.Texts;
+            if (postTB.Texts.All(Char.IsLetter))
+                post = postTB.Texts;
         }
         private void salaryMTB__TextChanged(object sender, EventArgs e)
         {

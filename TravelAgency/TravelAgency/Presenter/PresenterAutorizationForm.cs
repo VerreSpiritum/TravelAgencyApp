@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace TravelAgency.Presenter
     {
         private ModelAutorizationForm model = new ModelAutorizationForm();
         private IViewAutorizationForm viewAutorizationForm;
-
+        private NpgsqlConnection connection;
         public event EventHandler openDirectorForm;
 
         public PresenterAutorizationForm(IViewAutorizationForm v, ModelAutorizationForm m)
@@ -39,10 +40,15 @@ namespace TravelAgency.Presenter
                 }
                 else
                 {
+                    connection = model.Connection;
                     if (openDirectorForm != null)
                         openDirectorForm(sender, EventArgs.Empty);
                 }
             }
+        }
+        public NpgsqlConnection getConnection()
+        {
+            return connection;
         }
         public void Close()
         {

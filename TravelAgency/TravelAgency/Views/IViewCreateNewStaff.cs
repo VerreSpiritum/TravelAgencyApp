@@ -18,6 +18,8 @@ namespace TravelAgency.Views
         string Salary { get; set; }
         string Post { get; set; }
 
+        event EventHandler sendInfo;
+
         void ShowForm();
         void CloseForm();
 

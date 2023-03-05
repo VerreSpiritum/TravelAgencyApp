@@ -33,7 +33,7 @@ namespace TravelAgency
             createNewStaffB.BackgroundColor = ColorTranslator.FromHtml("#5AACB8");
             
         }
-
+        #region --- Interface ---
         public string Name
         {
             get { return name; }
@@ -66,8 +66,8 @@ namespace TravelAgency
         }
         public string StartDate
         {
-            get { return StartDate; }
-            set { StartDate = value; }
+            get { return startDate; }
+            set { startDate = value; }
         }
         public string Salary
         {
@@ -85,6 +85,8 @@ namespace TravelAgency
                 post = value;
             }
         }
+        public event EventHandler sendInfo;
+
         public void CloseForm()
         {
             this.Hide();
@@ -94,7 +96,75 @@ namespace TravelAgency
         {
             this.Show();
         }
+        #endregion
 
-       
+        private void createNewStaffB_Click(object sender, EventArgs e)
+        {
+            phoneNum = phoneNumber.Texts;
+            salary = salaryMTB.Texts;
+            
+            if (!String.IsNullOrEmpty(name) || !String.IsNullOrEmpty(secondName) || !String.IsNullOrEmpty(surname) || !String.IsNullOrEmpty(phoneNum)
+                || !String.IsNullOrEmpty(birthDate) || !String.IsNullOrEmpty(startDate) || !String.IsNullOrEmpty(gender) || !String.IsNullOrEmpty(salary)
+                || !String.IsNullOrEmpty(post))
+            {
+                if (sendInfo != null)
+                {
+                    sendInfo(this, EventArgs.Empty);
+                }
+                
+            }
+            else
+            {
+                errorLabel.Text = "Заповніть усі поля!";
+            }
+            
+        }
+
+        private void nameTB__TextChanged(object sender, EventArgs e)
+        {
+            name = nameTB.Texts;
+        }
+        private void secondNameTB_TextChanged(object sender, EventArgs e)
+        {
+            secondName = secondNameTB.Texts;
+        }
+        private void surnameTB_TextChanged(object sender, EventArgs args)
+        {
+            surname = surnameTB.Texts;
+        }
+        private void phoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            phoneNum = phoneNumber.Texts;
+        }
+        private void birthDateDT_ValueChanged(object sender, EventArgs e)
+        {
+            birthDate = birthDateDT.Text;
+        }
+        private void startDateDT_ValueChanged(object sender, EventArgs e)
+        {
+            startDate = startDateDT.Text;
+        }
+        private void femaleRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (femaleRB.Checked)
+            {
+                gender = "Ж";
+            }
+        }
+        private void maleRB_CheckedChanged(object sender, EventArgs e)
+        {
+            if(maleRB.Checked)
+            {
+                gender = "Ч";
+            }
+        }
+        private void postTB__TextChanged(object sender, EventArgs e)
+        {
+            post = postTB.Texts;
+        }
+        private void salaryMTB__TextChanged(object sender, EventArgs e)
+        {
+            salary = salaryMTB.Texts;
+        }
     }
 }

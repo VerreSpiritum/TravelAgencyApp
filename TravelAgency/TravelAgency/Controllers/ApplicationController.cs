@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TravelAgency.Models;
 using TravelAgency.Presenter;
+using Npgsql;
 
 namespace TravelAgency.Controllers
 {
@@ -40,6 +41,13 @@ namespace TravelAgency.Controllers
             directorMainForm.OpenServicePackageForm += DirectorMainForm_ServicePackage;
 
             humanResoucesForm.OpenFormToCreateNewStaff += HumanResoucesForm_OpenFormToCreateNewStaff;
+            createNewStaff.getConnection += CreateNewStaff_getConnection;
+        }
+
+        private void CreateNewStaff_getConnection(object sender, EventArgs e)
+        {
+            NpgsqlConnection connection = autorizationForm.getConnection();
+            createNewStaff.connection = connection;
         }
 
         private void DirectorMainForm_ServicePackage(object sender, EventArgs e)
@@ -79,6 +87,8 @@ namespace TravelAgency.Controllers
             humanResoucesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
             createNewStaff.Show();
         }
+
+        
 
         public void Run()
         {

@@ -12,7 +12,7 @@ namespace TravelAgency.Controllers
 {
     internal class ApplicationController
     {
-        public PresenterAuthorizationForm authorizationForm { get; set; }
+        public PresenterAuthorizationForm authorizationForm;
         public PresenterDirectorMainPage directorMainForm;
         public PresenterHumanResourcesForm humanResourcesForm;
         public PresenterCreateNewStaff createNewStaff;

@@ -13,7 +13,6 @@ namespace TravelAgency
 {
     public partial class HumanResourcesForm : Form, IViewHumanResoucesForm
     {
-        public event EventHandler OpenFormCreateNewStaff;
 
         public HumanResourcesForm()
         {
@@ -21,23 +20,27 @@ namespace TravelAgency
 
             newEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
         }
-
+        #region --- Interface ---
+        public event EventHandler OpenFormEditEmployee;
+        public event EventHandler OpenFormDeleteEmployee;
+        public event EventHandler OpenFormCreateNewStaff;
+        public event EventHandler OpenFormCreateNewUser;
         public void ShowForm()
         {
-            //HumanResourcesForm form = new HumanResourcesForm();
             this.Show();
         }
         public void CloseForm()
         {
             this.Close();
         }
-        public void addOnPanelCreateNewStaff(CreateNewStaff form)
+        
+        public void addOnPanelCreateNewStaff(Form form)
         {
             form.TopLevel = false;
             form.TopMost = true;
             panelToWork.Controls.Add(form);
         }
-        
+        #endregion
         private void newEmployeeL_Click(object sender, EventArgs e)
         {
             newEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);

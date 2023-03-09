@@ -14,7 +14,7 @@ namespace TravelAgency.Presenter
         ModelDirectorMainPage model = new ModelDirectorMainPage();
         IViewDirectorMainPage view;
 
-        public event EventHandler OpenHumanResoucesForm;
+        public event EventHandler OpenHumanResourcesForm;
         public event EventHandler OpenServicePackageForm;
         public event EventHandler CloseConnection;
 
@@ -23,7 +23,7 @@ namespace TravelAgency.Presenter
             this.model = model;
             this.view = view;
 
-            view.OpenHumanResoucesForm += View_OpenHumanResoucesForm;
+            view.OpenHumanResourcesForm += View_OpenHumanResourcesForm;
             view.OpenServicePackageForm += View_OpenServicePackageForm;
             view.CloseConnection += View_CloseConnection;
         }
@@ -41,10 +41,10 @@ namespace TravelAgency.Presenter
                 OpenServicePackageForm(this, EventArgs.Empty);
         }
 
-        private void View_OpenHumanResoucesForm(object sender, EventArgs e)
+        private void View_OpenHumanResourcesForm(object sender, EventArgs e)
         {
-            if(OpenHumanResoucesForm!= null) 
-                OpenHumanResoucesForm(this, EventArgs.Empty);
+            if(OpenHumanResourcesForm != null) 
+                OpenHumanResourcesForm(this, EventArgs.Empty);
         }
 
         public void AddOnPanelHumanResources(HumanResourcesForm form)

@@ -57,18 +57,27 @@ namespace TravelAgency
         {
             editEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             newEmployeeL.Font = deleteEmployeeL.Font = newUserL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+
+            if (OpenFormEditEmployee != null)
+                OpenFormEditEmployee(this, EventArgs.Empty);
         }
 
         private void deleteEmployeeL_Click(object sender, EventArgs e)
         {
             deleteEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             editEmployeeL.Font = newEmployeeL.Font = newUserL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            
+            if(OpenFormDeleteEmployee != null) 
+                OpenFormDeleteEmployee(this,EventArgs.Empty);
         }
 
         private void newUserL_Click(object sender, EventArgs e)
         {
             newUserL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             editEmployeeL.Font = deleteEmployeeL.Font = editEmployeeL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+
+            if (OpenFormCreateNewUser != null)
+                OpenFormCreateNewUser(this, EventArgs.Empty);
         }
     }
 }

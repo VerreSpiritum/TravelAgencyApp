@@ -30,7 +30,7 @@ namespace TravelAgency
             service_package.BackColor = Color.Transparent;
         }
        
-        public event EventHandler OpenHumanResoucesForm;
+        public event EventHandler OpenHumanResourcesForm;
         public event EventHandler OpenServicePackageForm;
         public event EventHandler CloseConnection;
 
@@ -52,8 +52,8 @@ namespace TravelAgency
             line2.BackColor = Color.Transparent;
             await Task.Delay(1000);
 
-            if(OpenHumanResoucesForm != null)
-                OpenHumanResoucesForm(this, EventArgs.Empty);
+            if(OpenHumanResourcesForm != null)
+                OpenHumanResourcesForm(this, EventArgs.Empty);
         }
 
         public void addOnPanelHumanResources(HumanResourcesForm form)

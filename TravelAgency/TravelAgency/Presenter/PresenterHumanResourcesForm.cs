@@ -28,17 +28,20 @@ namespace TravelAgency.Presenter
 
         private void View_OpenFormCreateNewUser(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (OpenFormToCreateNewUser != null)
+                OpenFormToCreateNewUser(this, EventArgs.Empty);
         }
 
         private void View_OpenFormDeleteEmployee(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (OpenFormToDeleteEmployee != null)
+                OpenFormToDeleteEmployee(this, EventArgs.Empty);
         }
 
         private void View_OpenFormEditEmployee(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (OpenFormToEditEmployee != null)
+                OpenFormToEditEmployee(this, EventArgs.Empty);
         }
 
         private void View_OpenFormCreateNewStaff(object sender, EventArgs e)

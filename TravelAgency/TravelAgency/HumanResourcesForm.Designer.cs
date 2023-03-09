@@ -1,6 +1,6 @@
 ﻿namespace TravelAgency
 {
-    partial class HumanResoucesForm
+    partial class HumanResourcesForm
     {
         /// <summary>
         /// Required designer variable.

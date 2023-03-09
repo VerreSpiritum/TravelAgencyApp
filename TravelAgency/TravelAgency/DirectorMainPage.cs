@@ -32,7 +32,7 @@ namespace TravelAgency
        
         public event EventHandler OpenHumanResoucesForm;
         public event EventHandler OpenServicePackageForm;
-
+        public event EventHandler CloseConnection;
 
         public void ShowForm()
         {
@@ -41,6 +41,8 @@ namespace TravelAgency
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            if (CloseConnection != null)
+                CloseConnection(this, EventArgs.Empty);
             Application.Exit();
         }
 
@@ -54,13 +56,11 @@ namespace TravelAgency
                 OpenHumanResoucesForm(this, EventArgs.Empty);
         }
 
-        public void addOnPanelHumanResources(HumanResoucesForm form)
+        public void addOnPanelHumanResources(HumanResourcesForm form)
         {
             form.TopLevel = false;
             form.TopMost = true;
             panel1.Controls.Add(form);
-
-            
         }
 
         private async void service_package_Click(object sender, EventArgs e)

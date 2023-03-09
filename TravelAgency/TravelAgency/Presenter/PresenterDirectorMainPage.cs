@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TravelAgency.Models;
 using TravelAgency.Views;
-
+using Npgsql;
 
 namespace TravelAgency.Presenter
 {
@@ -16,6 +16,7 @@ namespace TravelAgency.Presenter
 
         public event EventHandler OpenHumanResoucesForm;
         public event EventHandler OpenServicePackageForm;
+        public event EventHandler CloseConnection;
 
         public PresenterDirectorMainPage(IViewDirectorMainPage view, ModelDirectorMainPage model)
         {
@@ -24,6 +25,14 @@ namespace TravelAgency.Presenter
 
             view.OpenHumanResoucesForm += View_OpenHumanResoucesForm;
             view.OpenServicePackageForm += View_OpenServicePackageForm;
+            view.CloseConnection += View_CloseConnection;
+        }
+
+        private void View_CloseConnection(object sender, EventArgs e)
+        {
+            if (CloseConnection != null) 
+                CloseConnection(this, EventArgs.Empty);
+
         }
 
         private void View_OpenServicePackageForm(object sender, EventArgs e)
@@ -38,7 +47,7 @@ namespace TravelAgency.Presenter
                 OpenHumanResoucesForm(this, EventArgs.Empty);
         }
 
-        public void AddOnPanelHumanResources(HumanResoucesForm form)
+        public void AddOnPanelHumanResources(HumanResourcesForm form)
         {
             view.addOnPanelHumanResources(form);
         }

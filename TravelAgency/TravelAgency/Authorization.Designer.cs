@@ -1,6 +1,6 @@
 ﻿namespace TravelAgency
 {
-    partial class Autorization
+    partial class Authorization
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autorization));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Authorization));
             this.companylabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ErrorMess = new System.Windows.Forms.Label();

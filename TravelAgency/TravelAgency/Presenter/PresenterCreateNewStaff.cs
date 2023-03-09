@@ -43,7 +43,9 @@ namespace TravelAgency.Presenter
             model.Post = view.Post;
             model.Salary = view.Salary;
 
-            model.CreateNewStaff(connection);
+            model.Connection = connection;
+            model.CreateNewStaff();
+            view.ResultOfAdding = model.ResultOfAdding;
         }
 
         public void Close()

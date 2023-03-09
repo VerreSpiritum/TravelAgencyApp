@@ -15,8 +15,9 @@ namespace TravelAgency.Views
         string PhoneNumber { get; set; }
         string Gender { get; set; }
         string StartDate { get; set; }
-        string Salary { get; set; }
+        int Salary { get; set; }
         string Post { get; set; }
+        string ResultOfAdding { get; set; }
 
         event EventHandler sendInfo;
 

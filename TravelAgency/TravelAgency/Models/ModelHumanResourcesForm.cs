@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelAgency.Models
 {
-    internal class ModelHumanResoucesForm
+    internal class ModelHumanResourcesForm
     {
     }
 }

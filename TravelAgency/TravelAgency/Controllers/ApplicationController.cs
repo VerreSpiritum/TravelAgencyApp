@@ -12,87 +12,102 @@ namespace TravelAgency.Controllers
 {
     internal class ApplicationController
     {
-        public PresenterAutorizationForm autorizationForm { get; set; }
+        public PresenterAuthorizationForm authorizationForm { get; set; }
         public PresenterDirectorMainPage directorMainForm;
-        public PresenterHumanResoucesForm humanResoucesForm;
+        public PresenterHumanResourcesForm humanResourcesForm;
         public PresenterCreateNewStaff createNewStaff;
 
-        ModelAutorizationForm modelAutorizationForm = new ModelAutorizationForm();
+        ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
         ModelDirectorMainPage modelDirectorMainForm = new ModelDirectorMainPage();
-        ModelHumanResoucesForm modelHumanResoucesForm = new ModelHumanResoucesForm();
+        ModelHumanResourcesForm modelHumanResourcesForm = new ModelHumanResourcesForm();
         ModelCreateNewStaff modelCreateNewStaff = new ModelCreateNewStaff();
 
-        private HumanResoucesForm HumanResoucesForm = new HumanResoucesForm();
+        private HumanResourcesForm HumanResourcesForm = new HumanResourcesForm();
         private CreateNewStaff CreateNewStaffForm = new CreateNewStaff();
-        private bool checkOpenHumanResoucesForm = false;
+        private bool checkOpenHumanResourcesForm = false;
         private bool checkOpenCreateNewStaffForm = false;
 
 
-        public ApplicationController(Autorization form) 
+        public ApplicationController(Authorization form)
         {
-            autorizationForm = new PresenterAutorizationForm(form, modelAutorizationForm);
+            authorizationForm = new PresenterAuthorizationForm(form, modelAuthorizationForm);
             directorMainForm = new PresenterDirectorMainPage(new DirectorMainPage(), modelDirectorMainForm);
-            humanResoucesForm = new PresenterHumanResoucesForm(HumanResoucesForm, modelHumanResoucesForm);
+            humanResourcesForm = new PresenterHumanResourcesForm(HumanResourcesForm, modelHumanResourcesForm);
             createNewStaff = new PresenterCreateNewStaff(CreateNewStaffForm, modelCreateNewStaff);
-            
-            autorizationForm.openDirectorForm += AutorizationForm_openDirectorForm;
 
-            directorMainForm.OpenHumanResoucesForm += DirectorMainForm_OpenHumanResoucesForm;
+            authorizationForm.openDirectorForm += AuthorizationForm_openDirectorForm;
+
+            directorMainForm.OpenHumanResoucesForm += DirectorMainForm_OpenHumanResourcesForm;
             directorMainForm.OpenServicePackageForm += DirectorMainForm_ServicePackage;
 
-            humanResoucesForm.OpenFormToCreateNewStaff += HumanResoucesForm_OpenFormToCreateNewStaff;
+            humanResourcesForm.OpenFormToCreateNewStaff += HumanResourcesForm_OpenFormToCreateNewStaff;
             createNewStaff.getConnection += CreateNewStaff_getConnection;
         }
 
         private void CreateNewStaff_getConnection(object sender, EventArgs e)
         {
-            NpgsqlConnection connection = autorizationForm.getConnection();
+            NpgsqlConnection connection = authorizationForm.getConnection();
             createNewStaff.connection = connection;
         }
 
         private void DirectorMainForm_ServicePackage(object sender, EventArgs e)
         {
-            if (checkOpenHumanResoucesForm)
+            if (checkOpenHumanResourcesForm)
             {
-                humanResoucesForm.Close();
-                checkOpenHumanResoucesForm= false;
+                humanResourcesForm.Close();
+                checkOpenHumanResourcesForm = false;
             }
         }
 
-        private void HumanResoucesForm_OpenFormToCreateNewStaff(object sender, EventArgs e)
+        private void HumanResourcesForm_OpenFormToCreateNewStaff(object sender, EventArgs e)
         {
-            if(!checkOpenCreateNewStaffForm)
+            if (!checkOpenCreateNewStaffForm)
             {
-                humanResoucesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
+                CreateNewStaffForm = new CreateNewStaff();
+                createNewStaff = new PresenterCreateNewStaff(CreateNewStaffForm, modelCreateNewStaff);
+                humanResourcesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
                 createNewStaff.Show();
+
+                checkOpenCreateNewStaffForm = true;
+                checkOpenHumanResourcesForm = false;
             }
         }
 
-        private void DirectorMainForm_OpenHumanResoucesForm(object sender, EventArgs e)
+        private void DirectorMainForm_OpenHumanResourcesForm(object sender, EventArgs e)
         {
-            if (!checkOpenHumanResoucesForm)
+            if (!checkOpenHumanResourcesForm)
             {
-                directorMainForm.AddOnPanelHumanResources(HumanResoucesForm);
-                humanResoucesForm.Show();
+                HumanResourcesForm = new HumanResourcesForm();
+                humanResourcesForm = new PresenterHumanResourcesForm(HumanResourcesForm, modelHumanResourcesForm);
+                directorMainForm.AddOnPanelHumanResources(HumanResourcesForm);
+                humanResourcesForm.Show();
+                CreateNewStaffForm = new CreateNewStaff();
+                createNewStaff = new PresenterCreateNewStaff(CreateNewStaffForm, modelCreateNewStaff);
+                humanResourcesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
+                createNewStaff.Show();
+
+                checkOpenHumanResourcesForm = true;
+                checkOpenCreateNewStaffForm = false;
             }
         }
 
-        private void AutorizationForm_openDirectorForm(object sender, EventArgs e)
-        { 
-            autorizationForm.Close();
+        private void AuthorizationForm_openDirectorForm(object sender, EventArgs e)
+        {
+            authorizationForm.Close();
             directorMainForm.Show();
-            directorMainForm.AddOnPanelHumanResources(HumanResoucesForm);
-            humanResoucesForm.Show();
-            checkOpenHumanResoucesForm = true;
-            humanResoucesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
+            directorMainForm.AddOnPanelHumanResources(HumanResourcesForm);
+            humanResourcesForm.Show();
+            checkOpenHumanResourcesForm = true;
+            humanResourcesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
             createNewStaff.Show();
         }
 
-        
+
 
         public void Run()
         {
-            autorizationForm.Run();
+            authorizationForm.Run();
         }
     }
 }
+

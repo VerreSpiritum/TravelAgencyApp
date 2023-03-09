@@ -11,14 +11,14 @@ using TravelAgency.Views;
 
 namespace TravelAgency.Presenter
 {
-    internal class PresenterAutorizationForm
+    internal class PresenterAuthorizationForm
     {
-        private ModelAutorizationForm model = new ModelAutorizationForm();
+        private ModelAuthorizationForm model = new ModelAuthorizationForm();
         private IViewAutorizationForm viewAutorizationForm;
         private NpgsqlConnection connection;
         public event EventHandler openDirectorForm;
 
-        public PresenterAutorizationForm(IViewAutorizationForm v, ModelAutorizationForm m)
+        public PresenterAuthorizationForm(IViewAutorizationForm v, ModelAuthorizationForm m)
         {
             viewAutorizationForm = v;
             model = m;

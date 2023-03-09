@@ -11,11 +11,11 @@ using TravelAgency.Views;
 
 namespace TravelAgency
 {
-    public partial class HumanResoucesForm : Form, IViewHumanResoucesForm
+    public partial class HumanResourcesForm : Form, IViewHumanResoucesForm
     {
         public event EventHandler OpenFormCreateNewStaff;
 
-        public HumanResoucesForm()
+        public HumanResourcesForm()
         {
             InitializeComponent();
 
@@ -24,11 +24,12 @@ namespace TravelAgency
 
         public void ShowForm()
         {
+            //HumanResourcesForm form = new HumanResourcesForm();
             this.Show();
         }
         public void CloseForm()
         {
-            this.Hide();
+            this.Close();
         }
         public void addOnPanelCreateNewStaff(CreateNewStaff form)
         {

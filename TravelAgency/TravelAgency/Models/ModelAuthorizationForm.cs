@@ -7,7 +7,7 @@ using Npgsql;
 
 namespace TravelAgency.Models
 {
-    internal class ModelAutorizationForm
+    internal class ModelAuthorizationForm
     {
         private string login;
         private string password;

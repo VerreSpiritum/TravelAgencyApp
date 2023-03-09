@@ -95,11 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ApplicationController.cs" />
-    <Compile Include="Autorization.cs">
+    <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Autorization.Designer.cs">
-      <DependentUpon>Autorization.cs</DependentUpon>
+    <Compile Include="Authorization.Designer.cs">
+      <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateNewStaff.cs">
       <SubType>Form</SubType>
@@ -141,20 +141,20 @@
     <Compile Include="DirectorMainPage.Designer.cs">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="HumanResoucesForm.cs">
+    <Compile Include="HumanResourcesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HumanResoucesForm.Designer.cs">
-      <DependentUpon>HumanResoucesForm.cs</DependentUpon>
+    <Compile Include="HumanResourcesForm.Designer.cs">
+      <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelAutorizationForm.cs" />
+    <Compile Include="Models\ModelAuthorizationForm.cs" />
     <Compile Include="Models\ModelCreateNewStaff.cs" />
     <Compile Include="Models\ModelDirectorMainPage.cs" />
-    <Compile Include="Models\ModelHumanResoucesForm.cs" />
-    <Compile Include="Presenter\PresenterAutorizationForm.cs" />
+    <Compile Include="Models\ModelHumanResourcesForm.cs" />
+    <Compile Include="Presenter\PresenterAuthorizationForm.cs" />
     <Compile Include="Presenter\PresenterCreateNewStaff.cs" />
     <Compile Include="Presenter\PresenterDirectorMainPage.cs" />
-    <Compile Include="Presenter\PresenterHumanResoucesForm.cs" />
+    <Compile Include="Presenter\PresenterHumanResourcesForm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -166,8 +166,8 @@
     <Compile Include="Views\IViewCreateNewStaff.cs" />
     <Compile Include="Views\IViewDirectorMainPage.cs" />
     <Compile Include="Views\IViewHumanResoucesForm.cs" />
-    <EmbeddedResource Include="Autorization.resx">
-      <DependentUpon>Autorization.cs</DependentUpon>
+    <EmbeddedResource Include="Authorization.resx">
+      <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateNewStaff.resx">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
@@ -181,8 +181,8 @@
     <EmbeddedResource Include="DirectorMainPage.resx">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HumanResoucesForm.resx">
-      <DependentUpon>HumanResoucesForm.cs</DependentUpon>
+    <EmbeddedResource Include="HumanResourcesForm.resx">
+      <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

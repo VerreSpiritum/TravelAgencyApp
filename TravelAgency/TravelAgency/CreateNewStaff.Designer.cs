@@ -181,9 +181,8 @@
             this.salaryMTB.PlaceHolderText = "";
             this.salaryMTB.Size = new System.Drawing.Size(281, 48);
             this.salaryMTB.TabIndex = 26;
-            this.salaryMTB.Texts = "      ";
+            this.salaryMTB.Texts = "3500  ";
             this.salaryMTB.UnderlineStyle = false;
-            this.salaryMTB._TextChanged += new System.EventHandler(this.salaryMTB__TextChanged);
             // 
             // postTB
             // 
@@ -205,7 +204,6 @@
             this.postTB.TabIndex = 25;
             this.postTB.Texts = "Агент";
             this.postTB.UnderlineStyle = false;
-            this.postTB._TextChanged += new System.EventHandler(this.postTB__TextChanged);
             // 
             // startDateDT
             // 
@@ -221,7 +219,6 @@
             this.startDateDT.SkinColor = System.Drawing.Color.White;
             this.startDateDT.TabIndex = 24;
             this.startDateDT.TextColor = System.Drawing.Color.Black;
-            this.startDateDT.ValueChanged += new System.EventHandler(this.startDateDT_ValueChanged);
             // 
             // phoneNumber
             // 
@@ -232,7 +229,7 @@
             this.phoneNumber.IsPasswordChar = false;
             this.phoneNumber.IsPlaceHolder = false;
             this.phoneNumber.Location = new System.Drawing.Point(654, 342);
-            this.phoneNumber.Mask = "+38 (999) 000-00-00";
+            this.phoneNumber.Mask = "+38 (000) 000-00-00";
             this.phoneNumber.Multiline = false;
             this.phoneNumber.Name = "phoneNumber";
             this.phoneNumber.PasswordChar = false;
@@ -240,9 +237,8 @@
             this.phoneNumber.PlaceHolderText = "";
             this.phoneNumber.Size = new System.Drawing.Size(281, 46);
             this.phoneNumber.TabIndex = 20;
-            this.phoneNumber.Texts = "+38 (   )    -  -";
+            this.phoneNumber.Texts = "+38 (000) 000-00-00";
             this.phoneNumber.UnderlineStyle = false;
-            this.phoneNumber._TextChanged += new System.EventHandler(this.phoneNumber_TextChanged);
             // 
             // createNewStaffB
             // 
@@ -275,15 +271,14 @@
             this.maleRB.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.maleRB.Size = new System.Drawing.Size(120, 46);
             this.maleRB.TabIndex = 18;
-            this.maleRB.TabStop = true;
             this.maleRB.Text = "Чоловік";
             this.maleRB.UnCheckedColor = System.Drawing.Color.Black;
             this.maleRB.UseVisualStyleBackColor = true;
-            this.maleRB.CheckedChanged += new System.EventHandler(this.maleRB_CheckedChanged);
             // 
             // femaleRB
             // 
             this.femaleRB.AutoSize = true;
+            this.femaleRB.Checked = true;
             this.femaleRB.CheckedColor = System.Drawing.Color.CornflowerBlue;
             this.femaleRB.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.femaleRB.Location = new System.Drawing.Point(1269, 317);
@@ -296,7 +291,6 @@
             this.femaleRB.Text = "Жінка";
             this.femaleRB.UnCheckedColor = System.Drawing.Color.Black;
             this.femaleRB.UseVisualStyleBackColor = true;
-            this.femaleRB.CheckedChanged += new System.EventHandler(this.femaleRB_CheckedChanged);
             // 
             // birthDateDT
             // 
@@ -313,7 +307,6 @@
             this.birthDateDT.SkinColor = System.Drawing.Color.White;
             this.birthDateDT.TabIndex = 16;
             this.birthDateDT.TextColor = System.Drawing.Color.Black;
-            this.birthDateDT.ValueChanged += new System.EventHandler(this.birthDateDT_ValueChanged);
             // 
             // surnameTB
             // 
@@ -386,7 +379,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1646, 1080);
+            this.ClientSize = new System.Drawing.Size(1646, 992);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.salaryMTB);
             this.Controls.Add(this.postTB);

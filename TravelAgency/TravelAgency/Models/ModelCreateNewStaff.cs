@@ -17,22 +17,32 @@ namespace TravelAgency.Models
         public string Gender { get; set; }
         public string PhoneNumber { get; set; }
         public string StartDate { get; set; }
-        public string Salary { get; set; }
+        public int Salary { get; set; }
         public string Post { get; set; }
+        public string ResultOfAdding { get; set; }
 
-        public void CreateNewStaff(NpgsqlConnection connection)
+        public NpgsqlConnection Connection { get; set; }
+        
+        private string query;
+        
+        public void CreateNewStaff()
         {
-            string sql = "INSERT INTO Staff(name, patronymic, surname, position, sex, date_of_birth, salary, start_date, phone_number) VALUES " +
-                $"('{Name}', '{SecondName}', '{Surname}', '{Post}', '{Gender}', '{BirthDate}', {int.Parse(Salary)}, '{StartDate}', '{PhoneNumber}')";
+            query = "INSERT INTO Staff(name, patronymic, surname, position, sex, date_of_birth, salary, start_date, phone_number) VALUES " +
+                $"('{Name}', '{SecondName}', '{Surname}', '{Post}', '{Gender}', '{BirthDate}', {Salary}, '{StartDate}', '{PhoneNumber}')";
+            string text = "";
             try {
              
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, connection); 
-                var text = cmd.ExecuteScalar().ToString();
-               
+                NpgsqlCommand cmd = new NpgsqlCommand(query, Connection); 
+                text = cmd.ExecuteReader().ToString();
             }
             catch
             {
-                string a = "Error";
+                ResultOfAdding = "Виникла помилка при додавані нового співробітника";
+            }
+
+            if(String.IsNullOrEmpty(ResultOfAdding))
+            {
+                ResultOfAdding = "Успішно додано нового співробітника!";
             }
 
         }

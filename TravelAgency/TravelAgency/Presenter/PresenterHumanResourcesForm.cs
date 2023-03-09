@@ -9,14 +9,14 @@ using TravelAgency.Views;
 
 namespace TravelAgency.Presenter
 {
-    internal class PresenterHumanResoucesForm
+    internal class PresenterHumanResourcesForm
     {
         IViewHumanResoucesForm view;
-        ModelHumanResoucesForm model;
+        ModelHumanResourcesForm model;
 
         public event EventHandler OpenFormToCreateNewStaff;
 
-        public PresenterHumanResoucesForm(IViewHumanResoucesForm view, ModelHumanResoucesForm model)
+        public PresenterHumanResourcesForm(IViewHumanResoucesForm view, ModelHumanResourcesForm model)
         {
             this.view = view;
             this.model = model;

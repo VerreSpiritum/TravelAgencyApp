@@ -14,9 +14,9 @@ using Npgsql;
 
 namespace TravelAgency
 {
-    public partial class Autorization : Form, IViewAutorizationForm
+    public partial class Authorization : Form, IViewAutorizationForm
     {
-        public Autorization()
+        public Authorization()
         {
             InitializeComponent();
             

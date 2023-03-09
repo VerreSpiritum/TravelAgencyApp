@@ -18,7 +18,7 @@ namespace TravelAgency
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Controllers.ApplicationController ac = new Controllers.ApplicationController(new Autorization());
+            Controllers.ApplicationController ac = new Controllers.ApplicationController(new Authorization());
             ac.Run();
         }
     }

@@ -22,8 +22,9 @@ namespace TravelAgency
         private string birthDate;
         private string gender;
         private string startDate;
-        private string salary;
+        private int salary;
         private string post;
+        private string resultOfAdding;
 
         public CreateNewStaff()
         {
@@ -36,141 +37,118 @@ namespace TravelAgency
         #region --- Interface ---
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get => name; set => name = value;
         }
         public string SecondName
         {
-            get { return secondName; }
-            set { secondName = value; }
+            get => secondName; set => secondName = value;
         }
         public string Surname
         {
-            get { return surname; }
-            set { surname = value; }
+            get => surname; set => surname = value;
         }
         public string PhoneNumber
         {
-            get { return phoneNum; }
-            set { phoneNum = value; }
+            get => phoneNum; set => phoneNum = value;
         }
         public string BirthDate
         {
-            get { return birthDate; }
-            set { birthDate = value; }
+            get => birthDate; set => birthDate = value;
         }
         public string Gender
         {
-            get { return gender; }
-            set { gender = value; }
+            get => gender; set => gender = value;
         }
         public string StartDate
         {
-            get { return startDate; }
-            set { startDate = value; }
+            get => startDate; set => startDate = value;
         }
-        public string Salary
+        public int Salary
         {
-            get { return salary; }
-            set { salary = value; }
+            get => salary; set => salary = value;
         }
         public string Post
         {
-            get
-            {
-                return post;
-            }
-            set
-            {
-                post = value;
-            }
+            get => post; set => post = value;
         }
+        public string ResultOfAdding { get => resultOfAdding; set => resultOfAdding = value; }
         public event EventHandler sendInfo;
 
         public void CloseForm()
         {
-            this.Hide();
+            this.Close();
         }
 
         public void ShowForm()
         {
+            
             this.Show();
         }
         #endregion
 
         private void createNewStaffB_Click(object sender, EventArgs e)
         {
-            phoneNum = phoneNumber.Texts;
-            salary = salaryMTB.Texts;
-            startDate = startDateDT.Text;
-            post = postTB.Texts;
-            
-            if (!String.IsNullOrEmpty(name) || !String.IsNullOrEmpty(secondName) || !String.IsNullOrEmpty(surname) || !String.IsNullOrEmpty(phoneNum)
-                || !String.IsNullOrEmpty(birthDate) || !String.IsNullOrEmpty(startDate) || !String.IsNullOrEmpty(gender) || !String.IsNullOrEmpty(salary)
-                || !String.IsNullOrEmpty(post))
+            if (CheckAndInsert())
             {
-                if (sendInfo != null)
+                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(secondName) && !String.IsNullOrEmpty(surname) && !String.IsNullOrEmpty(phoneNum) 
+                    && !String.IsNullOrEmpty(birthDate) && !String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(gender) && salary >= 3500 && !String.IsNullOrEmpty(post))
                 {
-                    sendInfo(this, EventArgs.Empty);
+                    if (sendInfo != null)
+                        sendInfo(this, EventArgs.Empty);
+                    MessageBox.Show(resultOfAdding, "Результат роботи", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
-            }
-            else
-            {
-                errorLabel.Text = "Заповніть усі поля!";
+                else
+                {
+                    MessageBox.Show("Заповніть правильно усі поля!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             
         }
 
+        private bool CheckAndInsert()
+        {
+            phoneNum = phoneNumber.Texts;
+            salary = int.Parse(salaryMTB.Texts) >= 3500 ? int.Parse(salaryMTB.Texts) : 0;
+            startDate = startDateDT.Text;
+
+            if (Convert.ToInt32(DateTime.Now.Year - birthDateDT.Value.Year) < 18)
+            {
+                MessageBox.Show("Вкажіть дату народження старше 18 років!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                birthDate = birthDateDT.Text;
+            }
+            post = postTB.Texts;
+            if (femaleRB.Checked)
+                gender = "Ж";
+            else
+                gender = "Ч";
+
+            return true;
+        }
         private void nameTB__TextChanged(object sender, EventArgs e)
         {
-            if(nameTB.Texts.All(Char.IsLetter))
+            if (nameTB.Texts.All(Char.IsLetter))
                 name = nameTB.Texts;
+            else
+                name = null;
         }
         private void secondNameTB_TextChanged(object sender, EventArgs e)
         {
             if (secondNameTB.Texts.All(Char.IsLetter))
                 secondName = secondNameTB.Texts;
+            else
+                secondName = null;
         }
         private void surnameTB_TextChanged(object sender, EventArgs args)
         {
             if (surnameTB.Texts.All(Char.IsLetter))
                 surname = surnameTB.Texts;
+            else
+                surname = null;
         }
-        private void phoneNumber_TextChanged(object sender, EventArgs e)
-        {
-            phoneNum = phoneNumber.Texts;
-        }
-        private void birthDateDT_ValueChanged(object sender, EventArgs e)
-        {
-            birthDate = birthDateDT.Text;
-        }
-        private void startDateDT_ValueChanged(object sender, EventArgs e)
-        {
-            startDate = startDateDT.Text;
-        }
-        private void femaleRB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (femaleRB.Checked)
-            {
-                gender = "Ж";
-            }
-        }
-        private void maleRB_CheckedChanged(object sender, EventArgs e)
-        {
-            if(maleRB.Checked)
-            {
-                gender = "Ч";
-            }
-        }
-        private void postTB__TextChanged(object sender, EventArgs e)
-        {
-            if (postTB.Texts.All(Char.IsLetter))
-                post = postTB.Texts;
-        }
-        private void salaryMTB__TextChanged(object sender, EventArgs e)
-        {
-            salary = salaryMTB.Texts;
-        }
+        
     }
 }

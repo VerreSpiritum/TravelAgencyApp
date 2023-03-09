@@ -11,9 +11,10 @@ namespace TravelAgency.Views
         bool humanResourcesOpen { get; set; }
 
         void ShowForm();
-        void addOnPanelHumanResources(HumanResoucesForm form);
+        void addOnPanelHumanResources(HumanResourcesForm form);
 
         event EventHandler OpenHumanResoucesForm;
         event EventHandler OpenServicePackageForm;
+        event EventHandler CloseConnection;
     }
 }

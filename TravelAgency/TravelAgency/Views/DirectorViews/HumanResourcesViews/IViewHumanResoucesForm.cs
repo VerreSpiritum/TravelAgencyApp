@@ -11,11 +11,14 @@ namespace TravelAgency.Views
     {
         void ShowForm();
         void CloseForm();
-        void addOnPanelCreateNewStaff(Form form);
+        void addOnPanelForm(Form form);
+        void OpenWindow();
+        void ChangeStyle(string text);
 
         event EventHandler OpenFormEditEmployee;
-        event EventHandler OpenFormDeleteEmployee;
+        event EventHandler OpenFormToShowUsers;
         event EventHandler OpenFormCreateNewStaff;
         event EventHandler OpenFormCreateNewUser;
+        event EventHandler OpenFormShowStaff;
     }
 }

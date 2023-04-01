@@ -35,14 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0-preview.2.23128.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0-preview.2.23128.3\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql, Version=7.0.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.7.0.2\lib\netstandard2.0\Npgsql.dll</HintPath>
@@ -51,12 +51,12 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.8.0.0-preview.2.23128.3\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0-preview.2.23128.3\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -65,17 +65,17 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.7.0.0-preview.2.22152.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0-preview.2.23128.3\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.7.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.8.0.0-preview.2.23128.3\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Channels, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Channels.7.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.8.0.0-preview.2.23128.3\lib\net462\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -101,10 +101,10 @@
     <Compile Include="Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateNewStaff.cs">
+    <Compile Include="DirectorForms\CreateNewStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateNewStaff.Designer.cs">
+    <Compile Include="DirectorForms\CreateNewStaff.Designer.cs">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\CustomComboBox.cs">
@@ -135,26 +135,46 @@
     <Compile Include="Design\TestComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DirectorMainPage.cs">
+    <Compile Include="DirectorForms\DirectorMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorMainPage.Designer.cs">
+    <Compile Include="DirectorForms\DirectorMainPage.Designer.cs">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="HumanResourcesForm.cs">
+    <Compile Include="DirectorForms\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HumanResourcesForm.Designer.cs">
+    <Compile Include="DirectorForms\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\EditEmployee.Designer.cs">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HumanResourcesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HumanResourcesForm.Designer.cs">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelAuthorizationForm.cs" />
     <Compile Include="Models\ModelCreateNewStaff.cs" />
     <Compile Include="Models\ModelDirectorMainPage.cs" />
+    <Compile Include="Models\ModelEditEmployee.cs" />
+    <Compile Include="Models\ModelEditUser.cs" />
     <Compile Include="Models\ModelHumanResourcesForm.cs" />
+    <Compile Include="Models\ModelListOfAllStaff.cs" />
+    <Compile Include="Models\ModelShowUsers.cs" />
     <Compile Include="Presenter\PresenterAuthorizationForm.cs" />
     <Compile Include="Presenter\PresenterCreateNewStaff.cs" />
     <Compile Include="Presenter\PresenterDirectorMainPage.cs" />
+    <Compile Include="Presenter\PresenterEditEmployee.cs" />
+    <Compile Include="Presenter\PresenterEditUser.cs" />
     <Compile Include="Presenter\PresenterHumanResourcesForm.cs" />
+    <Compile Include="Presenter\PresenterListOfAllStaff.cs" />
+    <Compile Include="Presenter\PresenterShowUsers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -162,14 +182,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="DirectorForms\ShowUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ShowUsers.Designer.cs">
+      <DependentUpon>ShowUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\ShowStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ShowStaff.Designer.cs">
+      <DependentUpon>ShowStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirectorViews\IViewEditEmployee.cs" />
     <Compile Include="Views\IViewAutorizationForm.cs" />
-    <Compile Include="Views\IViewCreateNewStaff.cs" />
-    <Compile Include="Views\IViewDirectorMainPage.cs" />
-    <Compile Include="Views\IViewHumanResoucesForm.cs" />
+    <Compile Include="Views\DirectorViews\IViewCreateNewStaff.cs" />
+    <Compile Include="Views\DirectorViews\IViewDirectorMainPage.cs" />
+    <Compile Include="Views\DirectorViews\IViewEditUsers.cs" />
+    <Compile Include="Views\DirectorViews\IViewHumanResoucesForm.cs" />
+    <Compile Include="Views\DirectorViews\IViewListOfAllStaff.cs" />
+    <Compile Include="Views\DirectorViews\IViewShowUsers.cs" />
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateNewStaff.resx">
+    <EmbeddedResource Include="DirectorForms\CreateNewStaff.resx">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\CustomMaskedTextBox.resx">
@@ -178,16 +214,28 @@
     <EmbeddedResource Include="Design\CustomTextBox.resx">
       <DependentUpon>CustomTextBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorMainPage.resx">
+    <EmbeddedResource Include="DirectorForms\DirectorMainPage.resx">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HumanResourcesForm.resx">
+    <EmbeddedResource Include="DirectorForms\EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\EditEmployee.resx">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HumanResourcesForm.resx">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ShowUsers.resx">
+      <DependentUpon>ShowUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ShowStaff.resx">
+      <DependentUpon>ShowStaff.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -227,12 +275,11 @@
   <ItemGroup>
     <None Include="img\Icons\blackCalendar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\delete.png" />
+    <Content Include="img\DirectorForms\delete.png" />
+    <None Include="Properties\add-user.png" />
+    <None Include="img\DirectorForms\edit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
-  </Target>
 </Project>

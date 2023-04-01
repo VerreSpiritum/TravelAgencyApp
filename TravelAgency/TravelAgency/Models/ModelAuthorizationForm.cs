@@ -11,7 +11,12 @@ namespace TravelAgency.Models
     {
         private string login;
         private string password;
-
+        private string error;
+        
+        public string Error
+        {
+            get { return error; }
+        }
         public string Login
         {
             get { return login; }
@@ -25,9 +30,8 @@ namespace TravelAgency.Models
         public NpgsqlConnection Connection{
             get; set;
         }
-        public string ConnectingToDB()
+        public void ConnectingToDB()
         {
-            string error;
             string connectionstr = "Server=localhost;Port=5432;Database=travelAgency;UserID=" + login.ToLower() + ";Password=" + password + ";";
             //string connectionstr = "Server=localhost;Port=5432;Database=travelAgency;UserID=postgres;Password=santamaria25;";
 
@@ -42,7 +46,6 @@ namespace TravelAgency.Models
                 error = "Виникла помилка! Перевірте дані!";
             }
             Connection = connectToDB;
-            return error;
         }
     }
 }

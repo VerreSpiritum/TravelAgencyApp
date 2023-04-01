@@ -93,8 +93,7 @@ namespace TravelAgency
                 if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(secondName) && !String.IsNullOrEmpty(surname) && !String.IsNullOrEmpty(phoneNum) 
                     && !String.IsNullOrEmpty(birthDate) && !String.IsNullOrEmpty(startDate) && !String.IsNullOrEmpty(gender) && salary >= 3500 && !String.IsNullOrEmpty(post))
                 {
-                    if (sendInfo != null)
-                        sendInfo(this, EventArgs.Empty);
+                    sendInfo?.Invoke(this, EventArgs.Empty);
                     MessageBox.Show(resultOfAdding, "Результат роботи", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

@@ -7,36 +7,50 @@ using System.Threading.Tasks;
 using TravelAgency.Models;
 using TravelAgency.Presenter;
 using Npgsql;
+using System.Windows.Forms;
 
 namespace TravelAgency.Controllers
 {
     internal class ApplicationController
     {
-        public PresenterAuthorizationForm authorizationForm;
-        public PresenterDirectorMainPage directorMainForm;
-        public PresenterHumanResourcesForm humanResourcesForm;
-        public PresenterCreateNewStaff createNewStaff;
+        private PresenterAuthorizationForm authorizationForm;
+        private PresenterDirectorMainPage directorMainForm;
+        private PresenterHumanResourcesForm humanResourcesForm;
+        private PresenterCreateNewStaff createNewStaff;
+        private PresenterEditEmployee editEmployeeForm;
+        private PresenterListOfAllStaff listOfAllStaff;
+        private PresenterShowUsers listOfAllUsers;
+        private PresenterEditUser editUser;
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
         ModelDirectorMainPage modelDirectorMainForm = new ModelDirectorMainPage();
         ModelHumanResourcesForm modelHumanResourcesForm = new ModelHumanResourcesForm();
         ModelCreateNewStaff modelCreateNewStaff = new ModelCreateNewStaff();
+        ModelEditEmployee modelEditEmployee = new ModelEditEmployee();
+        ModelListOfAllStaff modelListOfAllStaff;
+        ModelShowUsers modelListOfAllUsers;
+        ModelEditUser modelEditUser;
 
-        private HumanResourcesForm HumanResourcesForm = new HumanResourcesForm();
-        private CreateNewStaff CreateNewStaffForm = new CreateNewStaff();
-      
-        private bool checkOpenHumanResourcesForm = false;
-        private bool checkOpenCreateNewStaffForm = false;
-        private bool checkOpenEditEmployee = false;
-        private bool checkOpenDeleteEmployee = false;
-        private bool checkOpenCreateNewUser = false;
+        private HumanResourcesForm humanResources = new HumanResourcesForm();
+        private CreateNewStaff createNewStaffForm = new CreateNewStaff();
+        private EditEmployee editEmployee = new EditEmployee();
+        private ShowStaff showStaff;
+        private ShowUsers showUsers;
+        private EditUser editUserForm;
+
+        private bool checkOpenPackageServices = false;
+
+
+        private List<Form> OpenedForms = new List<Form>();
+
 
         public ApplicationController(Authorization form)
         {
             authorizationForm = new PresenterAuthorizationForm(form, modelAuthorizationForm);
             directorMainForm = new PresenterDirectorMainPage(new DirectorMainPage(), modelDirectorMainForm);
-            humanResourcesForm = new PresenterHumanResourcesForm(HumanResourcesForm, modelHumanResourcesForm);
-            createNewStaff = new PresenterCreateNewStaff(CreateNewStaffForm, modelCreateNewStaff);
+            humanResourcesForm = new PresenterHumanResourcesForm(humanResources, modelHumanResourcesForm);
+            createNewStaff = new PresenterCreateNewStaff(createNewStaffForm, modelCreateNewStaff);
+            editEmployeeForm = new PresenterEditEmployee(editEmployee, modelEditEmployee);
 
             authorizationForm.openDirectorForm += AuthorizationForm_openDirectorForm;
 
@@ -45,146 +59,232 @@ namespace TravelAgency.Controllers
 
             humanResourcesForm.OpenFormToCreateNewStaff += HumanResourcesForm_OpenFormToCreateNewStaff;
             humanResourcesForm.OpenFormToEditEmployee += HumanResourcesForm_OpenFormToEditEmployee;
-            humanResourcesForm.OpenFormToDeleteEmployee += HumanResourcesForm_OpenFormToDeleteEmployee;
-            humanResourcesForm.OpenFormToCreateNewUser += HumanResourcesForm_OpenFormToCreateNewUser;
-            createNewStaff.getConnection += CreateNewStaff_getConnection;
+            humanResourcesForm.OpenFormToShowUsers += HumanResourcesForm_OpenFormToShowUsers;
+            humanResourcesForm.OpenFormToShowAllStaff += HumanResourcesForm_OpenFormToShowAllStaff;   
         }
 
-        private void CreateNewStaff_getConnection(object sender, EventArgs e)
+
+        #region --- Director ---
+        
+        
+        private void ChangeMenu(string name)
+        {
+            humanResources.ChangeStyle(name);
+        }
+
+        public NpgsqlConnection GetConnection()
         {
             NpgsqlConnection connection = authorizationForm.getConnection();
-            createNewStaff.connection = connection;
+            return connection;
         }
 
-        private void DirectorMainForm_ServicePackage(object sender, EventArgs e)
+        private void ListOfAllUsers_OpenEditorToChangeUserInfo(object sender, EventArgs e)
         {
-            if (checkOpenHumanResourcesForm)
+            if (!OpenedForms.Contains(editUserForm))
             {
-                CloseOpenedFormInResourcesForm();
-                humanResourcesForm.Close();
-                
-                checkOpenHumanResourcesForm = false;
-            }
-        }
-        private void CloseOpenedFormInResourcesForm()
-        {
-            if (checkOpenCreateNewStaffForm)
-            {
-                createNewStaff.Close();
-                
-                checkOpenCreateNewStaffForm = false;
-            }
-            else if (checkOpenDeleteEmployee)
-            {
-                checkOpenDeleteEmployee = false;
-            }
-            else if(checkOpenEditEmployee)
-            {
-                checkOpenEditEmployee = false;
-            }
-            else if(checkOpenCreateNewUser)
-            {
-                checkOpenCreateNewUser = false;
-            }
-        }
-        private void CloseOpenedFormInResourcesForm(string senderCheck)//если хотим открыть, то не закрываем а пропускаем
-        {
-            if (checkOpenCreateNewStaffForm && senderCheck != "checkOpenCreateNewStaffForm")
-            {
-                createNewStaff.Close();
+                editUserForm = new EditUser();
+                modelEditUser = new ModelEditUser(GetConnection());
 
-                checkOpenCreateNewStaffForm = false;
+                editUser = new PresenterEditUser(modelEditUser, editUserForm);
+                listOfAllUsers.AddFormOnPanel(editUserForm);
+                editUser.Show();
+
+                OpenedForms.Add(editUserForm);
             }
-            else if (checkOpenDeleteEmployee && senderCheck != "checkOpenDeleteEmployee")
+        }
+        private void ListOfAllStaff_OpenFormToEditEmployee(object sender, EventArgs e)
+        {
+            int talonNum = listOfAllStaff.talonNum;
+            CloseOpenedFormInResourcesForm(editEmployee);
+            editEmployee = new EditEmployee();
+            editEmployeeForm = new PresenterEditEmployee(editEmployee, modelEditEmployee);
+            editEmployeeForm.connection = GetConnection();
+            humanResourcesForm.AddOnPanelForm(editEmployee);
+            ChangeMenu("Редагувати співробітника");
+            editEmployeeForm.Show(talonNum);
+
+            OpenedForms.Add(editEmployee);
+        }
+        
+
+        private void OpenListOfAllStaff()
+        {
+            showStaff = new ShowStaff();
+            modelListOfAllStaff = new ModelListOfAllStaff(GetConnection());
+            listOfAllStaff = new PresenterListOfAllStaff(modelListOfAllStaff, showStaff);
+            humanResourcesForm.AddOnPanelForm(showStaff);
+            listOfAllStaff.Show(modelListOfAllStaff.GetInfoAboutStaff());
+            ListOfAllStaffEvent(listOfAllStaff);
+
+            OpenedForms.Add(showStaff);
+        }
+        private void OpenListOfAllUsers()
+        {
+            showUsers = new ShowUsers();
+            modelListOfAllUsers = new ModelShowUsers(GetConnection());
+            listOfAllUsers = new PresenterShowUsers(modelListOfAllUsers, showUsers);
+            humanResourcesForm.AddOnPanelForm(showUsers);
+            listOfAllUsers.Show();
+            ListOfAllUsersEvent(listOfAllUsers);
+
+            OpenedForms.Add(showUsers);
+        }
+
+        #region --- Opened from Human Resources Form ---
+        private void HumanResourcesForm_OpenFormToShowUsers(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showUsers))
             {
-                checkOpenDeleteEmployee = false;
+                CloseOpenedFormInResourcesForm(showUsers);
+                OpenListOfAllUsers();
             }
-            else if (checkOpenEditEmployee && senderCheck != "checkOpenEditEmployee")
+        }
+        private void HumanResourcesForm_OpenFormToEditEmployee(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editEmployee))
             {
-                checkOpenEditEmployee = false;
+                CloseOpenedFormInResourcesForm(editEmployee);
+                editEmployee = new EditEmployee();
+                editEmployeeForm = new PresenterEditEmployee(editEmployee, modelEditEmployee);
+                editEmployeeForm.connection = GetConnection();
+                humanResourcesForm.AddOnPanelForm(editEmployee);
+                editEmployeeForm.Show();
+
+                OpenedForms.Add(editEmployee);
             }
-            else if (checkOpenCreateNewUser && senderCheck != "checkOpenCreateNewUser")
+        }
+        private void HumanResourcesForm_OpenFormToShowAllStaff(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showStaff))
             {
-                checkOpenCreateNewUser = false;
+                CloseOpenedFormInResourcesForm(showStaff);
+                OpenListOfAllStaff();
             }
         }
         private void HumanResourcesForm_OpenFormToCreateNewStaff(object sender, EventArgs e)
         {
-            if (!checkOpenCreateNewStaffForm)
+            if (!OpenedForms.Contains(createNewStaffForm))
             {
-                CloseOpenedFormInResourcesForm("checkOpenCreateNewStaffForm");
-                CreateNewStaffForm = new CreateNewStaff();
-                createNewStaff = new PresenterCreateNewStaff(CreateNewStaffForm, modelCreateNewStaff);
-                humanResourcesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
+                CloseOpenedFormInResourcesForm(createNewStaffForm);
+                createNewStaffForm = new CreateNewStaff();
+                createNewStaff = new PresenterCreateNewStaff(createNewStaffForm, modelCreateNewStaff);
+                createNewStaff.connection = GetConnection();
+                humanResourcesForm.AddOnPanelForm(createNewStaffForm);
                 createNewStaff.Show();
-                                
-                checkOpenCreateNewStaffForm = true;
-            }
-        }
-        private void HumanResourcesForm_OpenFormToCreateNewUser(object sender, EventArgs e)
-        {
-            if(!checkOpenCreateNewUser)
-            {
-                CloseOpenedFormInResourcesForm("checkOpenCreateNewUser");
-                checkOpenCreateNewUser= true;
-            }
-        }
 
-        private void HumanResourcesForm_OpenFormToDeleteEmployee(object sender, EventArgs e)
-        {
-            if (!checkOpenDeleteEmployee)
-            {
-                CloseOpenedFormInResourcesForm("checkOpenDeleteEmployee");
-                checkOpenDeleteEmployee = true;
+                OpenedForms.Add(createNewStaffForm);
             }
         }
-
-        private void HumanResourcesForm_OpenFormToEditEmployee(object sender, EventArgs e)
+        #endregion
+        #region --- Close opened forms ---
+        private void CloseOpenedFormInResourcesForm()
         {
-            if (!checkOpenEditEmployee)
+            if (OpenedForms.Contains(createNewStaffForm))
             {
-                CloseOpenedFormInResourcesForm("checkOpenEditEmployee");
-                checkOpenEditEmployee = true;
+                createNewStaff.Close();
+
+                OpenedForms.Remove(createNewStaffForm);
+            }
+            else if (OpenedForms.Contains(showUsers))
+            {
+                listOfAllUsers.Close();
+                OpenedForms.Remove(showUsers);
+            }
+            else if (OpenedForms.Contains(editEmployee))
+            {
+                editEmployee.Close();
+                OpenedForms.Remove(editEmployee);
+            }
+            else if (OpenedForms.Contains(showStaff))
+            {
+                listOfAllStaff.Close();
+                OpenedForms.Remove(showStaff);
+            }
+        }
+        private void CloseOpenedFormInResourcesForm(Form senderCheck)//если хотим открыть, то не закрываем а пропускаем
+        {
+            if (OpenedForms.Contains(createNewStaffForm) && senderCheck != createNewStaffForm)
+            {
+                createNewStaff.Close();
+
+                OpenedForms.Remove(createNewStaffForm);
+            }
+            else if (OpenedForms.Contains(showUsers) && senderCheck != showUsers)
+            {
+                listOfAllUsers.Close();
+                OpenedForms.Remove(showUsers);
+            }
+            else if (OpenedForms.Contains(editEmployee) && senderCheck != editEmployee)
+            {
+                editEmployee.Close();
+                OpenedForms.Remove(editEmployee);
+            }
+            else if (OpenedForms.Contains(showStaff) && senderCheck != showStaff)
+            {
+                listOfAllStaff.Close();
+                OpenedForms.Remove(showStaff);
+            }
+        }
+        #endregion
+        #region --- Methods with list of all forms event ---
+        private void ListOfAllStaffEvent(PresenterListOfAllStaff presenter)
+        {
+            presenter.OpenFormToEditEmployee += ListOfAllStaff_OpenFormToEditEmployee;
+        }
+        private void ListOfAllUsersEvent(PresenterShowUsers presenter)
+        {
+            listOfAllUsers.OpenEditorToChangeUserInfo += ListOfAllUsers_OpenEditorToChangeUserInfo;
+        }
+        #endregion
+        #region --- Opened from Main menu ---
+        private void DirectorMainForm_ServicePackage(object sender, EventArgs e)
+        {
+            if (!checkOpenPackageServices)
+            {
+                CloseOpenedFormInResourcesForm();
+                humanResourcesForm.Close();
+
+                OpenedForms.Remove(humanResources);
+                checkOpenPackageServices = true;
             }
         }
         private void DirectorMainForm_OpenHumanResourcesForm(object sender, EventArgs e)
         {
-            if (!checkOpenHumanResourcesForm)
+            if (!OpenedForms.Contains(humanResources))
             {
-                HumanResourcesForm = new HumanResourcesForm();
-                humanResourcesForm = new PresenterHumanResourcesForm(HumanResourcesForm, modelHumanResourcesForm);
-                directorMainForm.AddOnPanelHumanResources(HumanResourcesForm);
+                humanResources.OpenWindow();
                 humanResourcesForm.Show();
-                CreateNewStaffForm = new CreateNewStaff();
-                createNewStaff = new PresenterCreateNewStaff(CreateNewStaffForm, modelCreateNewStaff);
-                humanResourcesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
-                createNewStaff.Show();
 
-                checkOpenHumanResourcesForm = true;
-                checkOpenCreateNewStaffForm = true;
+                OpenListOfAllStaff();
+
+                OpenedForms.Add(humanResources);
+                checkOpenPackageServices = false;
             }
         }
+        #endregion
+
+        #endregion
+
 
         private void AuthorizationForm_openDirectorForm(object sender, EventArgs e)
         {
             authorizationForm.Close();
             directorMainForm.Show();
-            directorMainForm.AddOnPanelHumanResources(HumanResourcesForm);
+
+            directorMainForm.AddOnPanelHumanResources(humanResources);
+            humanResources.OpenWindow();
             humanResourcesForm.Show();
-            checkOpenHumanResourcesForm = true;
-            humanResourcesForm.AddOnPanelCreateNewStaff(CreateNewStaffForm);
-            createNewStaff.Show();
 
-            checkOpenCreateNewStaffForm = true;
-            checkOpenHumanResourcesForm = true;
+            OpenedForms.Add(humanResources);
+
+            OpenListOfAllStaff();
         }
-
-
 
         public void Run()
         {
             authorizationForm.Run();
         }
+
     }
 }
 

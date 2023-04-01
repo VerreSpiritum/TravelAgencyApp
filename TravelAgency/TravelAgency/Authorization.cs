@@ -40,7 +40,7 @@ namespace TravelAgency
         {
             this.Hide();
         }
-        private void Autorization_Load(object sender, EventArgs e)
+        private void Authorization_Load(object sender, EventArgs e)
         {
             this.BackColor = ColorTranslator.FromHtml("#2893A0");
             ConnectingBtn.BackColor = ColorTranslator.FromHtml("#5AACB8");
@@ -69,9 +69,8 @@ namespace TravelAgency
             login = loginTB.Texts; password = passwordTB.Texts;
             if(login != "" && password != "")
             {
-                
-                if(ConnectToDB != null)
-                    ConnectToDB(this, EventArgs.Empty);
+
+                ConnectToDB?.Invoke(this, EventArgs.Empty);
             }
             else
             {

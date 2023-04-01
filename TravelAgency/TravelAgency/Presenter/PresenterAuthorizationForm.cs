@@ -31,9 +31,10 @@ namespace TravelAgency.Presenter
             model.Login = viewAutorizationForm.Login;
             model.Password = viewAutorizationForm.Password;
 
-            if (!string.IsNullOrEmpty(model.Login) && !string.IsNullOrEmpty(model.Password)) 
+            if (!string.IsNullOrEmpty(model.Login) && !string.IsNullOrEmpty(model.Password) && model.Login.ToLower() != "postgres") 
             {
-                string error = model.ConnectingToDB();
+                model.ConnectingToDB();
+                string error = model.Error;
                 if(!string.IsNullOrEmpty(error))
                 {
                     viewAutorizationForm.ErrorMessage(error);
@@ -44,6 +45,10 @@ namespace TravelAgency.Presenter
                     if (openDirectorForm != null)
                         openDirectorForm(sender, EventArgs.Empty);
                 }
+            }
+            else
+            {
+                viewAutorizationForm.ErrorMessage("Перевірте правильність заповнення полів!");
             }
         }
         public NpgsqlConnection getConnection()

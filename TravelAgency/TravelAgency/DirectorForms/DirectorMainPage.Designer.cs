@@ -60,9 +60,9 @@
             this.exitBtn.BackColor = System.Drawing.Color.Turquoise;
             this.exitBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitBtn.BackgroundImage")));
             this.exitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.exitBtn.Location = new System.Drawing.Point(19, 644);
+            this.exitBtn.Location = new System.Drawing.Point(19, 628);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(61, 70);
+            this.exitBtn.Size = new System.Drawing.Size(79, 86);
             this.exitBtn.TabIndex = 2;
             this.exitBtn.TabStop = false;
             this.exitBtn.Click += new System.EventHandler(this.pictureBox1_Click);

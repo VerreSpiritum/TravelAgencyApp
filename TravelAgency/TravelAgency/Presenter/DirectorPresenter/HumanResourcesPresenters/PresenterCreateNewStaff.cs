@@ -16,7 +16,7 @@ namespace TravelAgency.Presenter
         IViewCreateNewStaff view;
 
         public NpgsqlConnection connection { get; set; }
-        public event EventHandler getConnection;
+        
         
         public PresenterCreateNewStaff(IViewCreateNewStaff view, ModelCreateNewStaff model)
         {
@@ -28,11 +28,6 @@ namespace TravelAgency.Presenter
 
         private void View_sendInfo(object sender, EventArgs e)
         {
-            if(getConnection != null)
-            {
-                getConnection(this, EventArgs.Empty);
-            }
-
             model.Name = view.Name;
             model.SecondName = view.SecondName;
             model.Surname = view.Surname;
@@ -43,8 +38,7 @@ namespace TravelAgency.Presenter
             model.Post = view.Post;
             model.Salary = view.Salary;
 
-            model.Connection = connection;
-            model.CreateNewStaff();
+            model.CreateNewStaff(connection);
             view.ResultOfAdding = model.ResultOfAdding;
         }
 

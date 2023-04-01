@@ -20,31 +20,29 @@ namespace TravelAgency.Models
         public int Salary { get; set; }
         public string Post { get; set; }
         public string ResultOfAdding { get; set; }
-
-        public NpgsqlConnection Connection { get; set; }
         
         private string query;
         
-        public void CreateNewStaff()
+        public void CreateNewStaff(NpgsqlConnection connection)
         {
             query = "INSERT INTO Staff(name, patronymic, surname, position, sex, date_of_birth, salary, start_date, phone_number) VALUES " +
                 $"('{Name}', '{SecondName}', '{Surname}', '{Post}', '{Gender}', '{BirthDate}', {Salary}, '{StartDate}', '{PhoneNumber}')";
-            string text = "";
-            try {
+            
+            try 
+            {
              
-                NpgsqlCommand cmd = new NpgsqlCommand(query, Connection); 
-                text = cmd.ExecuteReader().ToString();
+                NpgsqlCommand cmd = new NpgsqlCommand(query, connection); 
+                string text = cmd.ExecuteNonQuery().ToString();
             }
             catch
             {
                 ResultOfAdding = "Виникла помилка при додавані нового співробітника";
             }
-
+            
             if(String.IsNullOrEmpty(ResultOfAdding))
             {
                 ResultOfAdding = "Успішно додано нового співробітника!";
             }
-
         }
     }
 }

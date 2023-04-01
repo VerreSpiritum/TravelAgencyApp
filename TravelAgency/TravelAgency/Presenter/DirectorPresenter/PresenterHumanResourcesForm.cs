@@ -12,8 +12,9 @@ namespace TravelAgency.Presenter
 
         public event EventHandler OpenFormToCreateNewStaff;
         public event EventHandler OpenFormToEditEmployee;
-        public event EventHandler OpenFormToDeleteEmployee;
+        public event EventHandler OpenFormToShowUsers;
         public event EventHandler OpenFormToCreateNewUser;
+        public event EventHandler OpenFormToShowAllStaff;
 
         public PresenterHumanResourcesForm(IViewHumanResoucesForm view, ModelHumanResourcesForm model)
         {
@@ -22,34 +23,39 @@ namespace TravelAgency.Presenter
 
             view.OpenFormCreateNewStaff += View_OpenFormCreateNewStaff;
             view.OpenFormEditEmployee += View_OpenFormEditEmployee;
-            view.OpenFormDeleteEmployee += View_OpenFormDeleteEmployee;
+            view.OpenFormToShowUsers += View_OpenFormToShowUsers;
             view.OpenFormCreateNewUser += View_OpenFormCreateNewUser;
+            view.OpenFormShowStaff += View_OpenFormShowStaff;
+        }
+
+        private void View_OpenFormShowStaff(object sender, EventArgs e)
+        {
+            OpenFormToShowAllStaff?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_OpenFormCreateNewUser(object sender, EventArgs e)
         {
-            if (OpenFormToCreateNewUser != null)
-                OpenFormToCreateNewUser(this, EventArgs.Empty);
+            OpenFormToCreateNewUser?.Invoke(this, EventArgs.Empty);
         }
 
-        private void View_OpenFormDeleteEmployee(object sender, EventArgs e)
+        private void View_OpenFormToShowUsers(object sender, EventArgs e)
         {
-            if (OpenFormToDeleteEmployee != null)
-                OpenFormToDeleteEmployee(this, EventArgs.Empty);
+            OpenFormToShowUsers?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_OpenFormEditEmployee(object sender, EventArgs e)
         {
-            if (OpenFormToEditEmployee != null)
-                OpenFormToEditEmployee(this, EventArgs.Empty);
+            OpenFormToEditEmployee?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_OpenFormCreateNewStaff(object sender, EventArgs e)
         {
-            if(OpenFormToCreateNewStaff != null)
-            {
-                OpenFormToCreateNewStaff(this, EventArgs.Empty);
-            }
+            OpenFormToCreateNewStaff?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void OpenWindow()
+        {
+            view.OpenWindow();
         }
 
         public void Show() 
@@ -61,10 +67,13 @@ namespace TravelAgency.Presenter
         {
             view.CloseForm();
         }
-
-        public void AddOnPanelCreateNewStaff(Form form)
+        public void ChangeStyle(string text)
         {
-            view.addOnPanelCreateNewStaff(form);
+            view.ChangeStyle(text);
+        }
+        public void AddOnPanelForm(Form form)
+        {
+            view.addOnPanelForm(form);
         }
     }
 }

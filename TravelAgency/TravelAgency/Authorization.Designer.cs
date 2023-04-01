@@ -165,7 +165,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Autorization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.Autorization_Load);
+            this.Load += new System.EventHandler(this.Authorization_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

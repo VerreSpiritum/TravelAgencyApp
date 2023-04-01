@@ -71,16 +71,21 @@ namespace TravelAgency
             if (e.ColumnIndex == userInfoTable.Columns["deleteEmployee"].Index && e.RowIndex >= 0)
             {
                 //TalonNum = (Int32)staffInfoTable.Rows[e.RowIndex].Cells[0].Value;
-                DeleteUser?.Invoke(this, EventArgs.Empty);
-                if (CheckError == 1)
+                DialogResult result = MessageBox.Show("Підтвердити видалення", "Видалення", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if(result == DialogResult.OK)
                 {
-                    MessageBox.Show("Успішно видалено!", "Видалення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    userInfoTable.Rows.RemoveAt(e.RowIndex);
-                }
-                else
-                {
-                    MessageBox.Show("Виникла помилка під час видалення!", "Видалення", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    DeleteUser?.Invoke(this, EventArgs.Empty);
+                    if (CheckError == 1)
+                    {
+                        MessageBox.Show("Успішно видалено!", "Видалення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        userInfoTable.Rows.RemoveAt(e.RowIndex);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Виникла помилка під час видалення!", "Видалення", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }  
             }
             else if(e.ColumnIndex == userInfoTable.Columns["editEmployee"].Index && e.RowIndex >= 0)
             {

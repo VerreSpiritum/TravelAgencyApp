@@ -16,10 +16,12 @@ namespace TravelAgency.Views
         string Surname { get; set; }
         string Position { get; set; }
         string Gender { get; set; }
-        int Salary { get; set; }
+        //int Salary { get; set; }
         string PhoneNumber { get; set; }
         Dictionary<String, Object> InfoToUpdate { get;}
         bool IsFromTable { get; set; }
+        
+        int CheckUpdate { get; set; }
 
         event EventHandler GetInfo;
         event EventHandler UpdateInfo;

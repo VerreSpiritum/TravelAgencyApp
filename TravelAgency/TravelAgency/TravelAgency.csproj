@@ -101,10 +101,40 @@
     <Compile Include="Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\CreateNewStaff.cs">
+    <Compile Include="Design\CustomMaskedTextBoxDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\CustomMaskedTextBoxDate.Designer.cs">
+      <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\CreateNewStaff.Designer.cs">
+    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.Designer.cs">
+      <DependentUpon>CreateNewTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\EditTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\EditTransfer.Designer.cs">
+      <DependentUpon>EditTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\EditTransport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\EditTransport.Designer.cs">
+      <DependentUpon>EditTransport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransport.Designer.cs">
+      <DependentUpon>CreateNewTransport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HumanResources\CreateNewStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HumanResources\CreateNewStaff.Designer.cs">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\CustomComboBox.cs">
@@ -141,17 +171,41 @@
     <Compile Include="DirectorForms\DirectorMainPage.Designer.cs">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\EditUser.cs">
+    <Compile Include="DirectorForms\HumanResources\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\EditUser.Designer.cs">
+    <Compile Include="DirectorForms\HumanResources\CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HumanResources\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HumanResources\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\EditEmployee.cs">
+    <Compile Include="DirectorForms\HumanResources\EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\EditEmployee.Designer.cs">
+    <Compile Include="DirectorForms\HumanResources\EditEmployee.Designer.cs">
       <DependentUpon>EditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransfers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransfers.Designer.cs">
+      <DependentUpon>ShowTransfers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransports.Designer.cs">
+      <DependentUpon>ShowTransports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TransfersAndTransportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TransfersAndTransportsForm.Designer.cs">
+      <DependentUpon>TransfersAndTransportsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectorForms\HumanResourcesForm.cs">
       <SubType>Form</SubType>
@@ -159,6 +213,12 @@
     <Compile Include="DirectorForms\HumanResourcesForm.Designer.cs">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelCreateUser.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransport.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelEditTransports.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelShowTransfers.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelShowTransports.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelTransportAndTransfersForm.cs" />
     <Compile Include="Models\ModelAuthorizationForm.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelCreateNewStaff.cs" />
     <Compile Include="Models\ModelDirectorMainPage.cs" />
@@ -167,6 +227,12 @@
     <Compile Include="Models\DirectorModels\ModelHumanResourcesForm.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelListOfAllStaff.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelShowUsers.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HumanResourcesPresenters\PresenterCreateUser.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateNewTransport.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterEditTransport.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterShowTransfers.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterShowTransport.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterTransportsAndTransfers.cs" />
     <Compile Include="Presenter\PresenterAuthorizationForm.cs" />
     <Compile Include="Presenter\DirectorPresenter\HumanResourcesPresenters\PresenterCreateNewStaff.cs" />
     <Compile Include="Presenter\PresenterDirectorMainPage.cs" />
@@ -182,19 +248,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ShowUsers.cs">
+    <Compile Include="DirectorForms\HumanResources\ShowUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ShowUsers.Designer.cs">
+    <Compile Include="DirectorForms\HumanResources\ShowUsers.Designer.cs">
       <DependentUpon>ShowUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ShowStaff.cs">
+    <Compile Include="DirectorForms\HumanResources\ShowStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ShowStaff.Designer.cs">
+    <Compile Include="DirectorForms\HumanResources\ShowStaff.Designer.cs">
       <DependentUpon>ShowStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewEditEmployee.cs" />
+    <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewCreateUsers.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateNewTransport.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewEditTransport.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewShowTransfers.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewShowTransports.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewTransportAndTransfersForm.cs" />
     <Compile Include="Views\IViewAutorizationForm.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewCreateNewStaff.cs" />
     <Compile Include="Views\DirectorViews\IViewDirectorMainPage.cs" />
@@ -205,7 +277,22 @@
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\CreateNewStaff.resx">
+    <EmbeddedResource Include="Design\CustomMaskedTextBoxDate.resx">
+      <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.resx">
+      <DependentUpon>CreateNewTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\EditTransfer.resx">
+      <DependentUpon>EditTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\EditTransport.resx">
+      <DependentUpon>EditTransport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\CreateNewTransport.resx">
+      <DependentUpon>CreateNewTransport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HumanResources\CreateNewStaff.resx">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\CustomMaskedTextBox.resx">
@@ -217,11 +304,23 @@
     <EmbeddedResource Include="DirectorForms\DirectorMainPage.resx">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\EditUser.resx">
+    <EmbeddedResource Include="DirectorForms\HumanResources\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HumanResources\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\EditEmployee.resx">
+    <EmbeddedResource Include="DirectorForms\HumanResources\EditEmployee.resx">
       <DependentUpon>EditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\ShowTransfers.resx">
+      <DependentUpon>ShowTransfers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\ShowTransports.resx">
+      <DependentUpon>ShowTransports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TransfersAndTransportsForm.resx">
+      <DependentUpon>TransfersAndTransportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\HumanResourcesForm.resx">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
@@ -231,10 +330,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ShowUsers.resx">
+    <EmbeddedResource Include="DirectorForms\HumanResources\ShowUsers.resx">
       <DependentUpon>ShowUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ShowStaff.resx">
+    <EmbeddedResource Include="DirectorForms\HumanResources\ShowStaff.resx">
       <DependentUpon>ShowStaff.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

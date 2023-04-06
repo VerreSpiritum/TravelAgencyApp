@@ -14,12 +14,12 @@ namespace TravelAgency.Views
         void ShowForm();
         void CloseForm();
         void addOnPanelForm(Form form);
-
+        void RefreshTable();
 
         DataTable userInfo { get; set; }
         int CheckError { get; set; }
         string LoginToAccess { get; set; }
-
+        int TalonNum { get; set; }
 
         event EventHandler DeleteUser;
         event EventHandler EditUser;

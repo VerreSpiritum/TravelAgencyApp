@@ -8,6 +8,8 @@ using TravelAgency.Models;
 using TravelAgency.Presenter;
 using Npgsql;
 using System.Windows.Forms;
+using TravelAgency.Presenter.DirectorPresenter.TransposrtAndTransfersPresenters;
+using TravelAgency.Models.DirectorModels.TransportsAndTransfersModels;
 
 namespace TravelAgency.Controllers
 {
@@ -21,6 +23,13 @@ namespace TravelAgency.Controllers
         private PresenterListOfAllStaff listOfAllStaff;
         private PresenterShowUsers listOfAllUsers;
         private PresenterEditUser editUser;
+        private PresenterCreateUser createUser;
+        private PresenterTransportsAndTransfers transportAndTransferPresenter;
+        private PresenterShowTransport showTransportsPresenter;
+        private PresenterCreateNewTransport createNewTransportPresenter;
+        private PresenterEditTransport EditTransportPresenter;
+        private PresenterShowTransfers ShowTransfersPresenter;
+
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
         ModelDirectorMainPage modelDirectorMainForm = new ModelDirectorMainPage();
@@ -30,6 +39,12 @@ namespace TravelAgency.Controllers
         ModelListOfAllStaff modelListOfAllStaff;
         ModelShowUsers modelListOfAllUsers;
         ModelEditUser modelEditUser;
+        ModelCreateUser modelCreateUser;
+        ModelTransportAndTransfersForm ModelTransportAndTransfers;
+        ModelShowTransports ModelShowTransports;
+        ModelCreateNewTransport modelCreateNewTransport;
+        ModelEditTransports EditTransportModel;
+        ModelShowTransfers ShowTransfersModel;
 
         private HumanResourcesForm humanResources = new HumanResourcesForm();
         private CreateNewStaff createNewStaffForm = new CreateNewStaff();
@@ -37,6 +52,12 @@ namespace TravelAgency.Controllers
         private ShowStaff showStaff;
         private ShowUsers showUsers;
         private EditUser editUserForm;
+        private CreateUser createUserForm;
+        private TransferAndTransportsForm transferAndTransportsForm;
+        private ShowTransports ShowTransportsForm;
+        private CreateNewTransport CreateNewTransportForm;
+        private EditTransport EditTransportForm;
+        private ShowTransfers ShowTransfersForm;
 
         private bool checkOpenPackageServices = false;
 
@@ -55,7 +76,7 @@ namespace TravelAgency.Controllers
             authorizationForm.openDirectorForm += AuthorizationForm_openDirectorForm;
 
             directorMainForm.OpenHumanResourcesForm += DirectorMainForm_OpenHumanResourcesForm;
-            directorMainForm.OpenServicePackageForm += DirectorMainForm_ServicePackage;
+            directorMainForm.OpenTransportsAndTransfersForm += DirectorMainForm_TransportsAndTransfers;
 
             humanResourcesForm.OpenFormToCreateNewStaff += HumanResourcesForm_OpenFormToCreateNewStaff;
             humanResourcesForm.OpenFormToEditEmployee += HumanResourcesForm_OpenFormToEditEmployee;
@@ -76,61 +97,13 @@ namespace TravelAgency.Controllers
         {
             NpgsqlConnection connection = authorizationForm.getConnection();
             return connection;
-        }
+        }        
 
-        private void ListOfAllUsers_OpenEditorToChangeUserInfo(object sender, EventArgs e)
-        {
-            if (!OpenedForms.Contains(editUserForm))
-            {
-                editUserForm = new EditUser();
-                modelEditUser = new ModelEditUser(GetConnection());
+        #region --- Opened from Transports and Transfers Form ---
 
-                editUser = new PresenterEditUser(modelEditUser, editUserForm);
-                listOfAllUsers.AddFormOnPanel(editUserForm);
-                editUser.Show();
+        #endregion
 
-                OpenedForms.Add(editUserForm);
-            }
-        }
-        private void ListOfAllStaff_OpenFormToEditEmployee(object sender, EventArgs e)
-        {
-            int talonNum = listOfAllStaff.talonNum;
-            CloseOpenedFormInResourcesForm(editEmployee);
-            editEmployee = new EditEmployee();
-            editEmployeeForm = new PresenterEditEmployee(editEmployee, modelEditEmployee);
-            editEmployeeForm.connection = GetConnection();
-            humanResourcesForm.AddOnPanelForm(editEmployee);
-            ChangeMenu("Редагувати співробітника");
-            editEmployeeForm.Show(talonNum);
-
-            OpenedForms.Add(editEmployee);
-        }
-        
-
-        private void OpenListOfAllStaff()
-        {
-            showStaff = new ShowStaff();
-            modelListOfAllStaff = new ModelListOfAllStaff(GetConnection());
-            listOfAllStaff = new PresenterListOfAllStaff(modelListOfAllStaff, showStaff);
-            humanResourcesForm.AddOnPanelForm(showStaff);
-            listOfAllStaff.Show(modelListOfAllStaff.GetInfoAboutStaff());
-            ListOfAllStaffEvent(listOfAllStaff);
-
-            OpenedForms.Add(showStaff);
-        }
-        private void OpenListOfAllUsers()
-        {
-            showUsers = new ShowUsers();
-            modelListOfAllUsers = new ModelShowUsers(GetConnection());
-            listOfAllUsers = new PresenterShowUsers(modelListOfAllUsers, showUsers);
-            humanResourcesForm.AddOnPanelForm(showUsers);
-            listOfAllUsers.Show();
-            ListOfAllUsersEvent(listOfAllUsers);
-
-            OpenedForms.Add(showUsers);
-        }
-
-        #region --- Opened from Human Resources Form ---
+        #region --- Human Resources Form ---
         private void HumanResourcesForm_OpenFormToShowUsers(object sender, EventArgs e)
         {
             if (!OpenedForms.Contains(showUsers))
@@ -175,8 +148,129 @@ namespace TravelAgency.Controllers
                 OpenedForms.Add(createNewStaffForm);
             }
         }
+
+        private void ListOfAllStaffEvent(PresenterListOfAllStaff presenter)
+        {
+            presenter.OpenFormToEditEmployee += ListOfAllStaff_OpenFormToEditEmployee;
+        }
+        private void ListOfAllUsersEvent(PresenterShowUsers presenter)
+        {
+            listOfAllUsers.OpenEditorToChangeUserInfo += ListOfAllUsers_OpenEditorToChangeUserInfo;
+            listOfAllUsers.OpenWindowToCreateUser += ListOfAllUsers_OpenWindowToCreateUser;
+        }
+        private void ListOfChangeUserEvent(PresenterEditUser presenter)
+        {
+            presenter.EditUserEvent += ListOfChangeUser_EditUserEvent;
+        }
+
+        private void OpenListOfAllStaff()
+        {
+            showStaff = new ShowStaff();
+            modelListOfAllStaff = new ModelListOfAllStaff(GetConnection());
+            listOfAllStaff = new PresenterListOfAllStaff(modelListOfAllStaff, showStaff);
+            humanResourcesForm.AddOnPanelForm(showStaff);
+            listOfAllStaff.Show(modelListOfAllStaff.GetInfoAboutStaff());
+            ListOfAllStaffEvent(listOfAllStaff);
+
+            OpenedForms.Add(showStaff);
+        }
+        private void OpenListOfAllUsers()
+        {
+            showUsers = new ShowUsers();
+            modelListOfAllUsers = new ModelShowUsers(GetConnection());
+            listOfAllUsers = new PresenterShowUsers(modelListOfAllUsers, showUsers);
+            humanResourcesForm.AddOnPanelForm(showUsers);
+            listOfAllUsers.Show();
+            ListOfAllUsersEvent(listOfAllUsers);
+
+            OpenedForms.Add(showUsers);
+        }
+        private void ListOfAllUsers_OpenEditorToChangeUserInfo(object sender, EventArgs e)
+        {
+            if (OpenedForms.Contains(createUserForm))
+            {
+                createUserForm.Close();
+                OpenedForms.Remove(createUserForm);
+            }
+            if (OpenedForms.Contains(editUserForm))
+            {
+                editUserForm.Close();
+                OpenedForms.Remove(editUserForm);
+
+            }
+            editUserForm = new EditUser();
+            modelEditUser = new ModelEditUser(GetConnection());
+
+            editUser = new PresenterEditUser(modelEditUser, editUserForm);
+            ListOfChangeUserEvent(editUser);
+            if (editUserForm.IsDisposed)
+            {
+                int a = 0;
+            }
+            listOfAllUsers.AddFormOnPanel(editUserForm);
+            editUser.Show(listOfAllUsers.Login);
+
+            OpenedForms.Add(editUserForm);
+        }
+        private void ListOfAllUsers_OpenWindowToCreateUser(object sender, EventArgs e)
+        {
+            if (OpenedForms.Contains(editUserForm))
+            {
+                editUserForm.Close();
+                OpenedForms.Remove(editUserForm);
+            }
+            if (!OpenedForms.Contains(createUserForm))
+            {
+                createUserForm = new CreateUser();
+                modelCreateUser = new ModelCreateUser(GetConnection());
+
+                createUser = new PresenterCreateUser(modelCreateUser, createUserForm);
+                ListOfCreateUserEvent(createUser);
+                listOfAllUsers.AddFormOnPanel(createUserForm);
+                createUser.Show();
+
+                OpenedForms.Add(createUserForm);
+            }
+        }
+        private void ListOfCreateUserEvent(PresenterCreateUser createUser)
+        {
+            createUser.CloseWindow += ListOfCreateUser_CreateUserEvent;
+            createUser.RefreshTable += CreateUser_RefreshTable;
+        }
+
+        private void CreateUser_RefreshTable(object sender, EventArgs e)
+        {
+            listOfAllUsers.RefreshTable();
+        }
+
+        private void ListOfAllStaff_OpenFormToEditEmployee(object sender, EventArgs e)
+        {
+            int talonNum = listOfAllStaff.talonNum;
+            CloseOpenedFormInResourcesForm(editEmployee);
+            editEmployee = new EditEmployee();
+            editEmployeeForm = new PresenterEditEmployee(editEmployee, modelEditEmployee);
+            editEmployeeForm.connection = GetConnection();
+            humanResourcesForm.AddOnPanelForm(editEmployee);
+            ChangeMenu("Редагувати співробітника");
+            editEmployeeForm.Show(talonNum);
+
+            OpenedForms.Add(editEmployee);
+        }
+        private void ListOfCreateUser_CreateUserEvent(object sender, EventArgs e)
+        {
+            createUser.Close();
+            OpenedForms.Remove(createUserForm);
+        }
+        private void ListOfChangeUser_EditUserEvent(object sender, EventArgs e)
+        {
+            editUser.Close();
+            OpenedForms.Remove(editUserForm);
+        }
+
         #endregion
         #region --- Close opened forms ---
+
+        //Human Resources forms
         private void CloseOpenedFormInResourcesForm()
         {
             if (OpenedForms.Contains(createNewStaffForm))
@@ -187,6 +281,17 @@ namespace TravelAgency.Controllers
             }
             else if (OpenedForms.Contains(showUsers))
             {
+                if (OpenedForms.Contains(editEmployee))
+                {
+                    editEmployee.Close();
+                    OpenedForms.Remove(editEmployee);
+                }
+                else if (OpenedForms.Contains(createUserForm))
+                {
+                    createUser.Close();
+                    OpenedForms.Remove(createUserForm);
+
+                }
                 listOfAllUsers.Close();
                 OpenedForms.Remove(showUsers);
             }
@@ -211,7 +316,19 @@ namespace TravelAgency.Controllers
             }
             else if (OpenedForms.Contains(showUsers) && senderCheck != showUsers)
             {
+                if(OpenedForms.Contains(editEmployee))
+                {
+                    editEmployee.Close();
+                    OpenedForms.Remove(editEmployee);
+                }
+                else if(OpenedForms.Contains(createUserForm)) 
+                {
+                    createUser.Close();
+                    OpenedForms.Remove(createUserForm);
+
+                }
                 listOfAllUsers.Close();
+
                 OpenedForms.Remove(showUsers);
             }
             else if (OpenedForms.Contains(editEmployee) && senderCheck != editEmployee)
@@ -224,32 +341,168 @@ namespace TravelAgency.Controllers
                 listOfAllStaff.Close();
                 OpenedForms.Remove(showStaff);
             }
+       
         }
-        #endregion
-        #region --- Methods with list of all forms event ---
-        private void ListOfAllStaffEvent(PresenterListOfAllStaff presenter)
-        {
-            presenter.OpenFormToEditEmployee += ListOfAllStaff_OpenFormToEditEmployee;
-        }
-        private void ListOfAllUsersEvent(PresenterShowUsers presenter)
-        {
-            listOfAllUsers.OpenEditorToChangeUserInfo += ListOfAllUsers_OpenEditorToChangeUserInfo;
-        }
-        #endregion
-        #region --- Opened from Main menu ---
-        private void DirectorMainForm_ServicePackage(object sender, EventArgs e)
-        {
-            if (!checkOpenPackageServices)
-            {
-                CloseOpenedFormInResourcesForm();
-                humanResourcesForm.Close();
 
-                OpenedForms.Remove(humanResources);
-                checkOpenPackageServices = true;
+        //Transport forms
+        private void CloseOpenedFormInTransportsForm()
+        {
+            if (OpenedForms.Contains(ShowTransportsForm))
+            {
+                ShowTransportsForm.Close();
+
+                OpenedForms.Remove(ShowTransportsForm);
+            }
+            else if (OpenedForms.Contains(CreateNewTransportForm))
+            {
+                createNewTransportPresenter.Close();
+                OpenedForms.Remove(CreateNewTransportForm);
+            }
+            else if(OpenedForms.Contains(EditTransportForm))
+            {
+                EditTransportPresenter.Close();
+                OpenedForms.Remove(EditTransportForm);
+            }
+            else if (OpenedForms.Contains(ShowTransfersForm))
+            {
+                ShowTransfersPresenter.Close();
+                OpenedForms.Remove(ShowTransfersForm);
             }
         }
+        private void CloseOpenedFormInTransportsForm(Form senderCheck)//если хотим открыть, то не закрываем а пропускаем
+        {
+            if (OpenedForms.Contains(ShowTransportsForm) && senderCheck != ShowTransportsForm)
+            {
+                showTransportsPresenter.Close();
+
+                OpenedForms.Remove(ShowTransportsForm);
+            }
+            else if (OpenedForms.Contains(CreateNewTransportForm) && senderCheck != CreateNewTransportForm)
+            {
+                createNewTransportPresenter.Close();
+                OpenedForms.Remove(CreateNewTransportForm);
+            }
+            else if (OpenedForms.Contains(EditTransportForm) && senderCheck != EditTransportForm)
+            {
+                EditTransportPresenter.Close();
+                OpenedForms.Remove(EditTransportForm);
+            }
+            else if(OpenedForms.Contains(ShowTransfersForm) && senderCheck != ShowTransfersForm)
+            {
+                ShowTransfersPresenter.Close();
+                OpenedForms.Remove(ShowTransfersForm);
+            }
+        }
+        #endregion
+
+        #region --- Transport and Transfers ---
+        private void TransportAndTransfers_OpenFormShowTransports(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(ShowTransportsForm))
+            {
+                CloseOpenedFormInTransportsForm(ShowTransportsForm);
+                ShowTransportsForm = new ShowTransports();
+                ModelShowTransports = new ModelShowTransports(GetConnection());
+                showTransportsPresenter = new PresenterShowTransport(ShowTransportsForm, ModelShowTransports);
+                transportAndTransferPresenter.AddOnPanelForm(ShowTransportsForm);
+                showTransportsPresenter.Show();
+                ListOfAllShowTransportsEvent(showTransportsPresenter);
+
+                OpenedForms.Add(ShowTransportsForm);
+            }
+        }
+        private void TransportAndTransfers_OpenFormCreateNewTransport(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(CreateNewTransportForm))
+            {
+                CloseOpenedFormInTransportsForm(CreateNewTransportForm);
+                CreateNewTransportForm = new CreateNewTransport();
+                modelCreateNewTransport = new ModelCreateNewTransport(GetConnection());
+                createNewTransportPresenter = new PresenterCreateNewTransport(modelCreateNewTransport, CreateNewTransportForm);
+                transportAndTransferPresenter.AddOnPanelForm(CreateNewTransportForm);
+                createNewTransportPresenter.Show();
+                ListOfAllCreateNewTransportEvent(createNewTransportPresenter);
+
+                OpenedForms.Add(CreateNewTransportForm);
+            }
+        }
+        private void TransportAndTransfers_OpenFormEditTransports(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(EditTransportForm))
+            {
+                CloseOpenedFormInTransportsForm(EditTransportForm);
+                EditTransportForm = new EditTransport();
+                EditTransportModel = new ModelEditTransports(GetConnection());
+                EditTransportPresenter = new PresenterEditTransport(EditTransportModel, EditTransportForm);
+                transportAndTransferPresenter.AddOnPanelForm(EditTransportForm);
+                EditTransportPresenter.Show();
+                ListOfAllShowTransportsEvent(showTransportsPresenter);
+
+                OpenedForms.Add(EditTransportForm);
+            }
+        }
+        private void TransportAndTransfers_OpenFormToShowTransfers(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(ShowTransfersForm))
+            {
+                CloseOpenedFormInTransportsForm(ShowTransfersForm);
+                ShowTransfersForm = new ShowTransfers();
+                ShowTransfersModel = new ModelShowTransfers(GetConnection());
+                ShowTransfersPresenter = new PresenterShowTransfers(ShowTransfersModel, ShowTransfersForm);
+                transportAndTransferPresenter.AddOnPanelForm(ShowTransfersForm);
+                ShowTransfersPresenter.Show();
+                ListOfAllShowTransfersEvent(ShowTransfersPresenter);
+                OpenedForms.Add(ShowTransfersForm);
+            }
+        }
+
+        private void ListOfAllShowTransfersEvent(PresenterShowTransfers presenter)
+        {
+            presenter.EditTransfer += Presenter_EditTransfer;
+        }
+
+        private void Presenter_EditTransfer(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ListOfAllCreateNewTransportEvent(PresenterCreateNewTransport presenter)
+        {
+
+        }
+        private void ListOfAllShowTransportsEvent(PresenterShowTransport presenter)
+        {
+            presenter.OpenFormToEdit += ListOfAllShowTransportsEvent_OpenFormToEdit;
+        }
+
+        private void ListOfAllShowTransportsEvent_OpenFormToEdit(object sender, EventArgs e)
+        {
+            int talonNum = showTransportsPresenter.ID;
+            CloseOpenedFormInTransportsForm(ShowTransportsForm);
+            EditTransportForm = new EditTransport();
+            EditTransportModel = new ModelEditTransports(GetConnection());
+            EditTransportPresenter = new PresenterEditTransport(EditTransportModel, EditTransportForm);
+            transportAndTransferPresenter.AddOnPanelForm(EditTransportForm);
+            transportAndTransferPresenter.ChangeStyle("Редагувати транспорт");
+            EditTransportPresenter.Show(talonNum);
+
+            OpenedForms.Remove(ShowTransportsForm);
+            OpenedForms.Add(EditTransportForm);
+        }
+
+        
+        #endregion
+
+        #region --- Opened from Main menu ---
+
         private void DirectorMainForm_OpenHumanResourcesForm(object sender, EventArgs e)
         {
+            if(OpenedForms.Contains(transferAndTransportsForm))
+            {
+                CloseOpenedFormInTransportsForm();
+                transportAndTransferPresenter.Close();
+                OpenedForms.Remove(transferAndTransportsForm);
+            }
             if (!OpenedForms.Contains(humanResources))
             {
                 humanResources.OpenWindow();
@@ -261,17 +514,61 @@ namespace TravelAgency.Controllers
                 checkOpenPackageServices = false;
             }
         }
-        #endregion
+        
+        private void DirectorMainForm_TransportsAndTransfers(object sender, EventArgs e)
+        {
+            if (OpenedForms.Contains(humanResources))
+            {
+                CloseOpenedFormInResourcesForm();
+                humanResourcesForm.Close();
+                OpenedForms.Remove(humanResources);
+            }
+            if (!OpenedForms.Contains(transferAndTransportsForm))
+            {
+                CloseOpenedFormInResourcesForm();
+                humanResourcesForm.Close();
+                OpenedForms.Remove(humanResources);
+
+                transferAndTransportsForm = new TransferAndTransportsForm();
+                ModelTransportAndTransfers = new ModelTransportAndTransfersForm();
+
+                transportAndTransferPresenter = new PresenterTransportsAndTransfers(transferAndTransportsForm, ModelTransportAndTransfers);
+                ListOfAllTransportsAndTransfersEvent(transportAndTransferPresenter);
+                directorMainForm.AddOnPanel(transferAndTransportsForm);
+                transportAndTransferPresenter.Show();
+
+                CloseOpenedFormInResourcesForm(ShowTransportsForm);
+                ShowTransportsForm = new ShowTransports();
+                ModelShowTransports = new ModelShowTransports(GetConnection());
+                showTransportsPresenter = new PresenterShowTransport(ShowTransportsForm, ModelShowTransports);
+                transportAndTransferPresenter.AddOnPanelForm(ShowTransportsForm);
+                showTransportsPresenter.Show();
+                ListOfAllShowTransportsEvent(showTransportsPresenter);
+
+                OpenedForms.Add(ShowTransportsForm);
+
+                OpenedForms.Add(transferAndTransportsForm);
+            }
+        }
+        private void ListOfAllTransportsAndTransfersEvent(PresenterTransportsAndTransfers presenter)
+        {
+            presenter.OpenFormShowTransports += TransportAndTransfers_OpenFormShowTransports;
+            presenter.OpenFormCreateNewTransport += TransportAndTransfers_OpenFormCreateNewTransport;
+            presenter.OpenFormEditTransports += TransportAndTransfers_OpenFormEditTransports;
+            presenter.OpenFormToShowTransfers += TransportAndTransfers_OpenFormToShowTransfers;
+        }
+
 
         #endregion
 
+        #endregion
 
         private void AuthorizationForm_openDirectorForm(object sender, EventArgs e)
         {
             authorizationForm.Close();
             directorMainForm.Show();
 
-            directorMainForm.AddOnPanelHumanResources(humanResources);
+            directorMainForm.AddOnPanel(humanResources);
             humanResources.OpenWindow();
             humanResourcesForm.Show();
 

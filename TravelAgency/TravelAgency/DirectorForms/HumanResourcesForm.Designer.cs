@@ -32,7 +32,6 @@
             this.newEmployeeL = new System.Windows.Forms.Label();
             this.editEmployeeL = new System.Windows.Forms.Label();
             this.showEmployeeL = new System.Windows.Forms.Label();
-            this.newUserL = new System.Windows.Forms.Label();
             this.panelToWork = new System.Windows.Forms.Panel();
             this.allStaffL = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -80,17 +79,6 @@
             this.showEmployeeL.Text = "Користувачі";
             this.showEmployeeL.Click += new System.EventHandler(this.showEmployeeL_Click);
             // 
-            // newUserL
-            // 
-            this.newUserL.AutoSize = true;
-            this.newUserL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newUserL.Location = new System.Drawing.Point(1180, 42);
-            this.newUserL.Name = "newUserL";
-            this.newUserL.Size = new System.Drawing.Size(216, 36);
-            this.newUserL.TabIndex = 4;
-            this.newUserL.Text = "Обліковий запис\r\n";
-            this.newUserL.Click += new System.EventHandler(this.newUserL_Click);
-            // 
             // panelToWork
             // 
             this.panelToWork.Location = new System.Drawing.Point(0, 94);
@@ -117,7 +105,6 @@
             this.ClientSize = new System.Drawing.Size(1713, 1080);
             this.Controls.Add(this.allStaffL);
             this.Controls.Add(this.panelToWork);
-            this.Controls.Add(this.newUserL);
             this.Controls.Add(this.showEmployeeL);
             this.Controls.Add(this.editEmployeeL);
             this.Controls.Add(this.newEmployeeL);
@@ -137,7 +124,6 @@
         private System.Windows.Forms.Label newEmployeeL;
         private System.Windows.Forms.Label editEmployeeL;
         private System.Windows.Forms.Label showEmployeeL;
-        private System.Windows.Forms.Label newUserL;
         private System.Windows.Forms.Panel panelToWork;
         private System.Windows.Forms.Label allStaffL;
     }

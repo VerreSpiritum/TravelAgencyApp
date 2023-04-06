@@ -8,14 +8,15 @@ namespace TravelAgency.Views
 {
     internal interface IViewEditUsers
     {
-         void ShowForm();
+        void ShowForm(string login);
 
-         void CloseForm();
+        void CloseForm();
 
-         event EventHandler GetInfo;
-         event EventHandler UpdateInfo;
+        event EventHandler GetInfo;
+        event EventHandler UpdateInfo;
+        event EventHandler CloseWindow;
 
-         string Login { get; set; }
-         string Password { get; set; }
+        string Login { get; set; }
+        string Password { get; set; }
     }
 }

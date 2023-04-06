@@ -53,6 +53,7 @@
             this.MenuPB.Size = new System.Drawing.Size(274, 739);
             this.MenuPB.TabIndex = 0;
             this.MenuPB.TabStop = false;
+            this.MenuPB.Click += new System.EventHandler(this.MenuPB_Click);
             // 
             // exitBtn
             // 
@@ -101,9 +102,9 @@
             this.service_package.ForeColor = System.Drawing.Color.White;
             this.service_package.Location = new System.Drawing.Point(12, 227);
             this.service_package.Name = "service_package";
-            this.service_package.Size = new System.Drawing.Size(216, 38);
+            this.service_package.Size = new System.Drawing.Size(175, 38);
             this.service_package.TabIndex = 6;
-            this.service_package.Text = "Пакети послуг";
+            this.service_package.Text = "Трансфери";
             this.service_package.Click += new System.EventHandler(this.service_package_Click);
             // 
             // panel1
@@ -134,7 +135,7 @@
             this.line2.BackColor = System.Drawing.Color.Transparent;
             this.line2.Location = new System.Drawing.Point(13, 270);
             this.line2.Name = "line2";
-            this.line2.Size = new System.Drawing.Size(215, 2);
+            this.line2.Size = new System.Drawing.Size(174, 2);
             this.line2.TabIndex = 10;
             // 
             // DirectorMainPage

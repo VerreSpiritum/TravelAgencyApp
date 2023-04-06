@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TravelAgency.Views
 {
@@ -11,10 +12,10 @@ namespace TravelAgency.Views
         bool humanResourcesOpen { get; set; }
 
         void ShowForm();
-        void addOnPanelHumanResources(HumanResourcesForm form);
+        void addOnPanel(Form form);
 
         event EventHandler OpenHumanResourcesForm;
-        event EventHandler OpenServicePackageForm;
+        event EventHandler OpenTransportsAndTransfersForm;
         event EventHandler CloseConnection;
     }
 }

@@ -11,7 +11,7 @@ using TravelAgency.Views;
 
 namespace TravelAgency
 {
-    public partial class HumanResourcesForm : Form, IViewHumanResoucesForm
+    public partial class HumanResourcesForm : Form, IViewHumanResourcesForm
     {
         private List<Label> menu = new List<Label>();
         public HumanResourcesForm()
@@ -21,7 +21,6 @@ namespace TravelAgency
             allStaffL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             menu.Add(allStaffL);
             menu.Add(editEmployeeL);
-            menu.Add(newUserL);
             menu.Add(newEmployeeL);
 
 
@@ -30,7 +29,6 @@ namespace TravelAgency
         public event EventHandler OpenFormEditEmployee;
         public event EventHandler OpenFormToShowUsers;
         public event EventHandler OpenFormCreateNewStaff;
-        public event EventHandler OpenFormCreateNewUser;
         public event EventHandler OpenFormShowStaff;
 
         public void ShowForm()
@@ -44,7 +42,7 @@ namespace TravelAgency
         public void OpenWindow()
         {
             allStaffL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            editEmployeeL.Font = showEmployeeL.Font = newUserL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            editEmployeeL.Font = showEmployeeL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
         }
         public void addOnPanelForm(Form form)
         {
@@ -71,7 +69,7 @@ namespace TravelAgency
         private void newEmployeeL_Click(object sender, EventArgs e)
         {
             newEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            editEmployeeL.Font = showEmployeeL.Font = newUserL.Font = allStaffL.Font =  new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            editEmployeeL.Font = showEmployeeL.Font = allStaffL.Font =  new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
             OpenFormCreateNewStaff?.Invoke(this, EventArgs.Empty);
 
@@ -80,7 +78,7 @@ namespace TravelAgency
         private void editEmployeeL_Click(object sender, EventArgs e)
         {
             editEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            newEmployeeL.Font = showEmployeeL.Font = newUserL.Font = allStaffL.Font =  new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            newEmployeeL.Font = showEmployeeL.Font = allStaffL.Font =  new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
             OpenFormEditEmployee?.Invoke(this, EventArgs.Empty);
         }
@@ -88,23 +86,15 @@ namespace TravelAgency
         private void showEmployeeL_Click(object sender, EventArgs e)
         {
             showEmployeeL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            newEmployeeL.Font = editEmployeeL.Font = newUserL.Font = allStaffL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            newEmployeeL.Font = editEmployeeL.Font = allStaffL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
             OpenFormToShowUsers?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void newUserL_Click(object sender, EventArgs e)
-        {
-            newUserL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            newEmployeeL.Font = showEmployeeL.Font = editEmployeeL.Font =  allStaffL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
-
-            OpenFormCreateNewUser?.Invoke(this, EventArgs.Empty);
         }
 
         private void allStaffL_Click(object sender, EventArgs e)
         {
             allStaffL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            newEmployeeL.Font = showEmployeeL.Font = editEmployeeL.Font = newUserL.Font =  new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            newEmployeeL.Font = showEmployeeL.Font = editEmployeeL.Font =  new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
             OpenFormShowStaff?.Invoke(this, EventArgs.Empty);
         }

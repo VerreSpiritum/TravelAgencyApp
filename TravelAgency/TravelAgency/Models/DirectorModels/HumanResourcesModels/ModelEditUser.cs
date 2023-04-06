@@ -11,12 +11,29 @@ namespace TravelAgency.Models
     {
         private NpgsqlConnection connection;
 
-
-        public string GetLogin { get;  set; }
-
         public ModelEditUser(NpgsqlConnection connection)
         {
             this.connection = connection;
+        }
+
+        public void ChangePassword(string login, string password)
+        {
+            string query = $"ALTER ROLE {login} WITH PASSWORD '{password}'";
+
+            using(NpgsqlCommand cmd = new NpgsqlCommand(query, connection)) 
+            {
+                try
+                {
+                    using(NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }

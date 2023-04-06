@@ -17,14 +17,14 @@ namespace TravelAgency.Models
         public string Surname { get; set; }
         public string Position { get; set; }
         public string Gender { get; set; }
-        public int Salary { get; set; }
+       // public int Salary { get; set; }
         public string PhoneNumber { get; set; }
 
         private string query;
 
         public bool GetInfo(int talonNumber)
         {
-            query = $"SELECT name, patronymic, surname, position, sex, salary, phone_number FROM staff WHERE talon_number = {talonNumber}";
+            query = $"SELECT name, patronymic, surname, position, sex, phone_number FROM staff WHERE talon_number = {talonNumber}";
             bool checkRows;
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
@@ -39,8 +39,8 @@ namespace TravelAgency.Models
                             Surname = reader.GetString(2);
                             Position = reader.GetString(3);
                             Gender = reader.GetString(4);
-                            Salary = reader.GetInt32(5);
-                            PhoneNumber = reader.GetString(6);
+                            //Salary = reader.GetInt32(5);
+                            PhoneNumber = reader.GetString(5);
                         }
                         checkRows = true;
                     }
@@ -57,29 +57,42 @@ namespace TravelAgency.Models
         }
         public int UpdateInfo(Dictionary<string, object> infoToUpdate, int talonNum)
         {
-            query = "UPDATE staff SET(";
-            int i = 0;
-            foreach(string key in infoToUpdate.Keys)
+            if (infoToUpdate.Count > 1)
             {
-                if (i + 1 == infoToUpdate.Count)
-                    query += $"{key}";
-                else
+                query = "UPDATE staff SET(";
+                int i = 0;
+                foreach (string key in infoToUpdate.Keys)
                 {
-                    query += $"{key},";
+                    if (i + 1 == infoToUpdate.Count)
+                        query += $"{key}";
+                    else
+                    {
+                        query += $"{key},";
+                    }
+                    i++;
                 }
-                i++;
+                query += ") = (";
+                i = 0;
+                foreach (object value in infoToUpdate.Values)
+                {
+                    if (i + 1 == infoToUpdate.Count)
+                        query += CheckType(value) + ")";
+                    else
+                    {
+                        query += CheckType(value) + ",";
+                    }
+                    i++;
+                }
             }
-            query += ") = (";
-            i = 0;
-            foreach(object value in infoToUpdate.Values)
+            else
             {
-                if (i + 1 == infoToUpdate.Count)
-                    query += CheckType(value) + ")";
-                else
+                query = "UPDATE staff SET ";
+                foreach(string key in infoToUpdate.Keys) 
                 {
-                    query += CheckType(value) + ",";
+                    query += key;
+                    query += $" = {CheckType(infoToUpdate[key])}";
                 }
-                i++;
+                
             }
             query += $"WHERE talon_number = {talonNum}";
             return SendQuery(query);
@@ -90,8 +103,20 @@ namespace TravelAgency.Models
         {
             using(NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
-                return cmd.ExecuteNonQuery();
+                try
+                {
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
 
+                    return 0;
+                }
+                return 1;
             }
         }
 

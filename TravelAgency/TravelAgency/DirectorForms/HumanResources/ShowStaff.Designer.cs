@@ -42,6 +42,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.staffInfoTable = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,8 +54,6 @@
             this.telephoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editEmployee = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteEmployee = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.staffInfoTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +118,27 @@
             this.staffInfoTable.Size = new System.Drawing.Size(1294, 998);
             this.staffInfoTable.TabIndex = 0;
             this.staffInfoTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.staffInfoTable_CellContentClick);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "1";
+            this.dataGridViewImageColumn1.Image = global::TravelAgency.Properties.Resources.delete;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn1.Width = 50;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "2";
+            this.dataGridViewImageColumn2.Image = global::TravelAgency.Properties.Resources.delete;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.MinimumWidth = 6;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn2.Width = 50;
             // 
             // No
             // 
@@ -189,7 +210,7 @@
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.salary.DefaultCellStyle = dataGridViewCellStyle9;
-            this.salary.HeaderText = "Зарплатня";
+            this.salary.HeaderText = "Ставка";
             this.salary.MinimumWidth = 6;
             this.salary.Name = "salary";
             this.salary.ReadOnly = true;
@@ -226,27 +247,6 @@
             this.deleteEmployee.ReadOnly = true;
             this.deleteEmployee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.deleteEmployee.Width = 24;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "1";
-            this.dataGridViewImageColumn1.Image = global::TravelAgency.Properties.Resources.delete;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.MinimumWidth = 6;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn1.Width = 50;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "2";
-            this.dataGridViewImageColumn2.Image = global::TravelAgency.Properties.Resources.delete;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.MinimumWidth = 6;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn2.Width = 50;
             // 
             // ShowStaff
             // 

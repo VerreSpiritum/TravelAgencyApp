@@ -1,0 +1,269 @@
+﻿namespace TravelAgency
+{
+    partial class CreateNewTransfer
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNewTransfer));
+            this.errorLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.createTransportB = new TravelAgency.Design.RoundedButton();
+            this.CountOfSeatsTB = new TravelAgency.Design.CustomMaskedTextBoxDate();
+            this.CostTB = new TravelAgency.Design.CustomMaskedTextBoxDate();
+            this.availableTransportsTB = new TravelAgency.Design.CustomComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.fromWhereCB = new TravelAgency.Design.CustomComboBox();
+            this.toWhereCB = new TravelAgency.Design.CustomComboBox();
+            this.SuspendLayout();
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.Font = new System.Drawing.Font("Franklin Gothic Book", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(659, 868);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 38);
+            this.errorLabel.TabIndex = 27;
+            this.errorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(49, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(188, 43);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Транспорт";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(460, 418);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 43);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Ціна";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(49, 418);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(262, 43);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Кількість місць";
+            // 
+            // createTransportB
+            // 
+            this.createTransportB.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.createTransportB.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.createTransportB.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.createTransportB.BorderRadius = 12;
+            this.createTransportB.BorderSize = 0;
+            this.createTransportB.FlatAppearance.BorderSize = 0;
+            this.createTransportB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createTransportB.Font = new System.Drawing.Font("Franklin Gothic Book", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createTransportB.ForeColor = System.Drawing.Color.White;
+            this.createTransportB.Location = new System.Drawing.Point(1176, 609);
+            this.createTransportB.Name = "createTransportB";
+            this.createTransportB.Size = new System.Drawing.Size(269, 106);
+            this.createTransportB.TabIndex = 48;
+            this.createTransportB.Text = "Створити транспорт";
+            this.createTransportB.TextColor = System.Drawing.Color.White;
+            this.createTransportB.UseVisualStyleBackColor = false;
+            this.createTransportB.Click += new System.EventHandler(this.createTransportB_Click);
+            // 
+            // CountOfSeatsTB
+            // 
+            this.CountOfSeatsTB.BackColor = System.Drawing.Color.White;
+            this.CountOfSeatsTB.BorderColor = System.Drawing.Color.Black;
+            this.CountOfSeatsTB.BorderRadius = 0;
+            this.CountOfSeatsTB.BorderSize = 1;
+            this.CountOfSeatsTB.IsPasswordChar = false;
+            this.CountOfSeatsTB.IsPlaceHolder = false;
+            this.CountOfSeatsTB.Location = new System.Drawing.Point(57, 483);
+            this.CountOfSeatsTB.Mask = "00";
+            this.CountOfSeatsTB.Multiline = false;
+            this.CountOfSeatsTB.Name = "CountOfSeatsTB";
+            this.CountOfSeatsTB.PasswordChar = false;
+            this.CountOfSeatsTB.PlaceHolderColor = System.Drawing.Color.DarkGray;
+            this.CountOfSeatsTB.PlaceHolderText = "";
+            this.CountOfSeatsTB.Size = new System.Drawing.Size(241, 58);
+            this.CountOfSeatsTB.TabIndex = 33;
+            this.CountOfSeatsTB.Texts = "";
+            this.CountOfSeatsTB.UnderlineStyle = false;
+            this.CountOfSeatsTB._TextChanged += new System.EventHandler(this.customMaskedTextBoxDate1__TextChanged);
+            // 
+            // CostTB
+            // 
+            this.CostTB.BackColor = System.Drawing.Color.White;
+            this.CostTB.BorderColor = System.Drawing.Color.Black;
+            this.CostTB.BorderRadius = 1;
+            this.CostTB.BorderSize = 1;
+            this.CostTB.IsPasswordChar = false;
+            this.CostTB.IsPlaceHolder = false;
+            this.CostTB.Location = new System.Drawing.Point(468, 483);
+            this.CostTB.Mask = "0000.00";
+            this.CostTB.Multiline = false;
+            this.CostTB.Name = "CostTB";
+            this.CostTB.PasswordChar = false;
+            this.CostTB.PlaceHolderColor = System.Drawing.Color.DarkGray;
+            this.CostTB.PlaceHolderText = "";
+            this.CostTB.Size = new System.Drawing.Size(198, 58);
+            this.CostTB.TabIndex = 32;
+            this.CostTB.Texts = "    ,";
+            this.CostTB.UnderlineStyle = false;
+            this.CostTB._TextChanged += new System.EventHandler(this.ReleaseDateTB__TextChanged);
+            // 
+            // availableTransportsTB
+            // 
+            this.availableTransportsTB.BackColor = System.Drawing.Color.White;
+            this.availableTransportsTB.BorderColor = System.Drawing.Color.Black;
+            this.availableTransportsTB.BorderSize = 1;
+            this.availableTransportsTB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.availableTransportsTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.availableTransportsTB.ForeColor = System.Drawing.Color.Black;
+            this.availableTransportsTB.IconColor = System.Drawing.Color.Black;
+            this.availableTransportsTB.ListBackColor = System.Drawing.Color.White;
+            this.availableTransportsTB.ListTextColor = System.Drawing.Color.White;
+            this.availableTransportsTB.Location = new System.Drawing.Point(57, 94);
+            this.availableTransportsTB.MinimumSize = new System.Drawing.Size(200, 30);
+            this.availableTransportsTB.Name = "availableTransportsTB";
+            this.availableTransportsTB.Padding = new System.Windows.Forms.Padding(1);
+            this.availableTransportsTB.Size = new System.Drawing.Size(344, 58);
+            this.availableTransportsTB.TabIndex = 49;
+            this.availableTransportsTB.Texts = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(49, 219);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(289, 43);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "Місце відправки";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(460, 219);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(266, 43);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Місце прибуття";
+            // 
+            // fromWhereCB
+            // 
+            this.fromWhereCB.BackColor = System.Drawing.Color.White;
+            this.fromWhereCB.BorderColor = System.Drawing.Color.Black;
+            this.fromWhereCB.BorderSize = 1;
+            this.fromWhereCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.fromWhereCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.fromWhereCB.ForeColor = System.Drawing.Color.Black;
+            this.fromWhereCB.IconColor = System.Drawing.Color.Black;
+            this.fromWhereCB.ListBackColor = System.Drawing.Color.White;
+            this.fromWhereCB.ListTextColor = System.Drawing.Color.White;
+            this.fromWhereCB.Location = new System.Drawing.Point(57, 285);
+            this.fromWhereCB.MinimumSize = new System.Drawing.Size(200, 30);
+            this.fromWhereCB.Name = "fromWhereCB";
+            this.fromWhereCB.Padding = new System.Windows.Forms.Padding(1);
+            this.fromWhereCB.Size = new System.Drawing.Size(269, 58);
+            this.fromWhereCB.TabIndex = 52;
+            this.fromWhereCB.Texts = "";
+            // 
+            // toWhereCB
+            // 
+            this.toWhereCB.BackColor = System.Drawing.Color.White;
+            this.toWhereCB.BorderColor = System.Drawing.Color.Black;
+            this.toWhereCB.BorderSize = 1;
+            this.toWhereCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.toWhereCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.toWhereCB.ForeColor = System.Drawing.Color.Black;
+            this.toWhereCB.IconColor = System.Drawing.Color.Black;
+            this.toWhereCB.ListBackColor = System.Drawing.Color.White;
+            this.toWhereCB.ListTextColor = System.Drawing.Color.White;
+            this.toWhereCB.Location = new System.Drawing.Point(468, 285);
+            this.toWhereCB.MinimumSize = new System.Drawing.Size(200, 30);
+            this.toWhereCB.Name = "toWhereCB";
+            this.toWhereCB.Padding = new System.Windows.Forms.Padding(1);
+            this.toWhereCB.Size = new System.Drawing.Size(269, 58);
+            this.toWhereCB.TabIndex = 53;
+            this.toWhereCB.Texts = "";
+            // 
+            // CreateNewTransfer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1646, 992);
+            this.Controls.Add(this.toWhereCB);
+            this.Controls.Add(this.fromWhereCB);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.availableTransportsTB);
+            this.Controls.Add(this.createTransportB);
+            this.Controls.Add(this.CountOfSeatsTB);
+            this.Controls.Add(this.CostTB);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.errorLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "CreateNewTransfer";
+            this.Text = "CreateNewStaff";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.CreateNewTransfer_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private Design.CustomMaskedTextBoxDate CostTB;
+        private Design.CustomMaskedTextBoxDate CountOfSeatsTB;
+        private Design.RoundedButton createTransportB;
+        private Design.CustomComboBox availableTransportsTB;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private Design.CustomComboBox fromWhereCB;
+        private Design.CustomComboBox toWhereCB;
+    }
+}

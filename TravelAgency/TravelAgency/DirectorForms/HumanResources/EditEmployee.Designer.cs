@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.nameTB = new TravelAgency.Design.CustomTextBox();
             this.saveChangesB = new TravelAgency.Design.RoundedButton();
-            this.salaryMTB = new TravelAgency.Design.CustomMaskedTextBox();
             this.postTB = new TravelAgency.Design.CustomTextBox();
             this.phoneNumber = new TravelAgency.Design.CustomMaskedTextBox();
             this.maleRB = new TravelAgency.Design.CustomRadioButton();
@@ -59,17 +57,6 @@
             this.label1.Size = new System.Drawing.Size(349, 49);
             this.label1.TabIndex = 0;
             this.label1.Text = "Табельний номер";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(661, 683);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(216, 49);
-            this.label7.TabIndex = 43;
-            this.label7.Text = "Зарплатня";
-            this.label7.Visible = false;
             // 
             // label6
             // 
@@ -191,27 +178,6 @@
             this.saveChangesB.UseVisualStyleBackColor = false;
             this.saveChangesB.Visible = false;
             this.saveChangesB.Click += new System.EventHandler(this.saveChangesB_Click);
-            // 
-            // salaryMTB
-            // 
-            this.salaryMTB.BackColor = System.Drawing.Color.White;
-            this.salaryMTB.BorderColor = System.Drawing.Color.Black;
-            this.salaryMTB.BorderRadius = 12;
-            this.salaryMTB.BorderSize = 1;
-            this.salaryMTB.IsPasswordChar = false;
-            this.salaryMTB.IsPlaceHolder = false;
-            this.salaryMTB.Location = new System.Drawing.Point(670, 782);
-            this.salaryMTB.Mask = "00000 ";
-            this.salaryMTB.Multiline = false;
-            this.salaryMTB.Name = "salaryMTB";
-            this.salaryMTB.PasswordChar = false;
-            this.salaryMTB.PlaceHolderColor = System.Drawing.Color.DarkGray;
-            this.salaryMTB.PlaceHolderText = "";
-            this.salaryMTB.Size = new System.Drawing.Size(281, 48);
-            this.salaryMTB.TabIndex = 46;
-            this.salaryMTB.Texts = "      ";
-            this.salaryMTB.UnderlineStyle = false;
-            this.salaryMTB.Visible = false;
             // 
             // postTB
             // 
@@ -385,9 +351,7 @@
             this.ClientSize = new System.Drawing.Size(1646, 992);
             this.Controls.Add(this.nameTB);
             this.Controls.Add(this.saveChangesB);
-            this.Controls.Add(this.salaryMTB);
             this.Controls.Add(this.postTB);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.phoneNumber);
             this.Controls.Add(this.maleRB);
@@ -417,9 +381,7 @@
         private System.Windows.Forms.Label label1;
         private Design.CustomTextBox talonNumTB;
         private Design.RoundedButton searchEmployeeB;
-        private Design.CustomMaskedTextBox salaryMTB;
         private Design.CustomTextBox postTB;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private Design.CustomMaskedTextBox phoneNumber;
         private Design.CustomRadioButton maleRB;

@@ -31,7 +31,7 @@ namespace TravelAgency
         }
        
         public event EventHandler OpenHumanResourcesForm;
-        public event EventHandler OpenServicePackageForm;
+        public event EventHandler OpenTransportsAndTransfersForm;
         public event EventHandler CloseConnection;
 
         public void ShowForm()
@@ -52,11 +52,10 @@ namespace TravelAgency
             line2.BackColor = Color.Transparent;
             await Task.Delay(1000);
 
-            if(OpenHumanResourcesForm != null)
-                OpenHumanResourcesForm(this, EventArgs.Empty);
+            OpenHumanResourcesForm?.Invoke(this, EventArgs.Empty);
         }
 
-        public void addOnPanelHumanResources(HumanResourcesForm form)
+        public void addOnPanel(Form form)
         {
             form.TopLevel = false;
             form.TopMost = true;
@@ -69,13 +68,16 @@ namespace TravelAgency
             line2.BackColor = Color.White;
             await Task.Delay(1000);
 
-            if (OpenServicePackageForm != null)
-                OpenServicePackageForm(this, EventArgs.Empty);
+            OpenTransportsAndTransfersForm?.Invoke(this, EventArgs.Empty);
         }
         private void exit_Event(object sender, EventArgs e)
         {
             exitBtn.Cursor = Cursors.Hand;
         }
 
+        private void MenuPB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

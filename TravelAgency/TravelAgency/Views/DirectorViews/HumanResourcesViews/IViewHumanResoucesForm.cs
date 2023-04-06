@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TravelAgency.Views
 {
-    internal interface IViewHumanResoucesForm
+    internal interface IViewHumanResourcesForm
     {
         void ShowForm();
         void CloseForm();
@@ -18,7 +18,6 @@ namespace TravelAgency.Views
         event EventHandler OpenFormEditEmployee;
         event EventHandler OpenFormToShowUsers;
         event EventHandler OpenFormCreateNewStaff;
-        event EventHandler OpenFormCreateNewUser;
         event EventHandler OpenFormShowStaff;
     }
 }

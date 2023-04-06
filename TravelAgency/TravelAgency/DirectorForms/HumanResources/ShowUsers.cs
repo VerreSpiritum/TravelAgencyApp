@@ -17,7 +17,7 @@ namespace TravelAgency
         public ShowUsers()
         {
             InitializeComponent();
-            
+            createUserB.BackColor = ColorTranslator.FromHtml("#006C79");
         }
 
         #region --- Реализация интерфейса ---
@@ -25,8 +25,12 @@ namespace TravelAgency
         {
             this.Dock = DockStyle.Fill;
             this.FormBorderStyle = FormBorderStyle.None;
-            AddToTable();
             this.Show();
+        }
+        public void RefreshTable()
+        {
+            userInfoTable.Rows.Clear();
+            AddToTable();
         }
         public void CloseForm()
         {
@@ -44,6 +48,7 @@ namespace TravelAgency
         public DataTable userInfo { get; set; }
         public int CheckError { get; set; }
         public string LoginToAccess { get; set; }
+        public int TalonNum { get; set; }
 
 
         public event EventHandler DeleteUser;
@@ -54,32 +59,26 @@ namespace TravelAgency
 
         private void AddToTable()
         {
-            
-            userInfoTable.Rows.Add( "Agent", "dsfgdfsg");
-
-            //foreach (DataRow row in staffInfo.Rows) 
-            //{
-            //    DateTime birthDate = Convert.ToDateTime(row["Дата народження"]);
-            //    DateTime startDate = Convert.ToDateTime(row["Дата народження"]);
-
-            //    staffInfoTable.Rows.Add(row["№"], row["ФІО"], row["Посада"], row["Стать"], birthDate.ToString("dd/MM/yyyy"), startDate.ToString("dd/MM/yyyy"), row["Зарплатня"], row["Номер телефону"]);
-            //}
+            foreach (DataRow row in userInfo.Rows) 
+            {
+                userInfoTable.Rows.Add(row["№"], row["Логін"]);
+            }
         }
 
         private void staffInfoTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == userInfoTable.Columns["deleteEmployee"].Index && e.RowIndex >= 0)
             {
-                //TalonNum = (Int32)staffInfoTable.Rows[e.RowIndex].Cells[0].Value;
                 DialogResult result = MessageBox.Show("Підтвердити видалення", "Видалення", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if(result == DialogResult.OK)
-                {
+                {   
+                    TalonNum = (Int32)userInfoTable.Rows[e.RowIndex].Cells[0].Value;
                     DeleteUser?.Invoke(this, EventArgs.Empty);
                     if (CheckError == 1)
                     {
                         MessageBox.Show("Успішно видалено!", "Видалення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        userInfoTable.Rows.RemoveAt(e.RowIndex);
+      
                     }
                     else
                     {
@@ -89,9 +88,14 @@ namespace TravelAgency
             }
             else if(e.ColumnIndex == userInfoTable.Columns["editEmployee"].Index && e.RowIndex >= 0)
             {
-                LoginToAccess = (string)userInfoTable.Rows[e.RowIndex].Cells[0].Value;
+                LoginToAccess = (string)userInfoTable.Rows[e.RowIndex].Cells[1].Value;
                 EditUser?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void createUserB_Click(object sender, EventArgs e)
+        {
+            CreateUser?.Invoke(this, EventArgs.Empty);
         }
     }
 }

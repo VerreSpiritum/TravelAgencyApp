@@ -7,16 +7,15 @@ namespace TravelAgency.Presenter
 {
     internal class PresenterHumanResourcesForm
     {
-        IViewHumanResoucesForm view;
+        IViewHumanResourcesForm view;
         ModelHumanResourcesForm model;
 
         public event EventHandler OpenFormToCreateNewStaff;
         public event EventHandler OpenFormToEditEmployee;
         public event EventHandler OpenFormToShowUsers;
-        public event EventHandler OpenFormToCreateNewUser;
         public event EventHandler OpenFormToShowAllStaff;
 
-        public PresenterHumanResourcesForm(IViewHumanResoucesForm view, ModelHumanResourcesForm model)
+        public PresenterHumanResourcesForm(IViewHumanResourcesForm view, ModelHumanResourcesForm model)
         {
             this.view = view;
             this.model = model;
@@ -24,18 +23,12 @@ namespace TravelAgency.Presenter
             view.OpenFormCreateNewStaff += View_OpenFormCreateNewStaff;
             view.OpenFormEditEmployee += View_OpenFormEditEmployee;
             view.OpenFormToShowUsers += View_OpenFormToShowUsers;
-            view.OpenFormCreateNewUser += View_OpenFormCreateNewUser;
             view.OpenFormShowStaff += View_OpenFormShowStaff;
         }
 
         private void View_OpenFormShowStaff(object sender, EventArgs e)
         {
             OpenFormToShowAllStaff?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void View_OpenFormCreateNewUser(object sender, EventArgs e)
-        {
-            OpenFormToCreateNewUser?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_OpenFormToShowUsers(object sender, EventArgs e)

@@ -7,44 +7,142 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using System.Drawing.Design;
 
 namespace TravelAgency.Design
 {
     [DefaultEvent("OnSelectedIndexChanged")]
     internal class CustomComboBox: UserControl
     {
-        #region --- Fields ---
-        private Color backColor = Color.White;
-        private Color iconColor = Color.Black;
-        private Color listBackColor = Color.WhiteSmoke;
+        //Fields
+        private Color backColor = Color.WhiteSmoke;
+        private Color iconColor = Color.MediumSlateBlue;
+        private Color listBackColor = Color.FromArgb(230, 228, 245);
         private Color listTextColor = Color.DimGray;
-        private Color borderColor = Color.Violet;
-
+        private Color borderColor = Color.MediumSlateBlue;
         private int borderSize = 1;
-        private int borderRadius = 0;
-        #endregion
-        #region --- Properties ---
+
+        //Items
+        private ComboBox cmbList;
+        private Label lblText;
+        private Button btnIcon;
+
+        //Events
+        public event EventHandler OnSelectedIndexChanged;//Default event
+
+        //Constructor
+        public CustomComboBox()
+        {
+            cmbList = new ComboBox();
+            lblText = new Label();
+            btnIcon = new Button();
+            this.SuspendLayout();
+
+            //ComboBox: Dropdown list
+            cmbList.BackColor = listBackColor;
+            cmbList.Font = new Font(this.Font.Name, 10F);
+            cmbList.ForeColor = listTextColor;
+            cmbList.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);//Default event
+            cmbList.TextChanged += new EventHandler(ComboBox_TextChanged);//Refresh text
+
+            //Button: Icon
+            btnIcon.Dock = DockStyle.Right;
+            btnIcon.FlatStyle = FlatStyle.Flat;
+            btnIcon.FlatAppearance.BorderSize = 0;
+            btnIcon.BackColor = backColor;
+            btnIcon.Size = new Size(30, 30);
+            btnIcon.Cursor = Cursors.Hand;
+            btnIcon.Click += new EventHandler(Icon_Click);//Open dropdown list
+            btnIcon.Paint += new PaintEventHandler(Icon_Paint);//Draw icon
+
+            //Label: Text
+            lblText.Dock = DockStyle.Fill;
+            lblText.AutoSize = false;
+            lblText.BackColor = backColor;
+            lblText.TextAlign = ContentAlignment.MiddleLeft;
+            lblText.Padding = new Padding(8, 0, 0, 0);
+            lblText.Font = new Font(this.Font.Name, 10F);
+            //->Attach label events to user control event
+            lblText.Click += new EventHandler(Surface_Click);//Select combo box
+            lblText.MouseEnter += new EventHandler(Surface_MouseEnter);
+            lblText.MouseLeave += new EventHandler(Surface_MouseLeave);
+
+            //User Control
+            this.Controls.Add(lblText);//2
+            this.Controls.Add(btnIcon);//1
+            this.Controls.Add(cmbList);//0
+            this.MinimumSize = new Size(200, 30);
+            this.Size = new Size(200, 30);
+            this.ForeColor = Color.DimGray;
+            this.Padding = new Padding(borderSize);//Border Size
+            this.Font = new Font(this.Font.Name, 10F);
+            base.BackColor = borderColor; //Border Color
+            this.ResumeLayout();
+            AdjustComboBoxDimensions();
+        }
+        //Private methods
+        private void AdjustComboBoxDimensions()
+        {
+            cmbList.Width = lblText.Width;
+            cmbList.Location = new Point()
+            {
+                X = this.Width - this.Padding.Right - cmbList.Width,
+                Y = lblText.Bottom - cmbList.Height
+            };
+        }
+        //Event methods
+
+        //-> Default event
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (OnSelectedIndexChanged != null)
+                OnSelectedIndexChanged.Invoke(sender, e);
+            //Refresh text
+            lblText.Text = cmbList.Text;
+        }
+        //-> Items actions
+        private void Icon_Click(object sender, EventArgs e)
+        {
+            //Open dropdown list
+            cmbList.Select();
+            cmbList.DroppedDown = true;
+        }
+        private void Surface_Click(object sender, EventArgs e)
+        {
+            //Attach label click to user control click
+            this.OnClick(e);
+            //Select combo box
+            cmbList.Select();
+            if (cmbList.DropDownStyle == ComboBoxStyle.DropDownList)
+                cmbList.DroppedDown = true;//Open dropdown list
+        }
+        private void ComboBox_TextChanged(object sender, EventArgs e)
+        {
+            //Refresh text
+            lblText.Text = cmbList.Text;
+        }
+        //-> Draw icon
+        private void Icon_Paint(object sender, PaintEventArgs e)
+        {
+            //Fields
+            int iconWidht = 14;
+            int iconHeight = 6;
+            var rectIcon = new Rectangle((btnIcon.Width - iconWidht) / 2, (btnIcon.Height - iconHeight) / 2, iconWidht, iconHeight);
+            Graphics graph = e.Graphics;
+
+            //Draw arrow down icon
+            using (GraphicsPath path = new GraphicsPath())
+            using (Pen pen = new Pen(iconColor, 2))
+            {
+                graph.SmoothingMode = SmoothingMode.AntiAlias;
+                path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + (iconWidht / 2), rectIcon.Bottom);
+                path.AddLine(rectIcon.X + (iconWidht / 2), rectIcon.Bottom, rectIcon.Right, rectIcon.Y);
+                graph.DrawPath(pen, path);
+            }
+        }
         //Properties
         //-> Appearance
         [Category("RJ Code - Appearance")]
-        public int BorderRadius
-        {
-            get { return borderRadius; }
-            set
-            {
-                if (value <= Height)
-                {
-                    borderRadius = value;
-                }
-                else
-                {
-                    borderRadius = Height;
-                }
-                Invalidate();
-            }
-        }
-        [Category("RJ Code - Appearance")]
-
         public new Color BackColor
         {
             get { return backColor; }
@@ -108,7 +206,7 @@ namespace TravelAgency.Design
             {
                 borderSize = value;
                 this.Padding = new Padding(borderSize);//Border Size
-                AdjustComboBoxDimension();
+                AdjustComboBoxDimensions();
             }
         }
 
@@ -152,214 +250,112 @@ namespace TravelAgency.Design
                     cmbList.DropDownStyle = value;
             }
         }
-        #endregion
-        #region --- Items ---
-        private ComboBox cmbList;
-        private Label lblText;
-        private Button btnIcon;
-        #endregion
-        #region --- Events ---
-        public event EventHandler OnSelectedIndexChanged; //default event
-        private void CmbList_SelectedIndexChanged(object sender, EventArgs e)
+        //Properties
+        //-> Data
+        [Category("RJ Code - Data")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [Localizable(true)]
+        [MergableProperty(false)]
+        public ComboBox.ObjectCollection Items
         {
-            if (OnSelectedIndexChanged != null)
-                OnSelectedIndexChanged.Invoke(sender, e);
-            //Refresh text
-            lblText.Text = cmbList.Text;
-        }
-        private void CmbList_TextChanged(object sender, EventArgs e)
-        {
-            lblText.Text = cmbList.Text;
-        }
-        private void AdjustComboBoxDimension()
-        {
-            cmbList.Width = lblText.Width;
-            cmbList.Location = new Point()
-            {
-                X = this.Width - this.Padding.Right - cmbList.Width,
-                Y = lblText.Bottom - cmbList.Height
-            };
+            get { return cmbList.Items; }
         }
 
-        private void LblText_Click(object sender, EventArgs e)
+        [Category("RJ Code - Data")]
+        [AttributeProvider(typeof(IListSource))]
+        [DefaultValue(null)]
+        public object DataSource
         {
-            this.OnClick(e);
-
-            cmbList.Select();
-            if (cmbList.DropDownStyle == ComboBoxStyle.DropDownList)
-                cmbList.DroppedDown = true;
+            get { return cmbList.DataSource; }
+            set { cmbList.DataSource = value; }
         }
 
-        private void Icon_Paint(object sender, PaintEventArgs e)
+        [Category("RJ Code - Data")]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Localizable(true)]
+        public AutoCompleteStringCollection AutoCompleteCustomSource
         {
-            //Fields
-            int iconWidht = 14;
-            int iconHeight = 6;
-            var rectIcon = new Rectangle((btnIcon.Width - iconWidht) / 2, (btnIcon.Height - iconHeight) / 2, iconWidht, iconHeight);
-            Graphics graph = e.Graphics;
-            //Draw arrow down icon
-            using (GraphicsPath path = new GraphicsPath())
-            using (Pen pen = new Pen(iconColor, 2))
-            {
-                graph.SmoothingMode = SmoothingMode.AntiAlias;
-                path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + (iconWidht / 2), rectIcon.Bottom);
-                path.AddLine(rectIcon.X + (iconWidht / 2), rectIcon.Bottom, rectIcon.Right, rectIcon.Y);
-                graph.DrawPath(pen, path);
-            }
+            get { return cmbList.AutoCompleteCustomSource; }
+            set { cmbList.AutoCompleteCustomSource = value; }
         }
 
-        private void BtnIcon_Click(object sender, EventArgs e)
+        [Category("RJ Code - Data")]
+        [Browsable(true)]
+        [DefaultValue(AutoCompleteSource.None)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public AutoCompleteSource AutoCompleteSource
         {
-            //Open dropdown list
-            cmbList.Select();
-            cmbList.DroppedDown = true;
-        }
-        #endregion
-        //protected override void OnPaint(PaintEventArgs pevent)
-        //{
-        //    base.OnPaint(pevent);
-        //    pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-        //    RectangleF rectSurface = new RectangleF(0, 0, Width, Height);
-
-        //    RectangleF rectBorder = new RectangleF(1, 1, Width - 0.8f, Height - 1);
-        //    //RectangleF rectBorder = new RectangleF(-5, -5, Width -5, Height -5);
-
-
-        //    if (borderRadius > 2) //Round Button
-        //    {
-        //        using (GraphicsPath pathSurface = Rounding.GetFigurePath(rectSurface, borderRadius))
-        //        using (GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - 1F))
-        //        using (Pen penSurface = new Pen(backColor, 1))
-        //        using (Pen penBorder = new Pen(borderColor, borderSize))
-        //        {
-        //            penBorder.Alignment = PenAlignment.Inset;
-
-        //            Region = new Region(pathSurface);
-        //            pevent.Graphics.DrawPath(penSurface, pathSurface);
-
-        //            if (borderSize >= 1)
-        //                pevent.Graphics.DrawPath(penBorder, pathBorder);
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Region = new Region(rectSurface);
-        //        if (borderSize >= 1)
-        //        {
-        //            using (Pen penBorder = new Pen(borderColor, borderSize))
-        //            {
-        //                penBorder.Alignment = PenAlignment.Inset;
-        //                pevent.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
-        //            }
-
-        //        }
-        //    }
-
-        //}
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Graphics graphics = e.Graphics;
-
-            if (borderRadius > 1) //rounded
-            {
-                //-fields
-                var rectBorderSmooth = this.ClientRectangle;
-                var rectBorder = Rectangle.Inflate(rectBorderSmooth, -borderSize, -borderSize);
-                int smoothSize = borderSize > 0 ? borderSize : 1;
-
-                using (GraphicsPath pathBorderSmooth = Rounding.GetFigurePath(rectBorderSmooth, borderRadius))
-                using (GraphicsPath pathBorder = Rounding.GetFigurePath(rectBorder, borderRadius - borderSize))
-                using (Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
-                using (Pen penBorder = new Pen(borderColor, borderSize))
-                {
-                    //Draw
-                    this.Region = new Region(pathBorderSmooth);
-                    //if (BorderRadius > 15) SetTextBoxRoundRegion();
-                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    penBorder.Alignment = PenAlignment.Center;
-                    penBorder.Alignment = PenAlignment.Inset;
-
-                   
-                        graphics.DrawPath(penBorderSmooth, pathBorderSmooth);
-                        graphics.DrawPath(penBorder, pathBorder);
-
-                    
-
-                }
-            }
-            else //normal
-            {
-                //Draw borders
-                using (Pen penBorder = new Pen(borderColor, borderSize))
-                {
-                    this.Region = new Region(this.ClientRectangle);
-                    penBorder.Alignment = PenAlignment.Inset;
-
-                    
-                        graphics.DrawRectangle(penBorder, 0, 0, this.Width - 0.5f, this.Height - 0.5F);
-                }
-            }
-
-        }
-        protected override void OnHandleCreated(EventArgs e)
-        {
-            base.OnHandleCreated(e);
-            Parent.BackColorChanged += new EventHandler(Container_BackColorChanged);
+            get { return cmbList.AutoCompleteSource; }
+            set { cmbList.AutoCompleteSource = value; }
         }
 
-        private void Container_BackColorChanged(object sender, EventArgs e)
+        [Category("RJ Code - Data")]
+        [Browsable(true)]
+        [DefaultValue(AutoCompleteMode.None)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public AutoCompleteMode AutoCompleteMode
         {
-            Invalidate();
+            get { return cmbList.AutoCompleteMode; }
+            set { cmbList.AutoCompleteMode = value; }
         }
 
-        public CustomComboBox()
+        [Category("RJ Code - Data")]
+        [Bindable(true)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public object SelectedItem
         {
-            cmbList = new ComboBox();
-            lblText= new Label();
-            btnIcon= new Button();
-
-            //Drop down
-            cmbList.BackColor = backColor;
-            cmbList.Font = new Font(this.Font.Name, 10F);
-            cmbList.ForeColor = listTextColor;
-            cmbList.SelectedIndexChanged += CmbList_SelectedIndexChanged;
-            cmbList.TextChanged += CmbList_TextChanged;
-
-            //button: Icon
-            btnIcon.Dock = DockStyle.Right;
-            btnIcon.Margin = new Padding(10);
-            btnIcon.FlatAppearance.BorderSize = 0;
-            btnIcon.BackColor = backColor;
-            btnIcon.FlatAppearance.BorderColor = Color.White;
-            btnIcon.Size = new Size(30, 30);
-            btnIcon.Cursor = Cursors.Hand;
-            btnIcon.Click += BtnIcon_Click;
-            btnIcon.Paint += new PaintEventHandler(Icon_Paint);
-
-            //label: Text
-            lblText.Margin = new Padding(7, 10, 0, 10);
-            lblText.AutoSize = false;
-            lblText.Dock = DockStyle.Fill;
-            lblText.Padding = new Padding(0, 0, 0, 0);
-            lblText.BackColor = backColor;
-            lblText.TextAlign = ContentAlignment.MiddleLeft;
-            lblText.Font = new Font(this.Font.Name, 10f);
-            lblText.Click += LblText_Click;
-            
-            this.Controls.Add(lblText);
-            this.Controls.Add(btnIcon);
-            this.Controls.Add(cmbList);
-            this.MinimumSize = new Size(200, 46);
-            this.Size = new Size(200, 46);
-            this.ForeColor = Color.DimGray;
-            this.Padding = new Padding(borderSize);
-            base.BackColor = backColor;
-            this.ResumeLayout();
-            AdjustComboBoxDimension();
+            get { return cmbList.SelectedItem; }
+            set { cmbList.SelectedItem = value; }
         }
 
-        
+        [Category("RJ Code - Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int SelectedIndex
+        {
+            get { return cmbList.SelectedIndex; }
+            set { cmbList.SelectedIndex = value; }
+        }
+
+        [Category("RJ Code - Data")]
+        [DefaultValue("")]
+        [Editor("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [TypeConverter("System.Windows.Forms.Design.DataMemberFieldConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        public string DisplayMember
+        {
+            get { return cmbList.DisplayMember; }
+            set { cmbList.DisplayMember = value; }
+        }
+
+        [Category("RJ Code - Data")]
+        [DefaultValue("")]
+        [Editor("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        public string ValueMember
+        {
+            get { return cmbList.ValueMember; }
+            set { cmbList.ValueMember = value; }
+        }
+        //->Attach label events to user control event
+        private void Surface_MouseLeave(object sender, EventArgs e)
+        {
+            this.OnMouseLeave(e);
+        }
+
+        private void Surface_MouseEnter(object sender, EventArgs e)
+        {
+            this.OnMouseEnter(e);
+        }
+        //::::+
+        //Overridden methods
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            AdjustComboBoxDimensions();
+        }
     }
 }

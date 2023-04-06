@@ -28,7 +28,7 @@ namespace TravelAgency.Presenter
 
         private void View_UpdateInfo(object sender, EventArgs e)
         {
-            model.UpdateInfo(view.InfoToUpdate, view.TalonNum);
+            view.CheckUpdate = model.UpdateInfo(view.InfoToUpdate, view.TalonNum);
         }
 
         private void View_GetInfo(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace TravelAgency.Presenter
                 view.Name = model.Name;
                 view.Patronymic = model.Patronymic;
                 view.Surname = model.Surname;
-                view.Salary = model.Salary;
+                //view.Salary = model.Salary;
                 view.Gender = model.Gender;
                 view.Position = model.Position;
                 view.PhoneNumber = model.PhoneNumber;

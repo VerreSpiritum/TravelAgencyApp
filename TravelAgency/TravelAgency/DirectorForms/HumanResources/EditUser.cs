@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -26,18 +27,12 @@ namespace TravelAgency
         }
         #region --- Interface ---
         
-        public void ShowForm()
+        public void ShowForm(string login)
         {
-            //if (IsFromTable)
-            //{
-            //    ShowInfo();
-            //    AcceptButton = saveChangesB;
-            //}
-            //else
-            //    AcceptButton = searchEmployeeB;
+            loginTB.Texts = login;
+            Login = login;
             this.Show();
         }
-
         public void CloseForm()
         {
             this.Close();
@@ -45,6 +40,7 @@ namespace TravelAgency
 
         public event EventHandler GetInfo;
         public event EventHandler UpdateInfo;
+        public event EventHandler CloseWindow;
 
         public string Login { get; set; }
         public string Password { get; set; }
@@ -60,16 +56,6 @@ namespace TravelAgency
             {
                 
                 GetInfo?.Invoke(this, EventArgs.Empty);
-                //if (talonNumFind)
-                //{
-                //    ShowInfo();
-                //}
-                //else
-                //{
-                //    if (checkShowEmployeeInfo)
-                //        HideInfo();
-                //    MessageBox.Show("Співробітника з таким номер не знайдено", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                //}
             }
             else
             {
@@ -81,13 +67,42 @@ namespace TravelAgency
 
         private void EditUser_Load(object sender, EventArgs e)
         {
-
+           
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void saveChangesB_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(Password))
+            {
+                UpdateInfo?.Invoke(this, EventArgs.Empty);
+                MessageBox.Show("Зміни збережено!", "Зміна паролю", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                passwordTB.BorderColor = Color.Black;
+                CloseWindow?.Invoke(this, EventArgs.Empty);
 
+            }
+            else
+            {
+                passwordTB.BorderColor = Color.Red;
+                MessageBox.Show("Заповніть поле паролю!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        private void showPasswordCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showPasswordCheck.Checked)
+            {
+                passwordTB.PasswordChar = false;
+            }
+            else
+            {
+                passwordTB.PasswordChar = true;
+            }
+        }
+
+        private void passwordTB__TextChanged(object sender, EventArgs e)
+        {
+            Password = passwordTB.Texts;
+        }
+
 
         //private void SetLastInfo()
         //{

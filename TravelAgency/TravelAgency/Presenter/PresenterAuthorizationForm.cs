@@ -31,7 +31,7 @@ namespace TravelAgency.Presenter
             model.Login = viewAutorizationForm.Login;
             model.Password = viewAutorizationForm.Password;
 
-            if (!string.IsNullOrEmpty(model.Login) && !string.IsNullOrEmpty(model.Password) && model.Login.ToLower() != "postgres") 
+            if (!string.IsNullOrEmpty(model.Login) && !string.IsNullOrEmpty(model.Password) && model.Login.ToLower() != "postgres" ) 
             {
                 model.ConnectingToDB();
                 string error = model.Error;
@@ -42,8 +42,13 @@ namespace TravelAgency.Presenter
                 else
                 {
                     connection = model.Connection;
-                    if (openDirectorForm != null)
-                        openDirectorForm(sender, EventArgs.Empty);
+
+                    if (model.Login.ToLower() == "director")
+                    {
+                        
+                        if (openDirectorForm != null)
+                            openDirectorForm(sender, EventArgs.Empty);
+                    }
                 }
             }
             else

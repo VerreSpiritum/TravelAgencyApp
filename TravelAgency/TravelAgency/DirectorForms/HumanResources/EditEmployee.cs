@@ -17,13 +17,18 @@ namespace TravelAgency
     public partial class EditEmployee : Form, IViewEditEmployee
     {
         private bool checkShowEmployeeInfo;
+        private bool checkName;
+        private bool checkSurname;
+        private bool checkPatronymic;
+
         private Dictionary<string, object> _employee = new Dictionary<string, object>();
 
         public EditEmployee()
         {
             InitializeComponent();
             searchEmployeeB.BackColor = saveChangesB.BackColor = ColorTranslator.FromHtml("#5AACB8");
-        }
+            checkName = checkSurname = checkPatronymic = true;
+    }
         #region --- Interface ---
         
         public void ShowForm()
@@ -58,6 +63,8 @@ namespace TravelAgency
         public int TalonNum { get; set; }
         public bool IsFromTable { get; set; }
 
+        public int CheckUpdate { get; set; }
+
         #endregion
 
         private void searchEmployeeB_Click(object sender, EventArgs e)
@@ -91,16 +98,16 @@ namespace TravelAgency
         private void ShowInfo()
         {   
             SetLastInfo();
-            label8.Visible = label7.Visible = label6.Visible = label4.Visible = label3.Visible = saveChangesB.Visible =
+            label8.Visible = label6.Visible = label4.Visible = label3.Visible = saveChangesB.Visible =
                 nameTB.Visible = secondNameTB.Visible = surnameTB.Visible = phoneNumber.Visible = femaleRB.Visible = maleRB.Visible =
-                postTB.Visible = salaryMTB.Visible = true;
+                postTB.Visible = true;
             checkShowEmployeeInfo = true;
         }
         private void HideInfo()
         {
-            label8.Visible = label7.Visible = label6.Visible = label4.Visible = label3.Visible = saveChangesB.Visible =
+            label8.Visible = label6.Visible = label4.Visible = label3.Visible = saveChangesB.Visible =
                 nameTB.Visible = secondNameTB.Visible = surnameTB.Visible = phoneNumber.Visible = femaleRB.Visible = maleRB.Visible =
-                postTB.Visible = salaryMTB.Visible = false;
+                postTB.Visible = false;
             checkShowEmployeeInfo = false;
         }
         private void SetLastInfo()
@@ -125,7 +132,6 @@ namespace TravelAgency
                 maleRB.Checked = true;
             }
 
-            salaryMTB.Texts = Convert.ToString(Salary);
             phoneNumber.Texts = PhoneNumber;
             
 
@@ -133,87 +139,171 @@ namespace TravelAgency
 
         private bool CheckAndInsert()
         {
-            int temp = int.Parse(salaryMTB.Texts) >= 3500 ? int.Parse(salaryMTB.Texts) : 0;
             string genderTemp;
 
             if (!phoneNumber.Texts.Equals(PhoneNumber))
-                InfoToUpdate.Add("phone_number", phoneNumber.Texts);
-            if(!Salary.Equals(temp))
-                InfoToUpdate.Add("salary", temp);
+            {
+                if(InfoToUpdate.ContainsKey("phone_number"))
+                {
+                    InfoToUpdate["phone_number"] = phoneNumber.Texts;
+                }
+                else
+                {
+                    InfoToUpdate.Add("phone_number", phoneNumber.Texts);
+                }
+
+            }
+       
             if (!Position.Equals(postTB.Texts))
-                InfoToUpdate.Add("position", postTB.Texts);
+            {
+                if(InfoToUpdate.ContainsKey("position"))
+                {
+                    InfoToUpdate["position"] = postTB.Texts;
+                }
+                else
+                {
+                    InfoToUpdate.Add("position", postTB.Texts);
+                }
+            }    
             if (femaleRB.Checked)
                 genderTemp = "Ж";
             else
                 genderTemp = "Ч";
             if (!genderTemp.Equals(Gender))
-                InfoToUpdate.Add("sex", genderTemp);
+            {
+                if(InfoToUpdate.ContainsKey("sex"))
+                {
+                    InfoToUpdate["sex"] = genderTemp;
+                }
+                else
+                {
+                    InfoToUpdate.Add("sex", genderTemp);
+                }
+            }
 
             return true;
         }
         private void NameTB__TextChanged(object sender, EventArgs e)
         {
-            if (nameTB.Texts.All(Char.IsLetter))
+            if (!checkName)
             {
-                if (InfoToUpdate.ContainsKey("name"))
+                if (nameTB.Texts.All(Char.IsLetter))
                 {
-                    InfoToUpdate["name"] = nameTB.Texts;
+                    if (InfoToUpdate.ContainsKey("name"))
+                    {
+                        InfoToUpdate["name"] = nameTB.Texts;
+                    }
+                    else
+                    {
+                        InfoToUpdate.Add("name", nameTB.Texts);
+                    }
+                    nameTB.BorderColor = Color.Black;
                 }
                 else
                 {
-                    InfoToUpdate.Add("name", nameTB.Texts);
+                    Name = null;
+                    nameTB.BorderColor = Color.Red;
                 }
             }
             else
-                Name = null;
+                checkName = false;
         }
         private void SecondNameTB_TextChanged(object sender, EventArgs e)
         {
-            if (secondNameTB.Texts.All(Char.IsLetter))
+            if (!checkPatronymic)
             {
-                if(InfoToUpdate.ContainsKey("patronymic"))
+                if (secondNameTB.Texts.All(Char.IsLetter))
                 {
-                    InfoToUpdate["patronymic"] = secondNameTB.Texts;
+                    if (InfoToUpdate.ContainsKey("patronymic"))
+                    {
+                        InfoToUpdate["patronymic"] = secondNameTB.Texts;
+                    }
+                    else
+                    {
+                        InfoToUpdate.Add("patronymic", secondNameTB.Texts);
+                    }
+                    secondNameTB.BorderColor = Color.Black;
+
                 }
                 else
                 {
-                    InfoToUpdate.Add("patronymic", secondNameTB.Texts);
+                    Patronymic = null;
+                    secondNameTB.BorderColor = Color.Red;
                 }
             }
             else
-                Patronymic = null;
+            {
+                checkPatronymic = false;
+            }
         }
         private void surnameTB_TextChanged(object sender, EventArgs args)
         {
-            if (surnameTB.Texts.All(Char.IsLetter))
+            if (!checkSurname)
             {
-                if (InfoToUpdate.ContainsKey("surname"))
+                if (surnameTB.Texts.All(Char.IsLetter))
                 {
-                    InfoToUpdate["surname"] = surnameTB.Texts;
+                    if (InfoToUpdate.ContainsKey("surname"))
+                    {
+                        InfoToUpdate["surname"] = surnameTB.Texts;
+                    }
+                    else
+                    {
+                        InfoToUpdate.Add("surname", surnameTB.Texts);
+                    }
+                    surnameTB.BorderColor = Color.Black;
                 }
                 else
                 {
-                    InfoToUpdate.Add("surname", surnameTB.Texts);
+                    Surname = null;
+                    surnameTB.BorderColor = Color.Red;
                 }
             }
             else
-                Surname = null;
+            {
+                checkSurname = false;
+            }
         }
 
         private void saveChangesB_Click(object sender, EventArgs e)
         {
             if (CheckAndInsert())
             {
-                if (!String.IsNullOrEmpty(nameTB.Texts) && !String.IsNullOrEmpty(secondNameTB.Texts) && !String.IsNullOrEmpty(surnameTB.Texts) && !String.IsNullOrEmpty(phoneNumber.Texts)
-                    && !String.IsNullOrEmpty(Gender) && Int32.Parse(salaryMTB.Texts) >= 3500 && !String.IsNullOrEmpty(Position))
+                if (_employee.Count == 0)
                 {
-                    UpdateInfo?.Invoke(this, EventArgs.Empty);
-                    _employee.Clear();
-                    //MessageBox.Show(resultOfAdding, "Результат роботи", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Немає нових даних для внесення змін!", "Оновити дані", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
-                    MessageBox.Show("Заповніть правильно усі поля!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                    if (!String.IsNullOrEmpty(nameTB.Texts) && !String.IsNullOrEmpty(secondNameTB.Texts) && !String.IsNullOrEmpty(surnameTB.Texts) && !String.IsNullOrEmpty(phoneNumber.Texts)
+                        && !String.IsNullOrEmpty(Gender) && !String.IsNullOrEmpty(Position))
+                    {
+                        if (nameTB.Texts.All(Char.IsLetter) && secondNameTB.Texts.All(Char.IsLetter) && surnameTB.Texts.All(Char.IsLetter) && postTB.Texts.All(Char.IsLetter))
+                        {
+                            UpdateInfo?.Invoke(this, EventArgs.Empty);
+                            if (CheckUpdate == 1)
+                            {
+                                _employee.Clear();
+                                MessageBox.Show($"Дані про агента {TalonNum} змінено!", "Результат роботи", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Виникла помилка при змінах інформації агента {TalonNum}!", "Результат роботи", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                _employee.Clear();
+                                SetLastInfo();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Заповніть правильно усі поля!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Заповніть правильно усі поля!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 

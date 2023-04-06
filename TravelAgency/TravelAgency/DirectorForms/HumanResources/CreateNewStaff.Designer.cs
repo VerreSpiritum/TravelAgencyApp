@@ -43,7 +43,6 @@
             this.salaryMTB = new TravelAgency.Design.CustomMaskedTextBox();
             this.postTB = new TravelAgency.Design.CustomTextBox();
             this.startDateDT = new TravelAgency.Design.CustomDate();
-            this.phoneNumber = new TravelAgency.Design.CustomMaskedTextBox();
             this.createNewStaffB = new TravelAgency.Design.RoundedButton();
             this.maleRB = new TravelAgency.Design.CustomRadioButton();
             this.femaleRB = new TravelAgency.Design.CustomRadioButton();
@@ -51,6 +50,7 @@
             this.surnameTB = new TravelAgency.Design.CustomTextBox();
             this.secondNameTB = new TravelAgency.Design.CustomTextBox();
             this.nameTB = new TravelAgency.Design.CustomTextBox();
+            this.phoneNumber = new TravelAgency.Design.CustomMaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -220,26 +220,6 @@
             this.startDateDT.TabIndex = 24;
             this.startDateDT.TextColor = System.Drawing.Color.Black;
             // 
-            // phoneNumber
-            // 
-            this.phoneNumber.BackColor = System.Drawing.Color.White;
-            this.phoneNumber.BorderColor = System.Drawing.Color.Black;
-            this.phoneNumber.BorderRadius = 12;
-            this.phoneNumber.BorderSize = 1;
-            this.phoneNumber.IsPasswordChar = false;
-            this.phoneNumber.IsPlaceHolder = false;
-            this.phoneNumber.Location = new System.Drawing.Point(654, 342);
-            this.phoneNumber.Mask = "+38 (000) 000-00-00";
-            this.phoneNumber.Multiline = false;
-            this.phoneNumber.Name = "phoneNumber";
-            this.phoneNumber.PasswordChar = false;
-            this.phoneNumber.PlaceHolderColor = System.Drawing.Color.DarkGray;
-            this.phoneNumber.PlaceHolderText = "";
-            this.phoneNumber.Size = new System.Drawing.Size(281, 46);
-            this.phoneNumber.TabIndex = 20;
-            this.phoneNumber.Texts = "+38 (000) 000-00-00";
-            this.phoneNumber.UnderlineStyle = false;
-            // 
             // createNewStaffB
             // 
             this.createNewStaffB.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -374,6 +354,26 @@
             this.nameTB.UnderlineStyle = false;
             this.nameTB._TextChanged += new System.EventHandler(this.nameTB__TextChanged);
             // 
+            // phoneNumber
+            // 
+            this.phoneNumber.BackColor = System.Drawing.Color.White;
+            this.phoneNumber.BorderColor = System.Drawing.Color.Black;
+            this.phoneNumber.BorderRadius = 12;
+            this.phoneNumber.BorderSize = 1;
+            this.phoneNumber.IsPasswordChar = false;
+            this.phoneNumber.IsPlaceHolder = false;
+            this.phoneNumber.Location = new System.Drawing.Point(654, 342);
+            this.phoneNumber.Mask = "+38 (000) 000-00-00";
+            this.phoneNumber.Multiline = false;
+            this.phoneNumber.Name = "phoneNumber";
+            this.phoneNumber.PasswordChar = false;
+            this.phoneNumber.PlaceHolderColor = System.Drawing.Color.DarkGray;
+            this.phoneNumber.PlaceHolderText = "";
+            this.phoneNumber.Size = new System.Drawing.Size(281, 46);
+            this.phoneNumber.TabIndex = 20;
+            this.phoneNumber.Texts = "+38 (   )    -  -";
+            this.phoneNumber.UnderlineStyle = false;
+            // 
             // CreateNewStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -428,7 +428,6 @@
         private Design.CustomRadioButton femaleRB;
         private Design.CustomRadioButton maleRB;
         private Design.RoundedButton createNewStaffB;
-        private Design.CustomMaskedTextBox phoneNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -436,5 +435,6 @@
         private Design.CustomTextBox postTB;
         private Design.CustomMaskedTextBox salaryMTB;
         private System.Windows.Forms.Label errorLabel;
+        private Design.CustomMaskedTextBox phoneNumber;
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Npgsql;
 
 namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
@@ -35,7 +36,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
 
         public int DeleteTransfer(int id)
         {
-            string query = $"DELETE FROM transfers WHERE id_transfer = {id}";
+            string query = $"DELETE FROM transfer WHERE id_transfer = {id}";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 try

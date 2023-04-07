@@ -14,6 +14,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         private NpgsqlConnection connection;
 
         public string Error { get; set; }
+        public int CountOfSeats { get; set; }
 
         public ModelCreateNewTransport(NpgsqlConnection connection)
         {

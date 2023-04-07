@@ -14,6 +14,8 @@ namespace TravelAgency.Presenter
         public event EventHandler OpenFormToShowTransfers;
         public event EventHandler OpenFormCreateNewTransport;
         public event EventHandler OpenFormShowTransports;
+        public event EventHandler OpenFormCreateNewTransfers;
+        public event EventHandler OpenFormEditTransfers;
 
         public PresenterTransportsAndTransfers(IViewTransportAndTransfersForm view, ModelTransportAndTransfersForm model)
         {
@@ -24,6 +26,18 @@ namespace TravelAgency.Presenter
             view.OpenFormEditTransports += View_OpenFormEditTransport;
             view.OpenFormToShowTransfers += View_OpenFormToShowTransfers;
             view.OpenFormShowTransports += View_OpenFormShowTransport;
+            view.OpenFormCreateTransfers += View_OpenFormCreateTransfers;
+            view.OpenFormEditTransfers += View_OpenFormEditTransfers;
+        }
+
+        private void View_OpenFormEditTransfers(object sender, EventArgs e)
+        {
+            OpenFormEditTransfers?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void View_OpenFormCreateTransfers(object sender, EventArgs e)
+        {
+            OpenFormCreateNewTransfers?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_OpenFormShowTransport(object sender, EventArgs e)

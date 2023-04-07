@@ -47,9 +47,10 @@
             this.InfoAboutTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearOfProduction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountOfSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhotosTransport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editTransport = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deleteTransport = new System.Windows.Forms.DataGridViewImageColumn();
+            this.editTransfer = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deleteTransfer = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transferInfoTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,9 +80,10 @@
             this.InfoAboutTransport,
             this.YearOfProduction,
             this.CountOfSeats,
+            this.AllSeats,
             this.PhotosTransport,
-            this.editTransport,
-            this.deleteTransport});
+            this.editTransfer,
+            this.deleteTransfer});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -182,12 +184,20 @@
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.CountOfSeats.DefaultCellStyle = dataGridViewCellStyle7;
-            this.CountOfSeats.HeaderText = "Кількість доступних місць";
+            this.CountOfSeats.HeaderText = "Доступні місця";
             this.CountOfSeats.MinimumWidth = 6;
             this.CountOfSeats.Name = "CountOfSeats";
             this.CountOfSeats.ReadOnly = true;
             this.CountOfSeats.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CountOfSeats.Width = 150;
+            // 
+            // AllSeats
+            // 
+            this.AllSeats.HeaderText = "Усього місць";
+            this.AllSeats.MinimumWidth = 6;
+            this.AllSeats.Name = "AllSeats";
+            this.AllSeats.ReadOnly = true;
+            this.AllSeats.Width = 125;
             // 
             // PhotosTransport
             // 
@@ -200,25 +210,25 @@
             this.PhotosTransport.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.PhotosTransport.Width = 150;
             // 
-            // editTransport
+            // editTransfer
             // 
-            this.editTransport.HeaderText = "";
-            this.editTransport.Image = global::TravelAgency.Properties.Resources.edit;
-            this.editTransport.MinimumWidth = 6;
-            this.editTransport.Name = "editTransport";
-            this.editTransport.ReadOnly = true;
-            this.editTransport.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.editTransport.Width = 24;
+            this.editTransfer.HeaderText = "";
+            this.editTransfer.Image = global::TravelAgency.Properties.Resources.edit;
+            this.editTransfer.MinimumWidth = 6;
+            this.editTransfer.Name = "editTransfer";
+            this.editTransfer.ReadOnly = true;
+            this.editTransfer.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.editTransfer.Width = 24;
             // 
-            // deleteTransport
+            // deleteTransfer
             // 
-            this.deleteTransport.HeaderText = "";
-            this.deleteTransport.Image = global::TravelAgency.Properties.Resources.delete;
-            this.deleteTransport.MinimumWidth = 6;
-            this.deleteTransport.Name = "deleteTransport";
-            this.deleteTransport.ReadOnly = true;
-            this.deleteTransport.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.deleteTransport.Width = 24;
+            this.deleteTransfer.HeaderText = "";
+            this.deleteTransfer.Image = global::TravelAgency.Properties.Resources.delete;
+            this.deleteTransfer.MinimumWidth = 6;
+            this.deleteTransfer.Name = "deleteTransfer";
+            this.deleteTransfer.ReadOnly = true;
+            this.deleteTransfer.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.deleteTransfer.Width = 24;
             // 
             // ShowTransfers
             // 
@@ -247,8 +257,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InfoAboutTransport;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearOfProduction;
         private System.Windows.Forms.DataGridViewTextBoxColumn CountOfSeats;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AllSeats;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhotosTransport;
-        private System.Windows.Forms.DataGridViewImageColumn editTransport;
-        private System.Windows.Forms.DataGridViewImageColumn deleteTransport;
+        private System.Windows.Forms.DataGridViewImageColumn editTransfer;
+        private System.Windows.Forms.DataGridViewImageColumn deleteTransfer;
     }
 }

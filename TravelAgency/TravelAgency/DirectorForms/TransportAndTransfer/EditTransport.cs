@@ -284,13 +284,13 @@ namespace TravelAgency
         {
             if (int.TryParse(TransportNumTB.Texts, out int res))
             {
-                if (res != ID)
-                {
+                //if (res != ID)
+                //{
                     searchInfo?.Invoke(this, EventArgs.Empty);
                     if (ResultOfSearching == 0)
                     {
                         temp.Clear();
-
+                        
                         MessageBox.Show("Транспорта з таким номером не має!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         MakeVisibleOrInvisible(false, false);
 
@@ -301,7 +301,7 @@ namespace TravelAgency
                         MakeVisibleOrInvisible(true, false);
                         checkIfIDChanged = true;
                     }
-                }
+                //}
             }
             else
             {

@@ -74,7 +74,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
                 }
             }
 
-            query = $"SELECT f.name FROM facilities f, facilities_in_transport fit, transport t\r\nWHERE f.id_facilities = fit.id_facilities" +
+            query = $"SELECT f.name FROM facilities f, facilities_in_transport fit, transport t WHERE f.id_facilities = fit.id_facilities" +
                 $" AND t.id_transport = fit.id_transport  AND t.id_transport = {ID}";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
@@ -172,8 +172,8 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
                     }
                     else
                     {
-                        string queryTransportFacilities = $"select fit.id_facilities from facilities_in_transport fit, facilities f " +
-                            $"WHERE fit.id_facilities = f.id_facilities AND fit.id_transport = {ID} AND f.name = '{key}'";
+                        string queryTransportFacilities = $"select id_facilities from facilities f " +
+                            $"WHERE  f.name = '{key}'";
 
                         using (NpgsqlCommand cmd = new NpgsqlCommand(queryTransportFacilities, connection))
                         {
@@ -193,7 +193,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
                         }
                         if (fID > 0)
                         {
-                            using (NpgsqlCommand cmd = new NpgsqlCommand($"INSERT INTO facilities_in_transport VALUES (id_transport = {ID}, id_facilities = {fID})", connection))
+                            using (NpgsqlCommand cmd = new NpgsqlCommand($"INSERT INTO facilities_in_transport VALUES ({ID}, {fID})", connection))
                             {
                                 try
                                 {

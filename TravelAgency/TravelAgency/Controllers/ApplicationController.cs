@@ -29,6 +29,8 @@ namespace TravelAgency.Controllers
         private PresenterCreateNewTransport createNewTransportPresenter;
         private PresenterEditTransport EditTransportPresenter;
         private PresenterShowTransfers ShowTransfersPresenter;
+        private PresenterCreateTransfer CreateTransfersPresenter;
+        private PresenterEditTransfer editTransferPresenter;
 
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
@@ -45,6 +47,8 @@ namespace TravelAgency.Controllers
         ModelCreateNewTransport modelCreateNewTransport;
         ModelEditTransports EditTransportModel;
         ModelShowTransfers ShowTransfersModel;
+        ModelCreateNewTransfer CreateNewTransferModel;
+        ModelEditTransfer EditTransferModel;
 
         private HumanResourcesForm humanResources = new HumanResourcesForm();
         private CreateNewStaff createNewStaffForm = new CreateNewStaff();
@@ -58,6 +62,8 @@ namespace TravelAgency.Controllers
         private CreateNewTransport CreateNewTransportForm;
         private EditTransport EditTransportForm;
         private ShowTransfers ShowTransfersForm;
+        private CreateNewTransfer CreateNewTransferForm;
+        private EditTransfer EditTransferForm;
 
         private bool checkOpenPackageServices = false;
 
@@ -368,6 +374,16 @@ namespace TravelAgency.Controllers
                 ShowTransfersPresenter.Close();
                 OpenedForms.Remove(ShowTransfersForm);
             }
+            else if (OpenedForms.Contains(CreateNewTransferForm))
+            {
+                CreateTransfersPresenter.Close();
+                OpenedForms.Remove(CreateNewTransferForm);
+            }
+            else if(OpenedForms.Contains(EditTransferForm))
+            {
+                editTransferPresenter.Close();
+                OpenedForms.Remove(EditTransferForm);
+            }
         }
         private void CloseOpenedFormInTransportsForm(Form senderCheck)//если хотим открыть, то не закрываем а пропускаем
         {
@@ -391,6 +407,16 @@ namespace TravelAgency.Controllers
             {
                 ShowTransfersPresenter.Close();
                 OpenedForms.Remove(ShowTransfersForm);
+            }
+            else if (OpenedForms.Contains(CreateNewTransferForm) && senderCheck != CreateNewTransferForm)
+            {
+                CreateTransfersPresenter.Close();
+                OpenedForms.Remove(CreateNewTransferForm);
+            }
+            else if (OpenedForms.Contains(EditTransferForm) && senderCheck != EditTransferForm)
+            {
+                editTransferPresenter.Close();
+                OpenedForms.Remove(EditTransferForm);
             }
         }
         #endregion
@@ -455,15 +481,42 @@ namespace TravelAgency.Controllers
                 OpenedForms.Add(ShowTransfersForm);
             }
         }
-
+        private void TransportAndTransfers_OpenFormCreateNewTransfers(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(CreateNewTransferForm))
+            {
+                CloseOpenedFormInTransportsForm(CreateNewTransferForm);
+                CreateNewTransferForm = new CreateNewTransfer();
+                CreateNewTransferModel = new ModelCreateNewTransfer(GetConnection());
+                CreateTransfersPresenter = new PresenterCreateTransfer(CreateNewTransferModel, CreateNewTransferForm);
+                transportAndTransferPresenter.AddOnPanelForm(CreateNewTransferForm);
+                CreateTransfersPresenter.Show();
+                //ListOfAllShowTransfersEvent(ShowTransfersPresenter);
+                OpenedForms.Add(CreateNewTransferForm);
+            }
+        }
+        private void Presenter_OpenFormEditTransfers(object sender, EventArgs e)
+        {
+            CloseOpenedFormInTransportsForm(EditTransferForm);
+            EditTransferForm = new EditTransfer();
+            EditTransferModel = new ModelEditTransfer(GetConnection());
+            editTransferPresenter = new PresenterEditTransfer(EditTransferForm, EditTransferModel);
+            CreateNewTransferForm = new CreateNewTransfer();
+            CreateNewTransferModel = new ModelCreateNewTransfer(GetConnection());
+            CreateTransfersPresenter = new PresenterCreateTransfer(CreateNewTransferModel, CreateNewTransferForm);
+            transportAndTransferPresenter.AddOnPanelForm(EditTransferForm);
+            editTransferPresenter.Show();
+            //ListOfAllShowTransfersEvent(ShowTransfersPresenter);
+            OpenedForms.Add(EditTransferForm);
+        }
         private void ListOfAllShowTransfersEvent(PresenterShowTransfers presenter)
         {
-            presenter.EditTransfer += Presenter_EditTransfer;
+            presenter.EditTransfer += ListOfAllShowTransfersEvent_EditTransfer;
         }
 
-        private void Presenter_EditTransfer(object sender, EventArgs e)
+        private void ListOfAllShowTransfersEvent_EditTransfer(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ListOfAllCreateNewTransportEvent(PresenterCreateNewTransport presenter)
@@ -474,7 +527,6 @@ namespace TravelAgency.Controllers
         {
             presenter.OpenFormToEdit += ListOfAllShowTransportsEvent_OpenFormToEdit;
         }
-
         private void ListOfAllShowTransportsEvent_OpenFormToEdit(object sender, EventArgs e)
         {
             int talonNum = showTransportsPresenter.ID;
@@ -556,7 +608,12 @@ namespace TravelAgency.Controllers
             presenter.OpenFormCreateNewTransport += TransportAndTransfers_OpenFormCreateNewTransport;
             presenter.OpenFormEditTransports += TransportAndTransfers_OpenFormEditTransports;
             presenter.OpenFormToShowTransfers += TransportAndTransfers_OpenFormToShowTransfers;
+            presenter.OpenFormCreateNewTransfers += TransportAndTransfers_OpenFormCreateNewTransfers;
+            presenter.OpenFormEditTransfers += Presenter_OpenFormEditTransfers;
         }
+
+       
+
 
 
         #endregion

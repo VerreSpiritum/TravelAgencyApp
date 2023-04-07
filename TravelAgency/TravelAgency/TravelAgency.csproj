@@ -214,7 +214,10 @@
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelCreateUser.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\GetInfoAboutAvailableTransportsCities.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransfer.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransport.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelEditTransfer.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelEditTransports.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelShowTransfers.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelShowTransports.cs" />
@@ -229,6 +232,8 @@
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelShowUsers.cs" />
     <Compile Include="Presenter\DirectorPresenter\HumanResourcesPresenters\PresenterCreateUser.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateNewTransport.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateTransfer.cs" />
+    <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterEditTransfer.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterEditTransport.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterShowTransfers.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterShowTransport.cs" />
@@ -263,6 +268,8 @@
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewEditEmployee.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewCreateUsers.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateNewTransport.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateTransfer.cs" />
+    <Compile Include="Views\DirectorViews\Transports Transfers\IViewEditTransfer.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewEditTransport.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewShowTransfers.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewShowTransports.cs" />
@@ -274,6 +281,7 @@
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewHumanResoucesForm.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewListOfAllStaff.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewShowUsers.cs" />
+    <Compile Include="Views\IViewBase.cs" />
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>

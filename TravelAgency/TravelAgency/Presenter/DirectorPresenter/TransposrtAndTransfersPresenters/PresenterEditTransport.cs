@@ -57,9 +57,10 @@ namespace TravelAgency.Presenter.DirectorPresenter.TransposrtAndTransfersPresent
         {
             view.ID = talonNum;
             view.facilites = model.GetFacilites();
-            model.GetInfo(talonNum);
-            
             view.AddFacilities();
+            model.GetInfo(talonNum);
+
+            view.Facilities = model.Facilities;
             view.AddInfo(model.infoToShow);
             view.IsFromTable = true;
             view.ShowForm();

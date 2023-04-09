@@ -107,11 +107,41 @@
     <Compile Include="Design\CustomMaskedTextBoxDate.Designer.cs">
       <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectorForms\HotelAndRoomsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRoomsForm.Designer.cs">
+      <DependentUpon>HotelAndRoomsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\TourAndAdditionalTourForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\TourAndAdditionalTourForm.Designer.cs">
+      <DependentUpon>TourAndAdditionalTourForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.Designer.cs">
+      <DependentUpon>CreateNewAddTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.Designer.cs">
+      <DependentUpon>ShowAddTour.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.Designer.cs">
       <DependentUpon>CreateNewTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewTour.Designer.cs">
+      <DependentUpon>CreateNewTour.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectorForms\TransportAndTransfer\EditTransfer.cs">
       <SubType>Form</SubType>
@@ -195,6 +225,12 @@
     <Compile Include="DirectorForms\TransportAndTransfer\ShowTransfers.Designer.cs">
       <DependentUpon>ShowTransfers.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowTours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowTours.Designer.cs">
+      <DependentUpon>ShowTours.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectorForms\TransportAndTransfer\ShowTransports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +250,10 @@
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelCreateUser.cs" />
+    <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelCreateNewAddTour.cs" />
+    <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelCreateNewTour.cs" />
+    <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelShowAddTours.cs" />
+    <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelShowTours.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\GetInfoAboutAvailableTransportsCities.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransfer.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransport.cs" />
@@ -231,6 +271,14 @@
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelListOfAllStaff.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelShowUsers.cs" />
     <Compile Include="Presenter\DirectorPresenter\HumanResourcesPresenters\PresenterCreateUser.cs" />
+    <Compile Include="Presenter\DirectorPresenter\PresenterHotelAndRooms.cs" />
+    <Compile Include="Presenter\DirectorPresenter\PresenterTourAndAdditionalTour.cs" />
+    <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterCreateNewAddTour.cs" />
+    <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterCreateNewTour.cs" />
+    <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowAddTours.cs" />
+    <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowTours.cs" />
+    <Compile Include="Views\DirectorViews\IViewHotel.cs" />
+    <Compile Include="Views\DirectorViews\IViewTourAndAdditionalTour.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateNewTransport.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateTransfer.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterEditTransfer.cs" />
@@ -267,6 +315,10 @@
     </Compile>
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewEditEmployee.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewCreateUsers.cs" />
+    <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewCreateNewAddTour.cs" />
+    <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewCreateNewTour.cs" />
+    <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewShowAddTours .cs" />
+    <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewShowTours.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateNewTransport.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateTransfer.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewEditTransfer.cs" />
@@ -288,8 +340,23 @@
     <EmbeddedResource Include="Design\CustomMaskedTextBoxDate.resx">
       <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRoomsForm.resx">
+      <DependentUpon>HotelAndRoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\TourAndAdditionalTourForm.resx">
+      <DependentUpon>TourAndAdditionalTourForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.resx">
+      <DependentUpon>CreateNewAddTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.resx">
+      <DependentUpon>ShowAddTour.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.resx">
       <DependentUpon>CreateNewTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\CreateNewTour.resx">
+      <DependentUpon>CreateNewTour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\TransportAndTransfer\EditTransfer.resx">
       <DependentUpon>EditTransfer.cs</DependentUpon>
@@ -323,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\TransportAndTransfer\ShowTransfers.resx">
       <DependentUpon>ShowTransfers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\ShowTours.resx">
+      <DependentUpon>ShowTours.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\TransportAndTransfer\ShowTransports.resx">
       <DependentUpon>ShowTransports.cs</DependentUpon>
@@ -388,5 +458,6 @@
     <None Include="Properties\add-user.png" />
     <None Include="img\DirectorForms\edit.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

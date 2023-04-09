@@ -22,7 +22,9 @@ namespace TravelAgency
             menu.Add(allTransportsL);
             menu.Add(editTransportL);
             menu.Add(newTransportL);
-
+            menu.Add(editTransferL);
+            menu.Add(addTransferL);
+            menu.Add(showEmployeeL);
 
         }
         #region --- Interface ---

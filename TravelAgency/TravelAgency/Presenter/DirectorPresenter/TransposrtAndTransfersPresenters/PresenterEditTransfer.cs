@@ -41,6 +41,16 @@ namespace TravelAgency.Presenter.DirectorPresenter.TransposrtAndTransfersPresent
             model.GetInfo();
             view.ShowForm(model.AvailableTransport, model.AvailableDepartureCity, model.AvailableCityToVisit);
         }
+        public void Show(int ID)
+        {
+            model.GetInfo();
+            view.ResultOfSearching = model.GetInfoFormA(ID);
+
+            view.IsFromTable = true;
+            view.ID = ID;
+            view.ShowInfoFromTable(model.InfoTable, ID);
+            view.ShowForm(model.AvailableTransport, model.AvailableDepartureCity, model.AvailableCityToVisit);
+        }
         public void Close()
         {
             view.CloseForm();

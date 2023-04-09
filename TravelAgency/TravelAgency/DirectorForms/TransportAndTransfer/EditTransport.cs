@@ -210,12 +210,12 @@ namespace TravelAgency
                 if (!String.IsNullOrEmpty(nameTB.Texts) && !String.IsNullOrEmpty(ReleaseDateTB.Texts) && !String.IsNullOrEmpty(ShortInfoTB.Texts) && !String.IsNullOrEmpty(linkPhotoTB.Texts) && int.Parse(CountOfSeatsTB.Texts) > 0)
                 {
                     InfoToUpdate = infoToUpdate;
+
                     sendInfo?.Invoke(this, EventArgs.Empty);
 
-                    if (ResultOfAdding != null)
+                    if (!String.IsNullOrEmpty(ResultOfAdding))
                     {
                         addOrDeleteFacilities.Clear();
-  
                         MessageBox.Show(ResultOfAdding, "Виникла помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
@@ -297,7 +297,7 @@ namespace TravelAgency
                     }
                     else
                     {
-                        temp.Clear();
+                        
                         MakeVisibleOrInvisible(true, false);
                         checkIfIDChanged = true;
                     }

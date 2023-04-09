@@ -38,11 +38,13 @@ namespace TravelAgency
         public int ResultOfSearching { get; set; }
         public List<object> InfoFromTable { get; set; }
         public Dictionary<string, object> dataToUpdate { get => data; }
+        public bool IsFromTable { get; set; }
         
         public void CloseForm()
         {
             this.Close();
         }
+
         public void ShowForm(List<string> transport, List<string> depCity, List<string> cityToVisit)
         {
             if (transport.Count > 0)
@@ -51,15 +53,33 @@ namespace TravelAgency
             }
             fromWhereCB.Items.AddRange(depCity.Count > 0 ? depCity.ToArray() : null);
             toWhereCB.Items.AddRange(cityToVisit.Count > 0 ? cityToVisit.ToArray() : null);
-            MakeVisibleOrInvisible(false, true);
+            if (IsFromTable)
+            {
+                MakeVisibleOrInvisible(true, true);
+                
+            }
+            else
+            {
+                MakeVisibleOrInvisible(false, true);
+            }
             this.Show();
         }
-        
+        public void ShowInfoFromTable(List<object> info, int id)
+        {
+            TransferNumTB.Texts = id.ToString();
+            availableTransportsTB.Texts = info[0].ToString();
+            fromWhereCB.Texts = info[1].ToString();
+            toWhereCB.Texts = info[2].ToString();
+            CostTB.Texts = info[3].ToString();
+            MakeVisibleOrInvisible(true, false);
+            checkIfIDChanged = true;
+
+        }
         public event EventHandler SearchInfo;
         public event EventHandler UpdateInfo;
         
         #endregion
-
+        
         private void TransportNumTB__TextChanged(object sender, EventArgs e)
         {
             if (checkIfIDChanged)
@@ -68,8 +88,8 @@ namespace TravelAgency
                 if (dres == DialogResult.OK)
                 {
                     checkIfIDChanged = false;
-                    //infoToUpdate.Clear();
-                   // MakeVisibleOrInvisible(false, false);
+                    data.Clear();
+                    MakeVisibleOrInvisible(false, false);
                 }
             }
             if (String.IsNullOrEmpty(TransferNumTB.Texts) || !int.TryParse(TransferNumTB.Texts, out int result))
@@ -111,8 +131,12 @@ namespace TravelAgency
                             checkIfIDChanged = true;
                         }
                         else
-                            MessageBox.Show("Помилка", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Немає інформації про транспорт з таким номером", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Ви вже переглядаєте цей трансфер", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
@@ -156,6 +180,7 @@ namespace TravelAgency
                 if (String.IsNullOrEmpty(Error) || Error == "")
                 {
                     MessageBox.Show("Трансфер успішно створено", "Створено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    data.Clear();
                 }
                 else
                 {
@@ -165,13 +190,25 @@ namespace TravelAgency
         }
         private bool AddAndCheck()
         {
-            if (String.IsNullOrEmpty(CostTB.Texts) || double.Parse(CostTB.Texts) <= 0)
+            if (String.IsNullOrEmpty(CostTB.Texts))
             {
                 MessageBox.Show("Правильно введіть вартість", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else
             {
+                if (CostTB.Texts.Trim() == ",")
+                {
+                    
+                    MessageBox.Show("Правильно введіть вартість", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                double a = Convert.ToDouble(CostTB.Texts);
+                if (a <= 0)
+                {
+                    MessageBox.Show("Правильно введіть вартість", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
                 if (data.ContainsKey("Cost"))
                     data["Cost"] = double.Parse(CostTB.Texts);
                 else

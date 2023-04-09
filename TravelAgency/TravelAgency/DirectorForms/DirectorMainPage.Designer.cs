@@ -37,6 +37,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.line1 = new System.Windows.Forms.Label();
             this.line2 = new System.Windows.Forms.Label();
+            this.tour = new System.Windows.Forms.Label();
+            this.HotelInfo = new System.Windows.Forms.Label();
+            this.line3 = new System.Windows.Forms.Label();
+            this.line4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitBtn)).BeginInit();
             this.SuspendLayout();
@@ -117,6 +121,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(949, 792);
             this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // line1
             // 
@@ -133,10 +138,55 @@
             this.line2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.line2.BackColor = System.Drawing.Color.Transparent;
-            this.line2.Location = new System.Drawing.Point(13, 270);
+            this.line2.Location = new System.Drawing.Point(13, 274);
             this.line2.Name = "line2";
-            this.line2.Size = new System.Drawing.Size(174, 2);
+            this.line2.Size = new System.Drawing.Size(175, 2);
             this.line2.TabIndex = 10;
+            // 
+            // tour
+            // 
+            this.tour.AutoSize = true;
+            this.tour.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.tour.Font = new System.Drawing.Font("Franklin Gothic Book", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tour.ForeColor = System.Drawing.Color.White;
+            this.tour.Location = new System.Drawing.Point(12, 308);
+            this.tour.Name = "tour";
+            this.tour.Size = new System.Drawing.Size(127, 38);
+            this.tour.TabIndex = 11;
+            this.tour.Text = "Усі тури";
+            this.tour.Click += new System.EventHandler(this.tour_Click);
+            // 
+            // HotelInfo
+            // 
+            this.HotelInfo.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.HotelInfo.Font = new System.Drawing.Font("Franklin Gothic Book", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HotelInfo.ForeColor = System.Drawing.Color.White;
+            this.HotelInfo.Location = new System.Drawing.Point(12, 389);
+            this.HotelInfo.Name = "HotelInfo";
+            this.HotelInfo.Size = new System.Drawing.Size(223, 91);
+            this.HotelInfo.TabIndex = 13;
+            this.HotelInfo.Text = "Інформація по готелям";
+            this.HotelInfo.Click += new System.EventHandler(this.HotelInfo_Click);
+            // 
+            // line3
+            // 
+            this.line3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.line3.BackColor = System.Drawing.Color.Transparent;
+            this.line3.Location = new System.Drawing.Point(13, 356);
+            this.line3.Name = "line3";
+            this.line3.Size = new System.Drawing.Size(127, 2);
+            this.line3.TabIndex = 14;
+            // 
+            // line4
+            // 
+            this.line4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.line4.BackColor = System.Drawing.Color.Transparent;
+            this.line4.Location = new System.Drawing.Point(12, 490);
+            this.line4.Name = "line4";
+            this.line4.Size = new System.Drawing.Size(223, 2);
+            this.line4.TabIndex = 16;
             // 
             // DirectorMainPage
             // 
@@ -145,6 +195,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1221, 736);
             this.ControlBox = false;
+            this.Controls.Add(this.line4);
+            this.Controls.Add(this.line3);
+            this.Controls.Add(this.HotelInfo);
+            this.Controls.Add(this.tour);
             this.Controls.Add(this.line2);
             this.Controls.Add(this.line1);
             this.Controls.Add(this.panel1);
@@ -176,5 +230,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label line1;
         private System.Windows.Forms.Label line2;
+        private System.Windows.Forms.Label tour;
+        private System.Windows.Forms.Label HotelInfo;
+        private System.Windows.Forms.Label line3;
+        private System.Windows.Forms.Label line4;
     }
 }

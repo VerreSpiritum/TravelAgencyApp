@@ -17,6 +17,8 @@ namespace TravelAgency.Presenter
 
         public event EventHandler OpenHumanResourcesForm;
         public event EventHandler OpenTransportsAndTransfersForm;
+        public event EventHandler OpenTourAddTourForm;
+        public event EventHandler OpenHotelInfoForm;
         public event EventHandler CloseConnection;
 
         public PresenterDirectorMainPage(IViewDirectorMainPage view, ModelDirectorMainPage model)
@@ -26,7 +28,19 @@ namespace TravelAgency.Presenter
 
             view.OpenHumanResourcesForm += View_OpenHumanResourcesForm;
             view.OpenTransportsAndTransfersForm += View_OpenTransportsAndTransfersForm;
+            view.OpenHotelInfoForm += View_OpenHotelInfoForm;
+            view.OpenTourAddTourForm += View_OpenTourAddTourForm;
             view.CloseConnection += View_CloseConnection;
+        }
+
+        private void View_OpenTourAddTourForm(object sender, EventArgs e)
+        {
+            OpenTourAddTourForm?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void View_OpenHotelInfoForm(object sender, EventArgs e)
+        {
+            OpenHotelInfoForm?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_CloseConnection(object sender, EventArgs e)

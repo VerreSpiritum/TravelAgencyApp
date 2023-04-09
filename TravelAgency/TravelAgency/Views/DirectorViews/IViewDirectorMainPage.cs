@@ -17,5 +17,7 @@ namespace TravelAgency.Views
         event EventHandler OpenHumanResourcesForm;
         event EventHandler OpenTransportsAndTransfersForm;
         event EventHandler CloseConnection;
+        event EventHandler OpenHotelInfoForm;
+        event EventHandler OpenTourAddTourForm;
     }
 }

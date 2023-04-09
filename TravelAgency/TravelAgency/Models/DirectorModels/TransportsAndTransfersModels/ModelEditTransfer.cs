@@ -56,6 +56,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         }
         public void GetInfo()
         {
+            Error = "";
             AvailableTransport = classToGetInfo.GetListOfAvailbleTransports();
             if (AvailableTransport == null)
             {

@@ -68,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(460, 405);
+            this.label2.Location = new System.Drawing.Point(695, 417);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 43);
             this.label2.TabIndex = 30;
@@ -88,7 +88,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(460, 219);
+            this.label5.Location = new System.Drawing.Point(49, 429);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(266, 43);
             this.label5.TabIndex = 51;
@@ -106,10 +106,10 @@
             this.toWhereCB.IconColor = System.Drawing.Color.Black;
             this.toWhereCB.ListBackColor = System.Drawing.Color.White;
             this.toWhereCB.ListTextColor = System.Drawing.Color.Black;
-            this.toWhereCB.Location = new System.Drawing.Point(468, 285);
+            this.toWhereCB.Location = new System.Drawing.Point(57, 495);
             this.toWhereCB.MinimumSize = new System.Drawing.Size(200, 30);
             this.toWhereCB.Name = "toWhereCB";
-            this.toWhereCB.Size = new System.Drawing.Size(269, 58);
+            this.toWhereCB.Size = new System.Drawing.Size(396, 58);
             this.toWhereCB.TabIndex = 53;
             this.toWhereCB.Texts = "";
             this.toWhereCB.OnSelectedIndexChanged += new System.EventHandler(this.toWhereCB_OnSelectedIndexChanged);
@@ -129,7 +129,7 @@
             this.fromWhereCB.Location = new System.Drawing.Point(57, 285);
             this.fromWhereCB.MinimumSize = new System.Drawing.Size(200, 30);
             this.fromWhereCB.Name = "fromWhereCB";
-            this.fromWhereCB.Size = new System.Drawing.Size(281, 58);
+            this.fromWhereCB.Size = new System.Drawing.Size(396, 58);
             this.fromWhereCB.TabIndex = 52;
             this.fromWhereCB.Texts = "";
             this.fromWhereCB.OnSelectedIndexChanged += new System.EventHandler(this.fromWhereCB_OnSelectedIndexChanged);
@@ -182,7 +182,7 @@
             this.CostTB.BorderSize = 1;
             this.CostTB.IsPasswordChar = false;
             this.CostTB.IsPlaceHolder = false;
-            this.CostTB.Location = new System.Drawing.Point(468, 483);
+            this.CostTB.Location = new System.Drawing.Point(703, 495);
             this.CostTB.Mask = "0000.00";
             this.CostTB.Multiline = false;
             this.CostTB.Name = "CostTB";
@@ -197,7 +197,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(49, 393);
+            this.label3.Location = new System.Drawing.Point(695, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(289, 87);
             this.label3.TabIndex = 31;
@@ -212,7 +212,7 @@
             this.CountOfSeatsTB.Enabled = false;
             this.CountOfSeatsTB.IsPasswordChar = false;
             this.CountOfSeatsTB.IsPlaceHolder = false;
-            this.CountOfSeatsTB.Location = new System.Drawing.Point(57, 483);
+            this.CountOfSeatsTB.Location = new System.Drawing.Point(703, 285);
             this.CountOfSeatsTB.Mask = "00";
             this.CountOfSeatsTB.Multiline = false;
             this.CountOfSeatsTB.Name = "CountOfSeatsTB";

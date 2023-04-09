@@ -10,6 +10,9 @@ using Npgsql;
 using System.Windows.Forms;
 using TravelAgency.Presenter.DirectorPresenter.TransposrtAndTransfersPresenters;
 using TravelAgency.Models.DirectorModels.TransportsAndTransfersModels;
+using TravelAgency.Presenter.DirectorPresenter;
+using TravelAgency.Presenter.DirectorPresenter.ToursAndAdditionalTours;
+using TravelAgency.Models.DirectorModels.ToursAndAdditionalTours;
 
 namespace TravelAgency.Controllers
 {
@@ -30,7 +33,13 @@ namespace TravelAgency.Controllers
         private PresenterEditTransport EditTransportPresenter;
         private PresenterShowTransfers ShowTransfersPresenter;
         private PresenterCreateTransfer CreateTransfersPresenter;
-        private PresenterEditTransfer editTransferPresenter;
+        private PresenterEditTransfer _PresenterEditTransfer;
+        private PresenterTourAndAdditionalTour _PresenterTourAndAdditionalTour;
+        private PresenterHotelAndRooms _PresenterHotelAndRooms;
+        private PresenterShowTours _PresenterShowTours;
+        private PresenterShowAddTours _PresenterShowAddTours;
+        private PresenterCreateNewTour _PresenterCreateNewTour;
+        private PresenterCreateNewAddTour _PresenterCreateNewAddTour;
 
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
@@ -49,6 +58,11 @@ namespace TravelAgency.Controllers
         ModelShowTransfers ShowTransfersModel;
         ModelCreateNewTransfer CreateNewTransferModel;
         ModelEditTransfer EditTransferModel;
+        ModelShowTours _ModelShowTours;
+        ModelShowAddTours _ModelShowAddTours;
+        ModelCreateNewTour _ModelCreateNewTour;
+        ModelCreateNewAddTour _ModelCreateNewAddTour;
+
 
         private HumanResourcesForm humanResources = new HumanResourcesForm();
         private CreateNewStaff createNewStaffForm = new CreateNewStaff();
@@ -64,8 +78,12 @@ namespace TravelAgency.Controllers
         private ShowTransfers ShowTransfersForm;
         private CreateNewTransfer CreateNewTransferForm;
         private EditTransfer EditTransferForm;
-
-        private bool checkOpenPackageServices = false;
+        private TourAndAdditionalTourForm tourAndAdditionalTourForm;
+        private HotelAndRoomsForm hotelAndRoomsForm;
+        private ShowTours showAllTourForm;
+        private ShowAddTour showAllAddTourForm;
+        private CreateNewTour createNewTour;
+        private CreateNewAddTour createNewAddTour;
 
 
         private List<Form> OpenedForms = new List<Form>();
@@ -83,6 +101,8 @@ namespace TravelAgency.Controllers
 
             directorMainForm.OpenHumanResourcesForm += DirectorMainForm_OpenHumanResourcesForm;
             directorMainForm.OpenTransportsAndTransfersForm += DirectorMainForm_TransportsAndTransfers;
+            directorMainForm.OpenTourAddTourForm += DirectorMainForm_OpenTourAddTourForm;
+            directorMainForm.OpenHotelInfoForm += DirectorMainForm_OpenHotelInfoForm;
 
             humanResourcesForm.OpenFormToCreateNewStaff += HumanResourcesForm_OpenFormToCreateNewStaff;
             humanResourcesForm.OpenFormToEditEmployee += HumanResourcesForm_OpenFormToEditEmployee;
@@ -90,10 +110,9 @@ namespace TravelAgency.Controllers
             humanResourcesForm.OpenFormToShowAllStaff += HumanResourcesForm_OpenFormToShowAllStaff;   
         }
 
-
         #region --- Director ---
-        
-        
+
+
         private void ChangeMenu(string name)
         {
             humanResources.ChangeStyle(name);
@@ -104,10 +123,6 @@ namespace TravelAgency.Controllers
             NpgsqlConnection connection = authorizationForm.getConnection();
             return connection;
         }        
-
-        #region --- Opened from Transports and Transfers Form ---
-
-        #endregion
 
         #region --- Human Resources Form ---
         private void HumanResourcesForm_OpenFormToShowUsers(object sender, EventArgs e)
@@ -381,7 +396,7 @@ namespace TravelAgency.Controllers
             }
             else if(OpenedForms.Contains(EditTransferForm))
             {
-                editTransferPresenter.Close();
+                _PresenterEditTransfer.Close();
                 OpenedForms.Remove(EditTransferForm);
             }
         }
@@ -415,13 +430,67 @@ namespace TravelAgency.Controllers
             }
             else if (OpenedForms.Contains(EditTransferForm) && senderCheck != EditTransferForm)
             {
-                editTransferPresenter.Close();
+                _PresenterEditTransfer.Close();
                 OpenedForms.Remove(EditTransferForm);
             }
         }
-        #endregion
 
+        //Tour and Additional tour forms
+        private void CloseOpenedFormInTourAndAdditionalTour()
+        {
+            if(OpenedForms.Contains(showAllTourForm))
+            {
+                _PresenterShowTours.Close();
+                OpenedForms.Remove(showAllTourForm);
+            }
+            else if(OpenedForms.Contains(showAllAddTourForm))
+            {
+                _PresenterShowAddTours.Close();
+                OpenedForms.Remove(showAllAddTourForm);
+            }
+            else if(OpenedForms.Contains(createNewTour))
+            {
+                _PresenterCreateNewTour.Close();
+                OpenedForms.Remove(createNewTour);
+            }
+            else if (OpenedForms.Contains(createNewAddTour))
+            {
+                _PresenterCreateNewAddTour.Close();
+                OpenedForms.Remove(createNewAddTour);
+            }
+        }
+        private void CloseOpenedFormInTourAndAdditionalTour(Form senderCheck)
+        {
+            if (OpenedForms.Contains(showAllTourForm) && senderCheck == showAllTourForm)
+            {
+                _PresenterShowTours.Close();
+                OpenedForms.Remove(showAllTourForm);
+            }
+            else if (OpenedForms.Contains(showAllAddTourForm) && senderCheck == showAllAddTourForm)
+            {
+                _PresenterShowAddTours.Close();
+                OpenedForms.Remove(showAllAddTourForm);
+            }
+            else if (OpenedForms.Contains(createNewTour) && senderCheck == createNewTour)
+            {
+                _PresenterCreateNewTour.Close();
+                OpenedForms.Remove(createNewTour);
+            }
+            else if (OpenedForms.Contains(createNewAddTour) && senderCheck == createNewAddTour)
+            {
+                _PresenterCreateNewAddTour.Close();
+                OpenedForms.Remove(createNewAddTour);
+            }
+        }
+
+        //Hotel and rooms
+        private void CloseOpenedFormInHotelAndRoomsTour()
+        { }
+        private void CloseOpenedFormInHotelAndRoomsTour(Form senderCheck)
+        { }
+        #endregion
         #region --- Transport and Transfers ---
+
         private void TransportAndTransfers_OpenFormShowTransports(object sender, EventArgs e)
         {
             if (!OpenedForms.Contains(ShowTransportsForm))
@@ -495,30 +564,43 @@ namespace TravelAgency.Controllers
                 OpenedForms.Add(CreateNewTransferForm);
             }
         }
+        
         private void Presenter_OpenFormEditTransfers(object sender, EventArgs e)
         {
-            CloseOpenedFormInTransportsForm(EditTransferForm);
-            EditTransferForm = new EditTransfer();
-            EditTransferModel = new ModelEditTransfer(GetConnection());
-            editTransferPresenter = new PresenterEditTransfer(EditTransferForm, EditTransferModel);
-            CreateNewTransferForm = new CreateNewTransfer();
-            CreateNewTransferModel = new ModelCreateNewTransfer(GetConnection());
-            CreateTransfersPresenter = new PresenterCreateTransfer(CreateNewTransferModel, CreateNewTransferForm);
-            transportAndTransferPresenter.AddOnPanelForm(EditTransferForm);
-            editTransferPresenter.Show();
-            //ListOfAllShowTransfersEvent(ShowTransfersPresenter);
-            OpenedForms.Add(EditTransferForm);
+            if (!OpenedForms.Contains(EditTransferForm))
+            {
+                CloseOpenedFormInTransportsForm(EditTransferForm);
+                EditTransferForm = new EditTransfer();
+                EditTransferModel = new ModelEditTransfer(GetConnection());
+                _PresenterEditTransfer = new PresenterEditTransfer(EditTransferForm, EditTransferModel);
+                CreateNewTransferForm = new CreateNewTransfer();
+                CreateNewTransferModel = new ModelCreateNewTransfer(GetConnection());
+                CreateTransfersPresenter = new PresenterCreateTransfer(CreateNewTransferModel, CreateNewTransferForm);
+                transportAndTransferPresenter.AddOnPanelForm(EditTransferForm);
+                _PresenterEditTransfer.Show();
+                //ListOfAllShowTransfersEvent(ShowTransfersPresenter);
+                OpenedForms.Add(EditTransferForm);
+            }
         }
         private void ListOfAllShowTransfersEvent(PresenterShowTransfers presenter)
         {
             presenter.EditTransfer += ListOfAllShowTransfersEvent_EditTransfer;
         }
-
         private void ListOfAllShowTransfersEvent_EditTransfer(object sender, EventArgs e)
         {
-            
+            if (!OpenedForms.Contains(EditTransferForm))
+            {
+                CloseOpenedFormInTransportsForm(EditTransferForm);
+                EditTransferForm = new EditTransfer();
+                EditTransferModel = new ModelEditTransfer(GetConnection());
+                _PresenterEditTransfer = new PresenterEditTransfer(EditTransferForm, EditTransferModel);
+                transportAndTransferPresenter.ChangeStyle("Редагувати трансфер");
+                transportAndTransferPresenter.AddOnPanelForm(EditTransferForm);
+                _PresenterEditTransfer.Show(ShowTransfersPresenter.ID);
+                //ListOfAllShowTransfersEvent(ShowTransfersPresenter);
+                OpenedForms.Add(EditTransferForm);
+            }
         }
-
         private void ListOfAllCreateNewTransportEvent(PresenterCreateNewTransport presenter)
         {
 
@@ -542,44 +624,90 @@ namespace TravelAgency.Controllers
             OpenedForms.Add(EditTransportForm);
         }
 
-        
+        #endregion
+        #region --- Tours and Additional tours ---
+        private void Presenter_ShowAllTours(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(showAllTourForm))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                showAllTourForm = new ShowTours();
+                _ModelShowTours = new ModelShowTours(GetConnection());
+                _PresenterShowTours = new PresenterShowTours(showAllTourForm, _ModelShowTours);
+                _PresenterTourAndAdditionalTour.AddOnPanel(showAllTourForm);
+
+                _PresenterShowTours.Show();
+                OpenedForms.Add(showAllTourForm);
+            }
+        }
+        private void Presenter_ShowAllAddTours(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showAllAddTourForm))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                showAllAddTourForm = new ShowAddTour();
+                _ModelShowAddTours = new ModelShowAddTours(GetConnection());
+                _PresenterShowAddTours = new PresenterShowAddTours(showAllAddTourForm, _ModelShowAddTours);
+                _PresenterTourAndAdditionalTour.AddOnPanel(showAllAddTourForm);
+
+                _PresenterShowAddTours.Show();
+                OpenedForms.Add(showAllAddTourForm);
+            }
+        }
+        private void Presenter_CreateTour(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(createNewTour))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                createNewTour = new CreateNewTour();
+                _ModelCreateNewTour = new ModelCreateNewTour(GetConnection());
+                _PresenterCreateNewTour = new PresenterCreateNewTour(createNewTour, _ModelCreateNewTour);
+
+                _PresenterTourAndAdditionalTour.AddOnPanel(createNewTour);
+
+                _PresenterCreateNewTour.Show();
+
+                OpenedForms.Add(createNewTour);
+            }
+        }
+        private void Presenter_CreateAddTour(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(createNewAddTour))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                createNewAddTour = new CreateNewAddTour();
+                _ModelCreateNewAddTour = new ModelCreateNewAddTour(GetConnection());
+                _PresenterCreateNewAddTour = new PresenterCreateNewAddTour(createNewAddTour, _ModelCreateNewAddTour);
+
+                _PresenterTourAndAdditionalTour.AddOnPanel(createNewAddTour);
+
+                _PresenterCreateNewAddTour.Show();
+
+                OpenedForms.Add(createNewAddTour);
+            }
+        }
         #endregion
 
         #region --- Opened from Main menu ---
 
         private void DirectorMainForm_OpenHumanResourcesForm(object sender, EventArgs e)
         {
-            if(OpenedForms.Contains(transferAndTransportsForm))
-            {
-                CloseOpenedFormInTransportsForm();
-                transportAndTransferPresenter.Close();
-                OpenedForms.Remove(transferAndTransportsForm);
-            }
             if (!OpenedForms.Contains(humanResources))
             {
+                CloseOpenedFormsFromMainMenu();
                 humanResources.OpenWindow();
                 humanResourcesForm.Show();
 
                 OpenListOfAllStaff();
-
                 OpenedForms.Add(humanResources);
-                checkOpenPackageServices = false;
             }
+            
         }
-        
         private void DirectorMainForm_TransportsAndTransfers(object sender, EventArgs e)
         {
-            if (OpenedForms.Contains(humanResources))
-            {
-                CloseOpenedFormInResourcesForm();
-                humanResourcesForm.Close();
-                OpenedForms.Remove(humanResources);
-            }
             if (!OpenedForms.Contains(transferAndTransportsForm))
             {
-                CloseOpenedFormInResourcesForm();
-                humanResourcesForm.Close();
-                OpenedForms.Remove(humanResources);
+                CloseOpenedFormsFromMainMenu();
 
                 transferAndTransportsForm = new TransferAndTransportsForm();
                 ModelTransportAndTransfers = new ModelTransportAndTransfersForm();
@@ -589,19 +717,19 @@ namespace TravelAgency.Controllers
                 directorMainForm.AddOnPanel(transferAndTransportsForm);
                 transportAndTransferPresenter.Show();
 
-                CloseOpenedFormInResourcesForm(ShowTransportsForm);
                 ShowTransportsForm = new ShowTransports();
                 ModelShowTransports = new ModelShowTransports(GetConnection());
                 showTransportsPresenter = new PresenterShowTransport(ShowTransportsForm, ModelShowTransports);
+                
                 transportAndTransferPresenter.AddOnPanelForm(ShowTransportsForm);
                 showTransportsPresenter.Show();
                 ListOfAllShowTransportsEvent(showTransportsPresenter);
 
                 OpenedForms.Add(ShowTransportsForm);
-
                 OpenedForms.Add(transferAndTransportsForm);
             }
         }
+        
         private void ListOfAllTransportsAndTransfersEvent(PresenterTransportsAndTransfers presenter)
         {
             presenter.OpenFormShowTransports += TransportAndTransfers_OpenFormShowTransports;
@@ -611,11 +739,86 @@ namespace TravelAgency.Controllers
             presenter.OpenFormCreateNewTransfers += TransportAndTransfers_OpenFormCreateNewTransfers;
             presenter.OpenFormEditTransfers += Presenter_OpenFormEditTransfers;
         }
+        private void ListOfAllTourAndAdditionalTourEvent(PresenterTourAndAdditionalTour presenter)
+        {
+            presenter.ShowAllTours += Presenter_ShowAllTours;
+            presenter.ShowAllAddTours += Presenter_ShowAllAddTours;
+            presenter.CreateTour += Presenter_CreateTour;
+            presenter.CreateAddTour += Presenter_CreateAddTour;
+        }
 
-       
+        
 
+        private void ListOfAllHotelEvent(PresenterHotelAndRooms presenter)
+        { }
 
+        private void CloseOpenedFormsFromMainMenu()
+        {
+            if (OpenedForms.Contains(transferAndTransportsForm))
+            {
+                CloseOpenedFormInTransportsForm();
+                transportAndTransferPresenter.Close();
+                OpenedForms.Remove(transferAndTransportsForm);
+            }
+            if (OpenedForms.Contains(humanResources))
+            {
+                CloseOpenedFormInResourcesForm();
+                humanResourcesForm.Close();
+                OpenedForms.Remove(humanResources);
+            }
+            if(OpenedForms.Contains(tourAndAdditionalTourForm))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                _PresenterTourAndAdditionalTour.Close();
+                OpenedForms.Remove(tourAndAdditionalTourForm);
+            }
+            if (OpenedForms.Contains(hotelAndRoomsForm))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                _PresenterHotelAndRooms.Close();
+                OpenedForms.Remove(hotelAndRoomsForm);
+            }
+        }
+        
+        private void DirectorMainForm_OpenHotelInfoForm(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(hotelAndRoomsForm))
+            {
+                CloseOpenedFormsFromMainMenu();
 
+                hotelAndRoomsForm = new HotelAndRoomsForm();
+                _PresenterHotelAndRooms = new PresenterHotelAndRooms(hotelAndRoomsForm);
+                ListOfAllHotelEvent(_PresenterHotelAndRooms);
+                directorMainForm.AddOnPanel(hotelAndRoomsForm);
+                _PresenterHotelAndRooms.Show();
+
+                OpenedForms.Add(hotelAndRoomsForm);
+            }
+        }
+        private void DirectorMainForm_OpenTourAddTourForm(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(tourAndAdditionalTourForm))
+            {
+                CloseOpenedFormsFromMainMenu();
+
+                tourAndAdditionalTourForm = new TourAndAdditionalTourForm();
+                _PresenterTourAndAdditionalTour = new PresenterTourAndAdditionalTour(tourAndAdditionalTourForm);
+                ListOfAllTourAndAdditionalTourEvent(_PresenterTourAndAdditionalTour);
+
+                directorMainForm.AddOnPanel(tourAndAdditionalTourForm);
+
+                showAllTourForm = new ShowTours();
+                _ModelShowTours = new ModelShowTours(GetConnection());
+                _PresenterShowTours = new PresenterShowTours(showAllTourForm, _ModelShowTours);
+                _PresenterTourAndAdditionalTour.AddOnPanel(showAllTourForm);
+
+                _PresenterTourAndAdditionalTour.Show();
+                _PresenterShowTours.Show();
+
+                OpenedForms.Add(showAllTourForm);
+                OpenedForms.Add(tourAndAdditionalTourForm);
+            }
+        }
         #endregion
 
         #endregion

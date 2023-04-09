@@ -112,7 +112,7 @@
             this.toWhereCB.BorderSize = 0;
             this.toWhereCB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.toWhereCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.toWhereCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.toWhereCB.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toWhereCB.ForeColor = System.Drawing.Color.Black;
             this.toWhereCB.IconColor = System.Drawing.Color.Black;
             this.toWhereCB.ListBackColor = System.Drawing.Color.White;
@@ -131,7 +131,7 @@
             this.fromWhereCB.BorderSize = 0;
             this.fromWhereCB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fromWhereCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.fromWhereCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.fromWhereCB.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fromWhereCB.ForeColor = System.Drawing.Color.Black;
             this.fromWhereCB.IconColor = System.Drawing.Color.Black;
             this.fromWhereCB.ListBackColor = System.Drawing.Color.White;
@@ -150,7 +150,7 @@
             this.availableTransportsTB.BorderSize = 0;
             this.availableTransportsTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.availableTransportsTB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.availableTransportsTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.availableTransportsTB.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.availableTransportsTB.ForeColor = System.Drawing.Color.Black;
             this.availableTransportsTB.IconColor = System.Drawing.Color.Black;
             this.availableTransportsTB.ListBackColor = System.Drawing.Color.White;
@@ -211,7 +211,7 @@
             this.TransferNumTB.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TransferNumTB.IsPasswordChar = false;
             this.TransferNumTB.IsPlaceHolder = false;
-            this.TransferNumTB.Location = new System.Drawing.Point(57, 104);
+            this.TransferNumTB.Location = new System.Drawing.Point(57, 118);
             this.TransferNumTB.Multiline = false;
             this.TransferNumTB.Name = "TransferNumTB";
             this.TransferNumTB.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -246,6 +246,7 @@
             // 
             // EditTransfer
             // 
+            this.AcceptButton = this.searchTransportB;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

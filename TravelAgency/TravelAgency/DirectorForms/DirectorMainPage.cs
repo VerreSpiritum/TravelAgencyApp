@@ -21,17 +21,26 @@ namespace TravelAgency
             exitBtn.Parent = MenuPB;
             agentL.Parent = MenuPB;
             service_package.Parent = MenuPB;
+            tour.Parent = MenuPB;
+            HotelInfo.Parent = MenuPB;
+
             line1.Parent = MenuPB;
             line2.Parent = MenuPB;
+            line3.Parent = MenuPB;
+            line4.Parent = MenuPB;
 
             line1.BackColor = Color.White;
             exitBtn.BackColor = Color.Transparent;
             agentL.BackColor = Color.Transparent;
             service_package.BackColor = Color.Transparent;
+            tour.BackColor = Color.Transparent;
+            HotelInfo.BackColor = Color.Transparent;
         }
        
         public event EventHandler OpenHumanResourcesForm;
         public event EventHandler OpenTransportsAndTransfersForm;
+        public event EventHandler OpenTourAddTourForm;
+        public event EventHandler OpenHotelInfoForm;
         public event EventHandler CloseConnection;
 
         public void ShowForm()
@@ -49,7 +58,7 @@ namespace TravelAgency
         private async void agentL_Click(object sender, EventArgs e)
         {
             line1.BackColor = Color.White;
-            line2.BackColor = Color.Transparent;
+            line2.BackColor = line3.BackColor = line4.BackColor = Color.Transparent;
             await Task.Delay(1000);
 
             OpenHumanResourcesForm?.Invoke(this, EventArgs.Empty);
@@ -64,8 +73,8 @@ namespace TravelAgency
 
         private async void service_package_Click(object sender, EventArgs e)
         {
-            line1.BackColor = Color.Transparent;
             line2.BackColor = Color.White;
+            line1.BackColor = line3.BackColor = line4.BackColor = Color.Transparent;
             await Task.Delay(1000);
 
             OpenTransportsAndTransfersForm?.Invoke(this, EventArgs.Empty);
@@ -78,6 +87,27 @@ namespace TravelAgency
         private void MenuPB_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tour_Click(object sender, EventArgs e)
+        {
+            line3.BackColor = Color.White;
+            line1.BackColor = line2.BackColor = line4.BackColor = Color.Transparent;
+            
+            OpenTourAddTourForm?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void HotelInfo_Click(object sender, EventArgs e)
+        {
+            line4.BackColor = Color.White;
+            line1.BackColor = line3.BackColor = line2.BackColor = Color.Transparent;
+            
+            OpenHotelInfoForm?.Invoke(this, EventArgs.Empty);
         }
     }
 }

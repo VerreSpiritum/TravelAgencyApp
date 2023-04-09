@@ -103,10 +103,10 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         public int UpdateInfo(Dictionary<string, object> info, Dictionary<string, bool> Facilities, int ID)
         {
             int resOfWorking = 1;
-            
+            Error = null;
             foreach(string key in info.Keys)
             {
-                string queryTransport = $"UPDATE transport SET " + CreateQueryWithInfo(info, key) + $"WHERE id_transport = {ID}";
+                string queryTransport = $"UPDATE transport SET " + CreateQueryWithInfo(info, key) + $" WHERE id_transport = {ID}";
                 using (NpgsqlCommand cmd = new NpgsqlCommand(queryTransport, connection))
                 {
                     try

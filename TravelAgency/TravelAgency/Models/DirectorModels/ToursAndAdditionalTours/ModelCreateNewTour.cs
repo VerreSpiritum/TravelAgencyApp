@@ -13,13 +13,13 @@ namespace TravelAgency.Models.DirectorModels.ToursAndAdditionalTours
     internal class ModelCreateNewTour
     {
         private NpgsqlConnection connection;
-        private GetInfoAboutAvailableTransportsCities cities;
+        private GetInfoAbout cities;
         public string Error { get; set; }
 
         public ModelCreateNewTour(NpgsqlConnection connection)
         {
             this.connection = connection;
-            cities = new GetInfoAboutAvailableTransportsCities(connection);
+            cities = new GetInfoAbout(connection);
         }
 
         public List<string> GetCity(bool IsDepCity)

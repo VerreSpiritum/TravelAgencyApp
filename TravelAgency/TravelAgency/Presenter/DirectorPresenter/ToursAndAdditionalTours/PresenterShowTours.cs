@@ -10,8 +10,12 @@ namespace TravelAgency.Presenter.DirectorPresenter.ToursAndAdditionalTours
 {
     internal class PresenterShowTours
     {
-        IViewShowTours view;
-        ModelShowTours model;
+        private IViewShowTours view;
+        private ModelShowTours model;
+        private int id;
+
+        public event EventHandler EditTour;
+        public int ID { get => id; }
 
         public PresenterShowTours(IViewShowTours view, ModelShowTours model)
         {
@@ -19,6 +23,13 @@ namespace TravelAgency.Presenter.DirectorPresenter.ToursAndAdditionalTours
             this.model = model;
 
             view.DeleteTour += View_DeleteTour;
+            view.EditTour += View_EditTour;
+        }
+
+        private void View_EditTour(object sender, EventArgs e)
+        {
+            id = view.ID;
+            EditTour?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_DeleteTour(object sender, EventArgs e)

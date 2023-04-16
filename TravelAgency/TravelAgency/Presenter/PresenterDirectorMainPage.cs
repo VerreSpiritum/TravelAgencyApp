@@ -20,6 +20,8 @@ namespace TravelAgency.Presenter
         public event EventHandler OpenTourAddTourForm;
         public event EventHandler OpenHotelInfoForm;
         public event EventHandler CloseConnection;
+        public event EventHandler OpenBookerForm;
+        public event EventHandler OpenRatingsFrom;
 
         public PresenterDirectorMainPage(IViewDirectorMainPage view, ModelDirectorMainPage model)
         {
@@ -31,6 +33,18 @@ namespace TravelAgency.Presenter
             view.OpenHotelInfoForm += View_OpenHotelInfoForm;
             view.OpenTourAddTourForm += View_OpenTourAddTourForm;
             view.CloseConnection += View_CloseConnection;
+            view.BookerForm += View_BookerForm;
+            view.RatingsForm += View_RatingsForm;
+        }
+
+        private void View_RatingsForm(object sender, EventArgs e)
+        {
+            OpenRatingsFrom?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void View_BookerForm(object sender, EventArgs e)
+        {
+            OpenBookerForm?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_OpenTourAddTourForm(object sender, EventArgs e)

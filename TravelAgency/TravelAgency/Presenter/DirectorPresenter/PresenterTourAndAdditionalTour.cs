@@ -25,7 +25,18 @@ namespace TravelAgency.Presenter.DirectorPresenter
             view.ShowAllAddTours += View_ShowAllAddTours;
             view.CreateTour += View_CreateTour;
             view.CreateAddTour += View_CreateAddTour;
-            
+            view.EditTour += View_EditTour;
+            view.EditAddTour += View_EditAddTour;
+        }
+
+        private void View_EditAddTour(object sender, EventArgs e)
+        {
+            EditAddTour?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void View_EditTour(object sender, EventArgs e)
+        {
+            EditTour?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_CreateAddTour(object sender, EventArgs e)

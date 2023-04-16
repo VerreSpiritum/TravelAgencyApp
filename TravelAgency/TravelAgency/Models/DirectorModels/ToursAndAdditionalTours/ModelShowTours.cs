@@ -20,7 +20,7 @@ namespace TravelAgency.Models.DirectorModels.ToursAndAdditionalTours
         public DataTable ShowTours()
         {
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM showToursForDirector";
+            string query = "SELECT * FROM showTours";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 try

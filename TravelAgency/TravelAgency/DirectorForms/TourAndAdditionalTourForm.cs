@@ -24,6 +24,9 @@ namespace TravelAgency
             menu.Add(allTourL);
             menu.Add(editTourL);
             menu.Add(newTourL);
+            menu.Add(editAddTourL);
+            menu.Add(allAddTourL);
+            menu.Add(createAddTourL);
 
 
         }

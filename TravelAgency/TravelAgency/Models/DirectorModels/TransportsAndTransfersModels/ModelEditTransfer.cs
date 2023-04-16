@@ -9,7 +9,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
 {
     internal class ModelEditTransfer
     {
-        private GetInfoAboutAvailableTransportsCities classToGetInfo;
+        private GetInfoAbout classToGetInfo;
         private NpgsqlConnection connection;
         private List<object> list = new List<object>();
 
@@ -23,7 +23,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         public ModelEditTransfer(NpgsqlConnection connection)
         {
             this.connection = connection;
-            classToGetInfo = new GetInfoAboutAvailableTransportsCities(connection);
+            classToGetInfo = new GetInfoAbout(connection);
         }
         public int GetInfoFormA(int ID)
         {

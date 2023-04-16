@@ -10,7 +10,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
 {
     internal class ModelCreateNewTransfer
     {
-        private GetInfoAboutAvailableTransportsCities classToGetInfo;
+        private GetInfoAbout classToGetInfo;
         private NpgsqlConnection connection;
         private List<string> infoToShow;
 
@@ -24,7 +24,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         public ModelCreateNewTransfer(NpgsqlConnection connection) 
         {
             this.connection = connection;
-            classToGetInfo = new GetInfoAboutAvailableTransportsCities(connection);   
+            classToGetInfo = new GetInfoAbout(connection);   
         }
         public int FindCountOfSeats(string transportName)
         {

@@ -13,6 +13,9 @@ using TravelAgency.Models.DirectorModels.TransportsAndTransfersModels;
 using TravelAgency.Presenter.DirectorPresenter;
 using TravelAgency.Presenter.DirectorPresenter.ToursAndAdditionalTours;
 using TravelAgency.Models.DirectorModels.ToursAndAdditionalTours;
+using TravelAgency.Models.DirectorModels.HotelsAndRooms;
+using TravelAgency.Presenter.DirectorPresenter.Booker_panel;
+using TravelAgency.Models.DirectorModels.Booker_panel;
 
 namespace TravelAgency.Controllers
 {
@@ -40,7 +43,22 @@ namespace TravelAgency.Controllers
         private PresenterShowAddTours _PresenterShowAddTours;
         private PresenterCreateNewTour _PresenterCreateNewTour;
         private PresenterCreateNewAddTour _PresenterCreateNewAddTour;
-
+        private PresenterShowHotels _PresenterShowHotels;
+        private PresenterEditTour _PresenterEditTour;
+        private PresenterEditAddTour _PresenterEditAddTour;
+        private PresenterCreateHotel _PresenterCreateHotel;
+        private PresenterEditHotel _PresenterEditHotel;
+        private PresenterShowRooms _PresenterShowRooms;
+        private PresenterCreateRoom _PresenterCreateRoom;
+        private PresenterEditRoom _PresenterEditRoom;
+        private PresenterBookerPanel _PresenterBookerPanel;
+        private PresenterAllSalaries _PresenterAllSalaries;
+        private PresenterPaymentStaytment _PresenterPaymentStatment;
+        private PresenterConcludedContract _PresenterConcludedContract;
+        private PresenterProfit _PresenterProfit;
+        private PresenterRatingsPanel _PresenterRatingsPanel;
+        private PresenterPopularityOfAgency _PresenterPopularityOfAgency;
+        private PresenterTourRating _PresenterTourRating;
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
         ModelDirectorMainPage modelDirectorMainForm = new ModelDirectorMainPage();
@@ -62,7 +80,20 @@ namespace TravelAgency.Controllers
         ModelShowAddTours _ModelShowAddTours;
         ModelCreateNewTour _ModelCreateNewTour;
         ModelCreateNewAddTour _ModelCreateNewAddTour;
-
+        ModelShowHotels _ModelShowHotels;
+        ModelEditTour _ModelEditTour;
+        ModelEditAddTour _ModelEditAddTour;
+        ModelCreateHotel _ModelCreateHotel;
+        ModelEditHotel _ModelEditHotel;
+        ModelShowRooms _ModelShowRooms;
+        ModelCreateRoom _ModelCreateRoom;
+        ModelEditRoom _ModelEditRoom;
+        ModelAllSalaries _ModelAllSalaries;
+        ModelPaymentStaytment _ModelPaymentStaytment;
+        ModelConcludedContract _ModelConcludedContract;
+        ModelProfit _ModelProfit;
+        ModelTourRating _ModelTourRating;
+        ModelPopularityOfAgency _ModelPopularityOfAgency;
 
         private HumanResourcesForm humanResources = new HumanResourcesForm();
         private CreateNewStaff createNewStaffForm = new CreateNewStaff();
@@ -84,7 +115,22 @@ namespace TravelAgency.Controllers
         private ShowAddTour showAllAddTourForm;
         private CreateNewTour createNewTour;
         private CreateNewAddTour createNewAddTour;
-
+        private ShowHotels showHotels;
+        private EditTour editTour;
+        private EditAddTour editAddTour;
+        private CreateNewHotel createNewHotel;
+        private EditHotel editHotel;
+        private ShowRooms showRooms;
+        private CreateNewRoom createNewRoom;
+        private EditRoom editRoom;
+        private BookerPanel bookerPanel;
+        private AllSalaryOfStaff allSalaries;
+        private PaymentStaytment paymentStaytment;
+        private ConcludedContracts concludedContracts;
+        private ProfitForm profitForm;
+        private RatingsPanel ratingsPanel;
+        private PopularityOfAgency popularityOfAgency;
+        private TourRating tourRating;
 
         private List<Form> OpenedForms = new List<Form>();
 
@@ -103,6 +149,8 @@ namespace TravelAgency.Controllers
             directorMainForm.OpenTransportsAndTransfersForm += DirectorMainForm_TransportsAndTransfers;
             directorMainForm.OpenTourAddTourForm += DirectorMainForm_OpenTourAddTourForm;
             directorMainForm.OpenHotelInfoForm += DirectorMainForm_OpenHotelInfoForm;
+            directorMainForm.OpenBookerForm += DirectorMainForm_OpenBookerForm;
+            directorMainForm.OpenRatingsFrom += DirectorMainForm_OpenRatingsFrom;
 
             humanResourcesForm.OpenFormToCreateNewStaff += HumanResourcesForm_OpenFormToCreateNewStaff;
             humanResourcesForm.OpenFormToEditEmployee += HumanResourcesForm_OpenFormToEditEmployee;
@@ -458,6 +506,21 @@ namespace TravelAgency.Controllers
                 _PresenterCreateNewAddTour.Close();
                 OpenedForms.Remove(createNewAddTour);
             }
+            else if (OpenedForms.Contains(showHotels))
+            {
+                _PresenterShowHotels.Close();
+                OpenedForms.Remove(showHotels);
+            }
+            else if (OpenedForms.Contains(editTour))
+            {
+                _PresenterEditTour.Close();
+                OpenedForms.Remove(editTour);
+            }
+            else if (OpenedForms.Contains(editAddTour))
+            {
+                _PresenterEditAddTour.Close();
+                OpenedForms.Remove(editAddTour);
+            }
         }
         private void CloseOpenedFormInTourAndAdditionalTour(Form senderCheck)
         {
@@ -481,13 +544,106 @@ namespace TravelAgency.Controllers
                 _PresenterCreateNewAddTour.Close();
                 OpenedForms.Remove(createNewAddTour);
             }
+            else if (OpenedForms.Contains(editTour) && senderCheck == editTour)
+            {
+                _PresenterEditTour.Close();
+                OpenedForms.Remove(editTour);
+            }
+            else if (OpenedForms.Contains(editAddTour) && senderCheck == editAddTour)
+            {
+                _PresenterEditAddTour.Close();
+                OpenedForms.Remove(editAddTour);
+            }
+
         }
 
         //Hotel and rooms
         private void CloseOpenedFormInHotelAndRoomsTour()
-        { }
+        {
+            if (OpenedForms.Contains(showHotels))
+            {
+                _PresenterShowHotels.Close();
+                OpenedForms.Remove(showHotels);
+            }
+            else if (OpenedForms.Contains(createNewHotel))
+            {
+                _PresenterCreateHotel.Close();
+                OpenedForms.Remove(createNewHotel);
+            }
+            else if (OpenedForms.Contains(editHotel))
+            {
+                _PresenterEditHotel.Close();
+                OpenedForms.Remove(editHotel);
+            }
+            else if (OpenedForms.Contains(showRooms))
+            {
+                _PresenterShowRooms.Close();
+                OpenedForms.Remove(showRooms);
+            }
+            else if (OpenedForms.Contains(createNewRoom))
+            {
+                _PresenterCreateRoom.Close();
+                OpenedForms.Remove(createNewRoom);
+            }
+            else if (OpenedForms.Contains(editRoom))
+            {
+                _PresenterEditRoom.Close();
+                OpenedForms.Remove(editRoom);
+            }
+        }
         private void CloseOpenedFormInHotelAndRoomsTour(Form senderCheck)
-        { }
+        {
+            if (OpenedForms.Contains(showHotels) && senderCheck == showHotels)
+            {
+                _PresenterShowHotels.Close();
+                OpenedForms.Remove(showHotels);
+            }
+            else if (OpenedForms.Contains(createNewHotel) && senderCheck == createNewHotel)
+            {
+                _PresenterCreateHotel.Close();
+                OpenedForms.Remove(createNewHotel);
+            }
+        }
+
+        //Boker panel
+        private void CloseOpenedFormInBookerPanel()
+        {
+            if (OpenedForms.Contains(allSalaries))
+            {
+                _PresenterAllSalaries.Close();
+                OpenedForms.Remove(allSalaries);
+            }
+            else if (OpenedForms.Contains(paymentStaytment))
+            {
+                _PresenterPaymentStatment.Close();
+                OpenedForms.Remove(paymentStaytment);
+            }
+            else if (OpenedForms.Contains(concludedContracts))
+            {
+                _PresenterConcludedContract.Close();
+                OpenedForms.Remove(concludedContracts);
+            }
+            else if(OpenedForms.Contains(profitForm))
+            {
+                _PresenterProfit.Close();
+                OpenedForms.Remove(profitForm);
+            }
+        }
+
+        //Rating
+        private void CloseOpenedInRatingsPanel()
+        {
+            if (OpenedForms.Contains(tourRating))
+            {
+                _PresenterTourRating.Close();
+                OpenedForms.Remove(tourRating);
+            }
+            else if (OpenedForms.Contains(popularityOfAgency))
+            {
+                _PresenterPopularityOfAgency.Close();
+                OpenedForms.Remove(popularityOfAgency);
+            }
+        }
         #endregion
         #region --- Transport and Transfers ---
 
@@ -634,6 +790,7 @@ namespace TravelAgency.Controllers
                 showAllTourForm = new ShowTours();
                 _ModelShowTours = new ModelShowTours(GetConnection());
                 _PresenterShowTours = new PresenterShowTours(showAllTourForm, _ModelShowTours);
+                _PresenterShowTours.EditTour += _PresenterShowTours_EditTour;
                 _PresenterTourAndAdditionalTour.AddOnPanel(showAllTourForm);
 
                 _PresenterShowTours.Show();
@@ -648,6 +805,7 @@ namespace TravelAgency.Controllers
                 showAllAddTourForm = new ShowAddTour();
                 _ModelShowAddTours = new ModelShowAddTours(GetConnection());
                 _PresenterShowAddTours = new PresenterShowAddTours(showAllAddTourForm, _ModelShowAddTours);
+                _PresenterShowAddTours.EditTour += _PresenterShowAddTours_EditTour;
                 _PresenterTourAndAdditionalTour.AddOnPanel(showAllAddTourForm);
 
                 _PresenterShowAddTours.Show();
@@ -686,8 +844,259 @@ namespace TravelAgency.Controllers
                 OpenedForms.Add(createNewAddTour);
             }
         }
-        #endregion
+        private void Presenter_EditTour(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editTour))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                editTour = new EditTour();
+                _ModelEditTour = new ModelEditTour(GetConnection());
+                _PresenterEditTour = new PresenterEditTour(editTour, _ModelEditTour);
 
+                _PresenterTourAndAdditionalTour.AddOnPanel(editTour);
+
+                _PresenterEditTour.Show();
+
+                OpenedForms.Add(editTour);
+            }
+        }
+        private void Presenter_EditAddTour(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editAddTour))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                editAddTour = new EditAddTour();
+                _ModelEditAddTour = new ModelEditAddTour(GetConnection());
+                _PresenterEditAddTour = new PresenterEditAddTour(editAddTour, _ModelEditAddTour);
+
+                _PresenterTourAndAdditionalTour.AddOnPanel(editAddTour);
+
+                _PresenterEditAddTour.Show();
+
+                OpenedForms.Add(editAddTour);
+            }
+        }
+
+        private void _PresenterShowAddTours_EditTour(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editAddTour))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                editAddTour = new EditAddTour();
+                _ModelEditAddTour = new ModelEditAddTour(GetConnection());
+                _PresenterEditAddTour = new PresenterEditAddTour(editAddTour, _ModelEditAddTour);
+
+                _PresenterTourAndAdditionalTour.ChangeStyle("Змінити додатковий тур");
+                _PresenterTourAndAdditionalTour.AddOnPanel(editAddTour);
+
+                _PresenterEditAddTour.Show(_PresenterShowAddTours.ID);
+
+                OpenedForms.Add(editAddTour);
+            }
+        }
+        private void _PresenterShowTours_EditTour(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editTour))
+            {
+                CloseOpenedFormInTourAndAdditionalTour();
+                editTour = new EditTour();
+                _ModelEditTour = new ModelEditTour(GetConnection());
+                _PresenterEditTour = new PresenterEditTour(editTour, _ModelEditTour);
+
+                _PresenterTourAndAdditionalTour.ChangeStyle("Змінити тур");
+                _PresenterTourAndAdditionalTour.AddOnPanel(editTour);
+
+                _PresenterEditTour.Show(_PresenterShowTours.ID);
+
+                OpenedForms.Add(editTour);
+            }
+        }
+        #endregion
+        #region --- Hotels and rooms ---
+        private void Presenter_ShowHotel(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showHotels))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                showHotels = new ShowHotels();
+                _ModelShowHotels = new ModelShowHotels(GetConnection());
+                _PresenterShowHotels = new PresenterShowHotels(showHotels, _ModelShowHotels);
+                _PresenterHotelAndRooms.AddOnPanel(showHotels);
+
+                _PresenterShowHotels.Show();
+
+                OpenedForms.Add(showHotels);
+            }
+        }
+        private void Presenter_CreateRoom(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(createNewRoom))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                createNewRoom = new CreateNewRoom();
+                _ModelCreateRoom = new ModelCreateRoom(GetConnection());
+                _PresenterCreateRoom = new PresenterCreateRoom(createNewRoom, _ModelCreateRoom);
+                _PresenterHotelAndRooms.AddOnPanel(createNewRoom);
+
+                _PresenterCreateRoom.Show();
+
+                OpenedForms.Add(createNewRoom);
+            }
+        }
+        private void Presenter_EditRoom(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editRoom))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                editRoom = new EditRoom();
+                _ModelEditRoom = new ModelEditRoom(GetConnection());
+                _PresenterEditRoom = new PresenterEditRoom(editRoom, _ModelEditRoom);
+               
+                _PresenterHotelAndRooms.AddOnPanel(editRoom);
+                _PresenterEditRoom.Show();
+
+                OpenedForms.Add(editRoom);
+            }
+        }
+        private void Presenter_CreateHotel(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(createNewHotel))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                createNewHotel = new CreateNewHotel();
+                _ModelCreateHotel = new ModelCreateHotel(GetConnection());
+                _PresenterCreateHotel = new PresenterCreateHotel(createNewHotel, _ModelCreateHotel);
+                _PresenterHotelAndRooms.AddOnPanel(createNewHotel);
+
+                _PresenterCreateHotel.Show();
+
+                OpenedForms.Add(createNewHotel);
+            }
+        }
+        private void Presenter_EditHotel(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(editHotel))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                editHotel = new EditHotel();
+                _ModelEditHotel = new ModelEditHotel(GetConnection());
+                _PresenterEditHotel = new PresenterEditHotel(editHotel, _ModelEditHotel);
+                _PresenterHotelAndRooms.AddOnPanel(editHotel);
+
+                _PresenterEditHotel.Show();
+
+                OpenedForms.Add(editHotel);
+            }
+        }
+        private void Presenter_ShowRoom(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showRooms))
+            {
+                CloseOpenedFormInHotelAndRoomsTour();
+                showRooms = new ShowRooms();
+                _ModelShowRooms = new ModelShowRooms(GetConnection());
+                _PresenterShowRooms = new PresenterShowRooms(showRooms, _ModelShowRooms);
+                _PresenterHotelAndRooms.AddOnPanel(showRooms);
+
+                _PresenterShowRooms.Show();
+
+                OpenedForms.Add(showRooms);
+            }
+        }
+        #endregion
+        #region --- Booker ---
+        private void Presenter_ConcludedContracts(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(concludedContracts))
+            {
+                CloseOpenedFormInBookerPanel();
+                concludedContracts = new ConcludedContracts();
+                _ModelConcludedContract = new ModelConcludedContract(GetConnection());
+                _PresenterConcludedContract = new PresenterConcludedContract(_ModelConcludedContract, concludedContracts);
+                _PresenterBookerPanel.AddOnPanel(concludedContracts);
+
+                _PresenterConcludedContract.Show();
+                OpenedForms.Add(concludedContracts);
+            }
+        }
+        private void Presenter_PaymentStaytment(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(paymentStaytment))
+            {
+                CloseOpenedFormInBookerPanel();
+                paymentStaytment = new PaymentStaytment();
+                _ModelPaymentStaytment = new ModelPaymentStaytment(GetConnection());
+                _PresenterPaymentStatment = new PresenterPaymentStaytment(_ModelPaymentStaytment, paymentStaytment);
+                _PresenterBookerPanel.AddOnPanel(paymentStaytment);
+
+                _PresenterPaymentStatment.Show();
+                OpenedForms.Add(paymentStaytment);
+            }
+        }
+        private void Presenter_AllSalaries(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(allSalaries))
+            {
+                CloseOpenedFormInBookerPanel();
+                allSalaries = new AllSalaryOfStaff();
+                _ModelAllSalaries = new ModelAllSalaries(GetConnection());
+                _PresenterAllSalaries = new PresenterAllSalaries(_ModelAllSalaries, allSalaries);
+                _PresenterBookerPanel.AddOnPanel(allSalaries);
+
+                _PresenterAllSalaries.Show();
+
+                OpenedForms.Add(allSalaries);
+            }
+        }
+        private void Presenter_ProfitOfAgency(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(profitForm))
+            {
+                CloseOpenedFormInBookerPanel();
+                profitForm = new ProfitForm();
+                _ModelProfit = new ModelProfit(GetConnection());
+                _PresenterProfit = new PresenterProfit(_ModelProfit, profitForm);
+                _PresenterBookerPanel.AddOnPanel(profitForm);
+
+                _PresenterProfit.Show();
+
+                OpenedForms.Add(profitForm);
+            }
+        }
+
+        #endregion
+        #region --- Ratings ---
+        private void Presenter_AgecyPopylarity(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(popularityOfAgency))
+            {
+                CloseOpenedInRatingsPanel();
+                popularityOfAgency = new PopularityOfAgency();
+                _ModelPopularityOfAgency = new ModelPopularityOfAgency(GetConnection());
+                _PresenterPopularityOfAgency = new PresenterPopularityOfAgency(_ModelPopularityOfAgency, popularityOfAgency);
+                _PresenterRatingsPanel.AddOnPanel(popularityOfAgency);
+
+                _PresenterPopularityOfAgency.Show();
+                OpenedForms.Add(popularityOfAgency);
+            }
+        }
+
+        private void Presenter_tourRating(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(tourRating))
+            {
+                CloseOpenedInRatingsPanel();
+                tourRating = new TourRating();
+                _ModelTourRating = new ModelTourRating(GetConnection());
+                _PresenterTourRating = new PresenterTourRating(_ModelTourRating, tourRating);
+                _PresenterRatingsPanel.AddOnPanel(tourRating);
+
+                _PresenterTourRating.Show();
+                OpenedForms.Add(tourRating);
+            }
+        }
+
+        #endregion
         #region --- Opened from Main menu ---
 
         private void DirectorMainForm_OpenHumanResourcesForm(object sender, EventArgs e)
@@ -745,12 +1154,31 @@ namespace TravelAgency.Controllers
             presenter.ShowAllAddTours += Presenter_ShowAllAddTours;
             presenter.CreateTour += Presenter_CreateTour;
             presenter.CreateAddTour += Presenter_CreateAddTour;
+            presenter.EditTour += Presenter_EditTour;
+            presenter.EditAddTour += Presenter_EditAddTour;
+        }
+        private void ListOfAllHotelEvent(PresenterHotelAndRooms presenter)
+        {
+            presenter.ShowHotel += Presenter_ShowHotel;
+            presenter.CreateHotel += Presenter_CreateHotel;
+            presenter.EditHotel += Presenter_EditHotel;
+            presenter.ShowRoom += Presenter_ShowRoom;
+            presenter.CreateRoom += Presenter_CreateRoom;
+            presenter.EditRooms += Presenter_EditRoom;
+        }
+        private void ListOfAllBokerPanelEvent(PresenterBookerPanel presenter)
+        {
+            presenter.AllSalaries += Presenter_AllSalaries;
+            presenter.ConcludedContracts += Presenter_ConcludedContracts;
+            presenter.PaymentStaytment += Presenter_PaymentStaytment;
+            presenter.ProfitOfAgency += Presenter_ProfitOfAgency;
+        }
+        private void ListOfAllRatingsPanelEvent(PresenterRatingsPanel presenter)
+        {
+            presenter.tourRating += Presenter_tourRating;
+            presenter.AgecyPopylarity += Presenter_AgecyPopylarity;
         }
 
-        
-
-        private void ListOfAllHotelEvent(PresenterHotelAndRooms presenter)
-        { }
 
         private void CloseOpenedFormsFromMainMenu()
         {
@@ -778,6 +1206,18 @@ namespace TravelAgency.Controllers
                 _PresenterHotelAndRooms.Close();
                 OpenedForms.Remove(hotelAndRoomsForm);
             }
+            if(OpenedForms.Contains(bookerPanel))
+            {
+                CloseOpenedFormInBookerPanel();
+                _PresenterBookerPanel.Close();
+                OpenedForms.Remove(bookerPanel);
+            }
+            if(OpenedForms.Contains(ratingsPanel))
+            {
+                CloseOpenedInRatingsPanel();
+                _PresenterRatingsPanel.Close();
+                OpenedForms.Remove(ratingsPanel);
+            }
         }
         
         private void DirectorMainForm_OpenHotelInfoForm(object sender, EventArgs e)
@@ -790,8 +1230,17 @@ namespace TravelAgency.Controllers
                 _PresenterHotelAndRooms = new PresenterHotelAndRooms(hotelAndRoomsForm);
                 ListOfAllHotelEvent(_PresenterHotelAndRooms);
                 directorMainForm.AddOnPanel(hotelAndRoomsForm);
+                
+                showHotels = new ShowHotels();
+                _ModelShowHotels = new ModelShowHotels(GetConnection());
+                _PresenterShowHotels = new PresenterShowHotels(showHotels, _ModelShowHotels);
+                
+                _PresenterHotelAndRooms.AddOnPanel(showHotels);
+                
                 _PresenterHotelAndRooms.Show();
+                _PresenterShowHotels.Show();
 
+                OpenedForms.Add(showHotels);
                 OpenedForms.Add(hotelAndRoomsForm);
             }
         }
@@ -810,6 +1259,7 @@ namespace TravelAgency.Controllers
                 showAllTourForm = new ShowTours();
                 _ModelShowTours = new ModelShowTours(GetConnection());
                 _PresenterShowTours = new PresenterShowTours(showAllTourForm, _ModelShowTours);
+                _PresenterShowTours.EditTour += _PresenterShowTours_EditTour;
                 _PresenterTourAndAdditionalTour.AddOnPanel(showAllTourForm);
 
                 _PresenterTourAndAdditionalTour.Show();
@@ -817,6 +1267,55 @@ namespace TravelAgency.Controllers
 
                 OpenedForms.Add(showAllTourForm);
                 OpenedForms.Add(tourAndAdditionalTourForm);
+            }
+        }
+        private void DirectorMainForm_OpenBookerForm(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(tourAndAdditionalTourForm))
+            {
+                CloseOpenedFormsFromMainMenu();
+
+                bookerPanel = new BookerPanel();
+                _PresenterBookerPanel = new PresenterBookerPanel(bookerPanel);
+                ListOfAllBokerPanelEvent(_PresenterBookerPanel);
+
+                directorMainForm.AddOnPanel(bookerPanel);
+                allSalaries = new AllSalaryOfStaff();
+                _ModelAllSalaries = new ModelAllSalaries(GetConnection());
+                _PresenterAllSalaries = new PresenterAllSalaries(_ModelAllSalaries, allSalaries);
+                _PresenterBookerPanel.AddOnPanel(allSalaries);
+
+
+                OpenedForms.Add(allSalaries);
+                OpenedForms.Add(bookerPanel);
+
+                _PresenterBookerPanel.Show();
+                _PresenterAllSalaries.Show();
+
+            }
+        }
+        private void DirectorMainForm_OpenRatingsFrom(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(ratingsPanel))
+            {
+                CloseOpenedFormsFromMainMenu();
+
+                ratingsPanel = new RatingsPanel();
+                _PresenterRatingsPanel = new PresenterRatingsPanel(ratingsPanel);
+                ListOfAllRatingsPanelEvent(_PresenterRatingsPanel);
+                directorMainForm.AddOnPanel(ratingsPanel);
+                
+                tourRating = new TourRating();
+                _ModelTourRating = new ModelTourRating(GetConnection());
+                _PresenterTourRating = new PresenterTourRating(_ModelTourRating, tourRating);
+                _PresenterRatingsPanel.AddOnPanel(tourRating);
+
+                OpenedForms.Add(ratingsPanel);
+                OpenedForms.Add(tourRating);
+
+                _PresenterRatingsPanel.Show();
+                _PresenterTourRating.Show();
+
             }
         }
         #endregion

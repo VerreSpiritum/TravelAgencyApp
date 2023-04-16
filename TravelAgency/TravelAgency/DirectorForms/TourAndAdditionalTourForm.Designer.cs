@@ -105,9 +105,9 @@
             this.editAddTourL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.editAddTourL.Location = new System.Drawing.Point(1284, 42);
             this.editAddTourL.Name = "editAddTourL";
-            this.editAddTourL.Size = new System.Drawing.Size(290, 36);
+            this.editAddTourL.Size = new System.Drawing.Size(300, 36);
             this.editAddTourL.TabIndex = 7;
-            this.editAddTourL.Text = "Додати додатковий тур";
+            this.editAddTourL.Text = "Змінити додатковий тур";
             this.editAddTourL.Click += new System.EventHandler(this.editAddTourL_Click);
             // 
             // createAddTourL

@@ -57,7 +57,7 @@
             this.newHotelL.Size = new System.Drawing.Size(182, 36);
             this.newHotelL.TabIndex = 1;
             this.newHotelL.Text = "Додати готель";
-            this.newHotelL.Click += new System.EventHandler(this.newEmployeeL_Click);
+            this.newHotelL.Click += new System.EventHandler(this.newHotelL_Click);
             // 
             // editHotelL
             // 

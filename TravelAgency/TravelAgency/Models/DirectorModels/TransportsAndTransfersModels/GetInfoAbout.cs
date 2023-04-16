@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
 {
-    internal class GetInfoAboutAvailableTransportsCities
+    internal class GetInfoAbout
     {
         private NpgsqlConnection connection;
         private string error;
 
         public string Error { get => error; }
 
-        public GetInfoAboutAvailableTransportsCities(NpgsqlConnection connection)
+        public GetInfoAbout(NpgsqlConnection connection)
         {
             this.connection = connection;
         }

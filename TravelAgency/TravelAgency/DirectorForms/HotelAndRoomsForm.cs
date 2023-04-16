@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TravelAgency.Director.DirectorView;
-using TravelAgency.Views;
+using TravelAgency.Views.DirectorViews;
 
 namespace TravelAgency
 {
@@ -23,7 +22,7 @@ namespace TravelAgency
             menu.Add(allHotelL);
             menu.Add(editHotelL);
             menu.Add(newHotelL);
-
+            menu.Add(allHotelRoomL);
 
         }
         #region --- Interface ---
@@ -36,17 +35,26 @@ namespace TravelAgency
         {
             this.Hide();
         }
-        public void OpenWindow()
-        {
-            allHotelL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            editHotelL.Font = allHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
-        }
         public void addOnPanelForm(Form form)
         {
             form.TopLevel = false;
             form.TopMost = true;
             panelToWork.Controls.Add(form);
         }
+        public event EventHandler ShowHotels;
+        public event EventHandler CreateHotel;
+        public event EventHandler EditHotel;
+        public event EventHandler ShowRoom;
+        public event EventHandler CreateRoom;
+        public event EventHandler EditRooms;
+
+
+        public void OpenWindow()
+        {
+            allHotelL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
+            editHotelL.Font = allHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+        }
+        
         public void ChangeStyle(string text)
         {
             foreach(Label control in menu)
@@ -63,13 +71,12 @@ namespace TravelAgency
         }
         #endregion
         
-        private void newEmployeeL_Click(object sender, EventArgs e)
+        private void newHotelL_Click(object sender, EventArgs e)
         {
             newHotelL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             editHotelL.Font = allHotelRoomL.Font = allHotelL.Font = newHotelRoomL.Font = editHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
-            //OpenFormCreateNewStaff?.Invoke(this, EventArgs.Empty);
-
+            CreateHotel?.Invoke(this, EventArgs.Empty);
         }
 
         private void editEmployeeL_Click(object sender, EventArgs e)
@@ -77,6 +84,7 @@ namespace TravelAgency
             editHotelL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             newHotelL.Font = allHotelRoomL.Font = allHotelL.Font = newHotelRoomL.Font = editHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
+            EditHotel?.Invoke(this, EventArgs.Empty);
             //OpenFormEditEmployee?.Invoke(this, EventArgs.Empty);
         }
 
@@ -85,6 +93,7 @@ namespace TravelAgency
             allHotelRoomL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             newHotelL.Font = editHotelL.Font = allHotelL.Font = newHotelRoomL.Font = editHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
+            ShowRoom.Invoke(this, EventArgs.Empty);
             //OpenFormToShowUsers?.Invoke(this, EventArgs.Empty);
         }
 
@@ -93,6 +102,7 @@ namespace TravelAgency
             allHotelL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             newHotelL.Font = allHotelRoomL.Font = editHotelL.Font = newHotelRoomL.Font = editHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
+            ShowHotels?.Invoke(this, EventArgs.Empty);
             //OpenFormShowStaff?.Invoke(this, EventArgs.Empty);
         }
 
@@ -100,12 +110,16 @@ namespace TravelAgency
         {
             newHotelRoomL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             newHotelL.Font = allHotelRoomL.Font = editHotelL.Font = allHotelL.Font = editHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+        
+            CreateRoom?.Invoke(this, EventArgs.Empty);
         }
 
         private void editHotelRoomL_Click(object sender, EventArgs e)
         {
             editHotelRoomL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            newHotelL.Font = allHotelRoomL.Font = editHotelL.Font = newHotelRoomL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            newHotelL.Font = allHotelRoomL.Font = editHotelL.Font = newHotelRoomL.Font= allHotelL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+
+            EditRooms?.Invoke(this, EventArgs.Empty);
         }
     }
 }

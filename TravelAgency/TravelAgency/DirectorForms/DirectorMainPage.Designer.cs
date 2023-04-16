@@ -41,6 +41,10 @@
             this.HotelInfo = new System.Windows.Forms.Label();
             this.line3 = new System.Windows.Forms.Label();
             this.line4 = new System.Windows.Forms.Label();
+            this.booker = new System.Windows.Forms.Label();
+            this.line5 = new System.Windows.Forms.Label();
+            this.ratingsL = new System.Windows.Forms.Label();
+            this.line6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitBtn)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +58,7 @@
             this.MenuPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MenuPB.Location = new System.Drawing.Point(-2, 0);
             this.MenuPB.Name = "MenuPB";
-            this.MenuPB.Size = new System.Drawing.Size(274, 739);
+            this.MenuPB.Size = new System.Drawing.Size(274, 925);
             this.MenuPB.TabIndex = 0;
             this.MenuPB.TabStop = false;
             this.MenuPB.Click += new System.EventHandler(this.MenuPB_Click);
@@ -65,7 +69,7 @@
             this.exitBtn.BackColor = System.Drawing.Color.Turquoise;
             this.exitBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exitBtn.BackgroundImage")));
             this.exitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.exitBtn.Location = new System.Drawing.Point(19, 628);
+            this.exitBtn.Location = new System.Drawing.Point(19, 814);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(79, 86);
             this.exitBtn.TabIndex = 2;
@@ -119,7 +123,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Location = new System.Drawing.Point(272, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(949, 792);
+            this.panel1.Size = new System.Drawing.Size(952, 978);
             this.panel1.TabIndex = 8;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -163,7 +167,7 @@
             this.HotelInfo.ForeColor = System.Drawing.Color.White;
             this.HotelInfo.Location = new System.Drawing.Point(12, 389);
             this.HotelInfo.Name = "HotelInfo";
-            this.HotelInfo.Size = new System.Drawing.Size(223, 91);
+            this.HotelInfo.Size = new System.Drawing.Size(223, 89);
             this.HotelInfo.TabIndex = 13;
             this.HotelInfo.Text = "Інформація по готелям";
             this.HotelInfo.Click += new System.EventHandler(this.HotelInfo_Click);
@@ -183,18 +187,66 @@
             this.line4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.line4.BackColor = System.Drawing.Color.Transparent;
-            this.line4.Location = new System.Drawing.Point(12, 490);
+            this.line4.Location = new System.Drawing.Point(12, 478);
             this.line4.Name = "line4";
             this.line4.Size = new System.Drawing.Size(223, 2);
             this.line4.TabIndex = 16;
+            // 
+            // booker
+            // 
+            this.booker.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.booker.Font = new System.Drawing.Font("Franklin Gothic Book", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.booker.ForeColor = System.Drawing.Color.White;
+            this.booker.Location = new System.Drawing.Point(12, 509);
+            this.booker.Name = "booker";
+            this.booker.Size = new System.Drawing.Size(254, 91);
+            this.booker.TabIndex = 17;
+            this.booker.Text = "Бухгалтерська панель";
+            this.booker.Click += new System.EventHandler(this.booker_Click);
+            // 
+            // line5
+            // 
+            this.line5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.line5.BackColor = System.Drawing.Color.Transparent;
+            this.line5.Location = new System.Drawing.Point(12, 600);
+            this.line5.Name = "line5";
+            this.line5.Size = new System.Drawing.Size(237, 2);
+            this.line5.TabIndex = 18;
+            // 
+            // ratingsL
+            // 
+            this.ratingsL.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.ratingsL.Font = new System.Drawing.Font("Franklin Gothic Book", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ratingsL.ForeColor = System.Drawing.Color.White;
+            this.ratingsL.Location = new System.Drawing.Point(12, 626);
+            this.ratingsL.Name = "ratingsL";
+            this.ratingsL.Size = new System.Drawing.Size(168, 47);
+            this.ratingsL.TabIndex = 19;
+            this.ratingsL.Text = "Рейтинги";
+            this.ratingsL.Click += new System.EventHandler(this.ratingsL_Click);
+            // 
+            // line6
+            // 
+            this.line6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.line6.BackColor = System.Drawing.Color.Transparent;
+            this.line6.Location = new System.Drawing.Point(13, 673);
+            this.line6.Name = "line6";
+            this.line6.Size = new System.Drawing.Size(168, 2);
+            this.line6.TabIndex = 20;
             // 
             // DirectorMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1221, 736);
+            this.ClientSize = new System.Drawing.Size(1221, 922);
             this.ControlBox = false;
+            this.Controls.Add(this.line6);
+            this.Controls.Add(this.ratingsL);
+            this.Controls.Add(this.line5);
+            this.Controls.Add(this.booker);
             this.Controls.Add(this.line4);
             this.Controls.Add(this.line3);
             this.Controls.Add(this.HotelInfo);
@@ -234,5 +286,9 @@
         private System.Windows.Forms.Label HotelInfo;
         private System.Windows.Forms.Label line3;
         private System.Windows.Forms.Label line4;
+        private System.Windows.Forms.Label booker;
+        private System.Windows.Forms.Label line5;
+        private System.Windows.Forms.Label ratingsL;
+        private System.Windows.Forms.Label line6;
     }
 }

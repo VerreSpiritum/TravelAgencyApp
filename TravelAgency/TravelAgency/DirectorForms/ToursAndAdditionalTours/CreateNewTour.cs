@@ -115,7 +115,7 @@ namespace TravelAgency
                 MessageBox.Show("Оберіть місто!", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                foreach (DataRow row in tourCityInfoTable.Rows)
+                foreach (DataRow row in city_in_tour.Rows)
                 {
                     if (row["cityName"] == Cities.Texts)
                     {

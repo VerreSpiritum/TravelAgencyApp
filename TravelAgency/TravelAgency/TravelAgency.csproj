@@ -107,11 +107,90 @@
     <Compile Include="Design\CustomMaskedTextBoxDate.Designer.cs">
       <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectorForms\Ratings\PopularityOfAgency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\Ratings\PopularityOfAgency.Designer.cs">
+      <DependentUpon>PopularityOfAgency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\Ratings\TourRating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\Ratings\TourRating.Designer.cs">
+      <DependentUpon>TourRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\ProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\ProfitForm.Designer.cs">
+      <DependentUpon>ProfitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\ConcludedContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\ConcludedContracts.Designer.cs">
+      <DependentUpon>ConcludedContracts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\PaymentStaytment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\.Designer.cs">
+      <DependentUpon>PaymentStaytment.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\RatingsPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\RatingsPanel.Designer.cs">
+      <DependentUpon>RatingsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\BookerPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\BookerPanel.Designer.cs">
+      <DependentUpon>BookerPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectorForms\HotelAndRoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DirectorForms\HotelAndRoomsForm.Designer.cs">
       <DependentUpon>HotelAndRoomsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\EditRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\EditRoom.Designer.cs">
+      <DependentUpon>EditRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\CreateNewRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\CreateNewRoom.Designer.cs">
+      <DependentUpon>CreateNewRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\EditHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\EditHotel.Designer.cs">
+      <DependentUpon>EditHotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\CreateNewHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\CreateNewHotel.Designer.cs">
+      <DependentUpon>CreateNewHotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\AllSalaries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\Booker panel\AllSalaries.Designer.cs">
+      <DependentUpon>AllSalaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\ShowRooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\ShowRooms.Designer.cs">
+      <DependentUpon>ShowRooms.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectorForms\TourAndAdditionalTourForm.cs">
       <SubType>Form</SubType>
@@ -119,17 +198,35 @@
     <Compile Include="DirectorForms\TourAndAdditionalTourForm.Designer.cs">
       <DependentUpon>TourAndAdditionalTourForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditAddTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditAddTour.Designer.cs">
+      <DependentUpon>EditAddTour.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.Designer.cs">
       <DependentUpon>CreateNewAddTour.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditTour.Designer.cs">
+      <DependentUpon>EditTour.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.Designer.cs">
       <DependentUpon>ShowAddTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\ShowHotels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectorForms\HotelAndRooms\ShowHotels.Designer.cs">
+      <DependentUpon>ShowHotels.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.cs">
       <SubType>Form</SubType>
@@ -249,12 +346,26 @@
     <Compile Include="DirectorForms\HumanResourcesForm.Designer.cs">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DirectorModels\Ratings\ModelPopularityOfAgency.cs" />
+    <Compile Include="Models\DirectorModels\Ratings\ModelTourRating.cs" />
+    <Compile Include="Models\DirectorModels\Booker panel\ModelProfit.cs" />
+    <Compile Include="Models\DirectorModels\Booker panel\ModelConcludedContract.cs" />
+    <Compile Include="Models\DirectorModels\Booker panel\ModelPaymentStaytment.cs" />
+    <Compile Include="Models\DirectorModels\Booker panel\ModelAllSalaries.cs" />
+    <Compile Include="Models\DirectorModels\HotelsAndRooms\ModelEditRoom.cs" />
+    <Compile Include="Models\DirectorModels\HotelsAndRooms\ModelCreateRoom.cs" />
+    <Compile Include="Models\DirectorModels\HotelsAndRooms\ModelEditHotel.cs" />
+    <Compile Include="Models\DirectorModels\HotelsAndRooms\ModelCreateHotel.cs" />
+    <Compile Include="Models\DirectorModels\HotelsAndRooms\ModelShowRooms.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelCreateUser.cs" />
     <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelCreateNewAddTour.cs" />
+    <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelEditAddTour.cs" />
+    <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelEditTour.cs" />
     <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelCreateNewTour.cs" />
     <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelShowAddTours.cs" />
+    <Compile Include="Models\DirectorModels\HotelsAndRooms\ModelShowHotels.cs" />
     <Compile Include="Models\DirectorModels\ToursAndAdditionalTours\ModelShowTours.cs" />
-    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\GetInfoAboutAvailableTransportsCities.cs" />
+    <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\GetInfoAbout.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransfer.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelCreateNewTransport.cs" />
     <Compile Include="Models\DirectorModels\TransportsAndTransfersModels\ModelEditTransfer.cs" />
@@ -270,14 +381,43 @@
     <Compile Include="Models\DirectorModels\ModelHumanResourcesForm.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelListOfAllStaff.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelShowUsers.cs" />
+    <Compile Include="Presenter\DirectorPresenter\Rating panel\PresenterPopularityOfAgency.cs" />
+    <Compile Include="Presenter\DirectorPresenter\Rating panel\PresenterTourRating.cs" />
+    <Compile Include="Presenter\DirectorPresenter\Booker panel\PresenterProfit.cs" />
+    <Compile Include="Presenter\DirectorPresenter\Booker panel\PresenterConcludedContract.cs" />
+    <Compile Include="Presenter\DirectorPresenter\Booker panel\PresenterPaymenStaytment.cs" />
+    <Compile Include="Presenter\DirectorPresenter\Booker panel\PresenterAllSalaries.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterEditRoom.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterCreateRoom.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterEditHotel.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterCreateHotel.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterShowRooms.cs" />
     <Compile Include="Presenter\DirectorPresenter\HumanResourcesPresenters\PresenterCreateUser.cs" />
+    <Compile Include="Presenter\DirectorPresenter\PresenterRatingsPanel.cs" />
+    <Compile Include="Presenter\DirectorPresenter\PresenterBookerPanel.cs" />
     <Compile Include="Presenter\DirectorPresenter\PresenterHotelAndRooms.cs" />
     <Compile Include="Presenter\DirectorPresenter\PresenterTourAndAdditionalTour.cs" />
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterCreateNewAddTour.cs" />
+    <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterEditAddTour.cs" />
+    <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterEditTour.cs" />
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterCreateNewTour.cs" />
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowAddTours.cs" />
+    <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterShowHotels.cs" />
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowTours.cs" />
+    <Compile Include="Views\DirectorViews\Rating panel\IViewPopularityOfAgency.cs" />
+    <Compile Include="Views\DirectorViews\Rating panel\IViewTourRating.cs" />
+    <Compile Include="Views\DirectorViews\Booker panel\IViewAllSalaries.cs" />
+    <Compile Include="Views\DirectorViews\Booker panel\IViewProfit.cs" />
+    <Compile Include="Views\DirectorViews\Booker panel\IViewConcludedContract.cs" />
+    <Compile Include="Views\DirectorViews\Booker panel\IViewPaymentStaytment.cs" />
+    <Compile Include="Views\DirectorViews\HotelAndRooms\IViewEditRoom.cs" />
+    <Compile Include="Views\DirectorViews\HotelAndRooms\IViewCreateRoom.cs" />
+    <Compile Include="Views\DirectorViews\HotelAndRooms\IViewCreateHotel.cs" />
+    <Compile Include="Views\DirectorViews\HotelAndRooms\IViewEditHotel.cs" />
+    <Compile Include="Views\DirectorViews\HotelAndRooms\IViewShowRooms.cs" />
+    <Compile Include="Views\DirectorViews\IViewRatingPanel.cs" />
     <Compile Include="Views\DirectorViews\IViewHotel.cs" />
+    <Compile Include="Views\DirectorViews\IViewBookerPanel.cs" />
     <Compile Include="Views\DirectorViews\IViewTourAndAdditionalTour.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateNewTransport.cs" />
     <Compile Include="Presenter\DirectorPresenter\TransposrtAndTransfersPresenters\PresenterCreateTransfer.cs" />
@@ -315,9 +455,12 @@
     </Compile>
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewEditEmployee.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewCreateUsers.cs" />
+    <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewEditAddTour.cs" />
     <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewCreateNewAddTour.cs" />
+    <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewEditTour.cs" />
     <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewCreateNewTour.cs" />
     <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewShowAddTours .cs" />
+    <Compile Include="Views\DirectorViews\HotelAndRooms\IViewShowHotels.cs" />
     <Compile Include="Views\DirectorViews\ToursAndAdditionalTours\IViewShowTours.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateNewTransport.cs" />
     <Compile Include="Views\DirectorViews\Transports Transfers\IViewCreateTransfer.cs" />
@@ -340,17 +483,65 @@
     <EmbeddedResource Include="Design\CustomMaskedTextBoxDate.resx">
       <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\Ratings\PopularityOfAgency.resx">
+      <DependentUpon>PopularityOfAgency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\Ratings\TourRating.resx">
+      <DependentUpon>TourRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\Booker panel\ProfitForm.resx">
+      <DependentUpon>ProfitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\Booker panel\ConcludedContracts.resx">
+      <DependentUpon>ConcludedContracts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\Booker panel\PaymentStaytment.resx">
+      <DependentUpon>PaymentStaytment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\RatingsPanel.resx">
+      <DependentUpon>RatingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\BookerPanel.resx">
+      <DependentUpon>BookerPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\HotelAndRoomsForm.resx">
       <DependentUpon>HotelAndRoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRooms\EditRoom.resx">
+      <DependentUpon>EditRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRooms\CreateNewRoom.resx">
+      <DependentUpon>CreateNewRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRooms\EditHotel.resx">
+      <DependentUpon>EditHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRooms\CreateNewHotel.resx">
+      <DependentUpon>CreateNewHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\Booker panel\AllSalaries.resx">
+      <DependentUpon>AllSalaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRooms\ShowRooms.resx">
+      <DependentUpon>ShowRooms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\TourAndAdditionalTourForm.resx">
       <DependentUpon>TourAndAdditionalTourForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\EditAddTour.resx">
+      <DependentUpon>EditAddTour.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.resx">
       <DependentUpon>CreateNewAddTour.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\EditTour.resx">
+      <DependentUpon>EditTour.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.resx">
       <DependentUpon>ShowAddTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectorForms\HotelAndRooms\ShowHotels.resx">
+      <DependentUpon>ShowHotels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.resx">
       <DependentUpon>CreateNewTransfer.cs</DependentUpon>

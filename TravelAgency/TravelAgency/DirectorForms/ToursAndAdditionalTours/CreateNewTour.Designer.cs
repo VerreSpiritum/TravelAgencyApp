@@ -610,7 +610,7 @@
             this.createTransportB.Name = "createTransportB";
             this.createTransportB.Size = new System.Drawing.Size(269, 106);
             this.createTransportB.TabIndex = 48;
-            this.createTransportB.Text = "Створити транспорт";
+            this.createTransportB.Text = "Створити тур";
             this.createTransportB.TextColor = System.Drawing.Color.White;
             this.createTransportB.UseVisualStyleBackColor = false;
             this.createTransportB.Click += new System.EventHandler(this.createTransportB_Click);

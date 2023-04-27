@@ -94,6 +94,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AgentForms\Service package\ServicePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ServicePanel.Designer.cs">
+      <DependentUpon>ServicePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowTransferToStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowTransferToStaff.Designer.cs">
+      <DependentUpon>ShowTransferToStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowTourToStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowTourToStaff.Designer.cs">
+      <DependentUpon>ShowTourToStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowAddTourToStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowAddTourToStaff.Designer.cs">
+      <DependentUpon>ShowAddTourToStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowHotelsToStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\Service package\ShowHotelsToStaff.Designer.cs">
+      <DependentUpon>ShowHotelsToStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgentModels\BookingsPanel\ModelCreateContract.cs" />
+    <Compile Include="Forms\AgentForms\OrdersPanel\OrdersPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\OrdersPanel.Designer.cs">
+      <DependentUpon>OrdersPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
@@ -107,161 +144,203 @@
     <Compile Include="Design\CustomMaskedTextBoxDate.Designer.cs">
       <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\Ratings\PopularityOfAgency.cs">
+    <Compile Include="Forms\AgentForms\AgentMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\Ratings\PopularityOfAgency.Designer.cs">
+    <Compile Include="Forms\AgentForms\AgentMainPage.Designer.cs">
+      <DependentUpon>AgentMainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\PersonalInfo\PersonalInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\PersonalInfo\PersonalInfo.Designer.cs">
+      <DependentUpon>PersonalInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\ClientInfo\ClientPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\ClientInfo\ClientPanel.Designer.cs">
+      <DependentUpon>ClientPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\ClientInfo\ShowClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\ClientInfo\ShowClients.Designer.cs">
+      <DependentUpon>ShowClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\ClientInfo\AddNewClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\ClientInfo\AddNewClient.Designer.cs">
+      <DependentUpon>AddNewClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\ShowBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\ShowBooking.Designer.cs">
+      <DependentUpon>ShowBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\CreateContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\CreateContract.Designer.cs">
+      <DependentUpon>CreateContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DirectorForms\Ratings\PopularityOfAgency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DirectorForms\Ratings\PopularityOfAgency.Designer.cs">
       <DependentUpon>PopularityOfAgency.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\Ratings\TourRating.cs">
+    <Compile Include="Forms\DirectorForms\Ratings\TourRating.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\Ratings\TourRating.Designer.cs">
+    <Compile Include="Forms\DirectorForms\Ratings\TourRating.Designer.cs">
       <DependentUpon>TourRating.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\ProfitForm.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\ProfitForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\ProfitForm.Designer.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\ProfitForm.Designer.cs">
       <DependentUpon>ProfitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\ConcludedContracts.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\ConcludedContracts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\ConcludedContracts.Designer.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\ConcludedContracts.Designer.cs">
       <DependentUpon>ConcludedContracts.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\PaymentStaytment.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\PaymentStaytment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\.Designer.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\.Designer.cs">
       <DependentUpon>PaymentStaytment.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\RatingsPanel.cs">
+    <Compile Include="Forms\DirectorForms\RatingsPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\RatingsPanel.Designer.cs">
+    <Compile Include="Forms\DirectorForms\RatingsPanel.Designer.cs">
       <DependentUpon>RatingsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\BookerPanel.cs">
+    <Compile Include="Forms\DirectorForms\BookerPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\BookerPanel.Designer.cs">
+    <Compile Include="Forms\DirectorForms\BookerPanel.Designer.cs">
       <DependentUpon>BookerPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRoomsForm.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRoomsForm.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRoomsForm.Designer.cs">
       <DependentUpon>HotelAndRoomsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\EditRoom.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\EditRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\EditRoom.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\EditRoom.Designer.cs">
       <DependentUpon>EditRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\CreateNewRoom.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\CreateNewRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\CreateNewRoom.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\CreateNewRoom.Designer.cs">
       <DependentUpon>CreateNewRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\EditHotel.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\EditHotel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\EditHotel.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\EditHotel.Designer.cs">
       <DependentUpon>EditHotel.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\CreateNewHotel.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\CreateNewHotel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\CreateNewHotel.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\CreateNewHotel.Designer.cs">
       <DependentUpon>CreateNewHotel.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\AllSalaries.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\AllSalaries.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\Booker panel\AllSalaries.Designer.cs">
+    <Compile Include="Forms\DirectorForms\Booker panel\AllSalaries.Designer.cs">
       <DependentUpon>AllSalaries.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\ShowRooms.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\ShowRooms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\ShowRooms.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\ShowRooms.Designer.cs">
       <DependentUpon>ShowRooms.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TourAndAdditionalTourForm.cs">
+    <Compile Include="Forms\DirectorForms\TourAndAdditionalTourForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TourAndAdditionalTourForm.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TourAndAdditionalTourForm.Designer.cs">
       <DependentUpon>TourAndAdditionalTourForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditAddTour.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\EditAddTour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditAddTour.Designer.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\EditAddTour.Designer.cs">
       <DependentUpon>EditAddTour.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.Designer.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.Designer.cs">
       <DependentUpon>CreateNewAddTour.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditTour.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\EditTour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\EditTour.Designer.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\EditTour.Designer.cs">
       <DependentUpon>EditTour.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\ShowAddTour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.Designer.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\ShowAddTour.Designer.cs">
       <DependentUpon>ShowAddTour.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\ShowHotels.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\ShowHotels.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HotelAndRooms\ShowHotels.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HotelAndRooms\ShowHotels.Designer.cs">
       <DependentUpon>ShowHotels.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\CreateNewTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\CreateNewTransfer.Designer.cs">
       <DependentUpon>CreateNewTransfer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewTour.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\CreateNewTour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\CreateNewTour.Designer.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\CreateNewTour.Designer.cs">
       <DependentUpon>CreateNewTour.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\EditTransfer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\EditTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\EditTransfer.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\EditTransfer.Designer.cs">
       <DependentUpon>EditTransfer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\EditTransport.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\EditTransport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\EditTransport.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\EditTransport.Designer.cs">
       <DependentUpon>EditTransport.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransport.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\CreateNewTransport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\CreateNewTransport.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\CreateNewTransport.Designer.cs">
       <DependentUpon>CreateNewTransport.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\CreateNewStaff.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\CreateNewStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\CreateNewStaff.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\CreateNewStaff.Designer.cs">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\CustomComboBox.cs">
@@ -292,60 +371,69 @@
     <Compile Include="Design\TestComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DirectorForms\DirectorMainPage.cs">
+    <Compile Include="Forms\DirectorForms\DirectorMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\DirectorMainPage.Designer.cs">
+    <Compile Include="Forms\DirectorForms\DirectorMainPage.Designer.cs">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\CreateUser.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\CreateUser.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\CreateUser.Designer.cs">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\EditUser.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\EditUser.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\EditEmployee.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\EditEmployee.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\EditEmployee.Designer.cs">
       <DependentUpon>EditEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransfers.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\ShowTransfers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransfers.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\ShowTransfers.Designer.cs">
       <DependentUpon>ShowTransfers.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowTours.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\ShowTours.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\ToursAndAdditionalTours\ShowTours.Designer.cs">
+    <Compile Include="Forms\DirectorForms\ToursAndAdditionalTours\ShowTours.Designer.cs">
       <DependentUpon>ShowTours.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransports.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\ShowTransports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransportAndTransfer\ShowTransports.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransportAndTransfer\ShowTransports.Designer.cs">
       <DependentUpon>ShowTransports.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\TransfersAndTransportsForm.cs">
+    <Compile Include="Forms\DirectorForms\TransfersAndTransportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\TransfersAndTransportsForm.Designer.cs">
+    <Compile Include="Forms\DirectorForms\TransfersAndTransportsForm.Designer.cs">
       <DependentUpon>TransfersAndTransportsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResourcesForm.cs">
+    <Compile Include="Forms\DirectorForms\HumanResourcesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResourcesForm.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResourcesForm.Designer.cs">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AgentModels\BookingsPanel\ModelShowBookings.cs" />
+    <Compile Include="Models\AgentModels\ClientInfo\ModelAddNewClient.cs" />
+    <Compile Include="Models\AgentModels\ModelAgentMainForm.cs" />
+    <Compile Include="Models\AgentModels\ModelPersonalInfo.cs" />
+    <Compile Include="Models\AgentModels\ClientInfo\ModelListOfAllClients.cs" />
+    <Compile Include="Models\AgentModels\ServicePanel\ModelShowTransferToStaff.cs" />
+    <Compile Include="Models\AgentModels\ServicePanel\ModelShowHotelToStaff.cs" />
+    <Compile Include="Models\AgentModels\ServicePanel\ModelShowAddTourToStaff.cs" />
+    <Compile Include="Models\AgentModels\ServicePanel\ModelShowTourToStaff.cs" />
     <Compile Include="Models\DirectorModels\Ratings\ModelPopularityOfAgency.cs" />
     <Compile Include="Models\DirectorModels\Ratings\ModelTourRating.cs" />
     <Compile Include="Models\DirectorModels\Booker panel\ModelProfit.cs" />
@@ -381,6 +469,18 @@
     <Compile Include="Models\DirectorModels\ModelHumanResourcesForm.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelListOfAllStaff.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelShowUsers.cs" />
+    <Compile Include="Presenter\AgentPresenter\ClientPanel\PresenterCreateNewClient.cs" />
+    <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterCreateContract.cs" />
+    <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterOrdersPanel.cs" />
+    <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterShowBooking.cs" />
+    <Compile Include="Presenter\AgentPresenter\PresenterPersonalInfo.cs" />
+    <Compile Include="Presenter\AgentPresenter\PresenterClientPanel.cs" />
+    <Compile Include="Presenter\AgentPresenter\ClientPanel\PresenterListOfAllClients.cs" />
+    <Compile Include="Presenter\AgentPresenter\ServicePanel\PresenterServicePanel.cs" />
+    <Compile Include="Presenter\AgentPresenter\ServicePanel\PresenterShowTransferToStaff.cs" />
+    <Compile Include="Presenter\AgentPresenter\ServicePanel\PresenterShowHotelToStaff.cs" />
+    <Compile Include="Presenter\AgentPresenter\ServicePanel\PresenterShowAddTourToStaff.cs" />
+    <Compile Include="Presenter\AgentPresenter\ServicePanel\PresenterShowTourToStaff.cs" />
     <Compile Include="Presenter\DirectorPresenter\Rating panel\PresenterPopularityOfAgency.cs" />
     <Compile Include="Presenter\DirectorPresenter\Rating panel\PresenterTourRating.cs" />
     <Compile Include="Presenter\DirectorPresenter\Booker panel\PresenterProfit.cs" />
@@ -404,6 +504,20 @@
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowAddTours.cs" />
     <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterShowHotels.cs" />
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowTours.cs" />
+    <Compile Include="Presenter\PresenterAgentMainPage.cs" />
+    <Compile Include="Views\AgentViews\Booking\IViewCreateContract.cs" />
+    <Compile Include="Views\AgentViews\Booking\IViewOrdersPanel.cs" />
+    <Compile Include="Views\AgentViews\Booking\IViewShowBookings.cs" />
+    <Compile Include="Views\AgentViews\ClientPanel\IViewAddNewClient.cs" />
+    <Compile Include="Views\AgentViews\IViewPersonalInfo.cs" />
+    <Compile Include="Views\AgentViews\IViewAgentMainPage.cs" />
+    <Compile Include="Views\AgentViews\IViewClientPanel.cs" />
+    <Compile Include="Views\AgentViews\ClientPanel\IViewListOfAllClients.cs" />
+    <Compile Include="Views\AgentViews\Service Panel\IViewServicePanel.cs" />
+    <Compile Include="Views\AgentViews\Service Panel\IViewShowTransferToStaff.cs" />
+    <Compile Include="Views\AgentViews\Service Panel\IViewShowHotelsToStaff.cs" />
+    <Compile Include="Views\AgentViews\Service Panel\IViewShowAddTourToStaff.cs" />
+    <Compile Include="Views\AgentViews\Service Panel\IViewShowTourToStaff.cs" />
     <Compile Include="Views\DirectorViews\Rating panel\IViewPopularityOfAgency.cs" />
     <Compile Include="Views\DirectorViews\Rating panel\IViewTourRating.cs" />
     <Compile Include="Views\DirectorViews\Booker panel\IViewAllSalaries.cs" />
@@ -441,16 +555,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\ShowUsers.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\ShowUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\ShowUsers.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\ShowUsers.Designer.cs">
       <DependentUpon>ShowUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\ShowStaff.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\ShowStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorForms\HumanResources\ShowStaff.Designer.cs">
+    <Compile Include="Forms\DirectorForms\HumanResources\ShowStaff.Designer.cs">
       <DependentUpon>ShowStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewEditEmployee.cs" />
@@ -477,88 +591,127 @@
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewListOfAllStaff.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewShowUsers.cs" />
     <Compile Include="Views\IViewBase.cs" />
+    <EmbeddedResource Include="Forms\AgentForms\Service package\ServicePanel.resx">
+      <DependentUpon>ServicePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\OrdersPanel\OrdersPanel.resx">
+      <DependentUpon>OrdersPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\CustomMaskedTextBoxDate.resx">
       <DependentUpon>CustomMaskedTextBoxDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\Ratings\PopularityOfAgency.resx">
+    <EmbeddedResource Include="Forms\AgentForms\AgentMainPage.resx">
+      <DependentUpon>AgentMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\PersonalInfo\PersonalInfo.resx">
+      <DependentUpon>PersonalInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\ClientInfo\ClientPanel.resx">
+      <DependentUpon>ClientPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\ClientInfo\ShowClients.resx">
+      <DependentUpon>ShowClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\ClientInfo\AddNewClient.resx">
+      <DependentUpon>AddNewClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\OrdersPanel\ShowBooking.resx">
+      <DependentUpon>ShowBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\OrdersPanel\CreateContract.resx">
+      <DependentUpon>CreateContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\Service package\ShowTransferToStaff.resx">
+      <DependentUpon>ShowTransferToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\Service package\ShowTourToStaff.resx">
+      <DependentUpon>ShowTourToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\Service package\ShowAddTourToStaff.resx">
+      <DependentUpon>ShowAddTourToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\Service package\ShowHotelsToStaff.resx">
+      <DependentUpon>ShowHotelsToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DirectorForms\Ratings\PopularityOfAgency.resx">
       <DependentUpon>PopularityOfAgency.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\Ratings\TourRating.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\Ratings\TourRating.resx">
       <DependentUpon>TourRating.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\Booker panel\ProfitForm.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\Booker panel\ProfitForm.resx">
       <DependentUpon>ProfitForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\Booker panel\ConcludedContracts.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\Booker panel\ConcludedContracts.resx">
       <DependentUpon>ConcludedContracts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\Booker panel\PaymentStaytment.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\Booker panel\PaymentStaytment.resx">
       <DependentUpon>PaymentStaytment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\RatingsPanel.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\RatingsPanel.resx">
       <DependentUpon>RatingsPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\BookerPanel.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\BookerPanel.resx">
       <DependentUpon>BookerPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRoomsForm.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRoomsForm.resx">
       <DependentUpon>HotelAndRoomsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRooms\EditRoom.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRooms\EditRoom.resx">
       <DependentUpon>EditRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRooms\CreateNewRoom.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRooms\CreateNewRoom.resx">
       <DependentUpon>CreateNewRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRooms\EditHotel.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRooms\EditHotel.resx">
       <DependentUpon>EditHotel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRooms\CreateNewHotel.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRooms\CreateNewHotel.resx">
       <DependentUpon>CreateNewHotel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\Booker panel\AllSalaries.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\Booker panel\AllSalaries.resx">
       <DependentUpon>AllSalaries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRooms\ShowRooms.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRooms\ShowRooms.resx">
       <DependentUpon>ShowRooms.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TourAndAdditionalTourForm.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TourAndAdditionalTourForm.resx">
       <DependentUpon>TourAndAdditionalTourForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\EditAddTour.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\ToursAndAdditionalTours\EditAddTour.resx">
       <DependentUpon>EditAddTour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\ToursAndAdditionalTours\CreateNewAddTour.resx">
       <DependentUpon>CreateNewAddTour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\EditTour.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\ToursAndAdditionalTours\EditTour.resx">
       <DependentUpon>EditTour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\ShowAddTour.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\ToursAndAdditionalTours\ShowAddTour.resx">
       <DependentUpon>ShowAddTour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HotelAndRooms\ShowHotels.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HotelAndRooms\ShowHotels.resx">
       <DependentUpon>ShowHotels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\CreateNewTransfer.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransportAndTransfer\CreateNewTransfer.resx">
       <DependentUpon>CreateNewTransfer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\CreateNewTour.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\ToursAndAdditionalTours\CreateNewTour.resx">
       <DependentUpon>CreateNewTour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\EditTransfer.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransportAndTransfer\EditTransfer.resx">
       <DependentUpon>EditTransfer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\EditTransport.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransportAndTransfer\EditTransport.resx">
       <DependentUpon>EditTransport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\CreateNewTransport.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransportAndTransfer\CreateNewTransport.resx">
       <DependentUpon>CreateNewTransport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResources\CreateNewStaff.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResources\CreateNewStaff.resx">
       <DependentUpon>CreateNewStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\CustomMaskedTextBox.resx">
@@ -567,31 +720,31 @@
     <EmbeddedResource Include="Design\CustomTextBox.resx">
       <DependentUpon>CustomTextBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\DirectorMainPage.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\DirectorMainPage.resx">
       <DependentUpon>DirectorMainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResources\CreateUser.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResources\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResources\EditUser.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResources\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResources\EditEmployee.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResources\EditEmployee.resx">
       <DependentUpon>EditEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\ShowTransfers.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransportAndTransfer\ShowTransfers.resx">
       <DependentUpon>ShowTransfers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\ToursAndAdditionalTours\ShowTours.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\ToursAndAdditionalTours\ShowTours.resx">
       <DependentUpon>ShowTours.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransportAndTransfer\ShowTransports.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransportAndTransfer\ShowTransports.resx">
       <DependentUpon>ShowTransports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\TransfersAndTransportsForm.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\TransfersAndTransportsForm.resx">
       <DependentUpon>TransfersAndTransportsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResourcesForm.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResourcesForm.resx">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -599,10 +752,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResources\ShowUsers.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResources\ShowUsers.resx">
       <DependentUpon>ShowUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorForms\HumanResources\ShowStaff.resx">
+    <EmbeddedResource Include="Forms\DirectorForms\HumanResources\ShowStaff.resx">
       <DependentUpon>ShowStaff.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -649,6 +802,8 @@
     <None Include="Properties\add-user.png" />
     <None Include="img\DirectorForms\edit.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="fonts\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,6 +16,16 @@ using TravelAgency.Models.DirectorModels.ToursAndAdditionalTours;
 using TravelAgency.Models.DirectorModels.HotelsAndRooms;
 using TravelAgency.Presenter.DirectorPresenter.Booker_panel;
 using TravelAgency.Models.DirectorModels.Booker_panel;
+using TravelAgency.Presenter.AgentPresenter;
+using TravelAgency.Models.AgentModels;
+using TravelAgency.Presenter.AgentPresenter.ClientPanel;
+using TravelAgency.Models.AgentModels.ClientInfo;
+using TravelAgency.Presenter.AgentPresenter.OrdersPanel;
+using TravelAgency.Models.AgentModels.BookingsPanel;
+using TravelAgency.Forms.AgentForms.OrdersPanel;
+using TravelAgency.Presenter.AgentPresenter.ServicePanel;
+using System.ComponentModel.Design;
+using TravelAgency.Models.AgentModels.ServicePanel;
 
 namespace TravelAgency.Controllers
 {
@@ -59,6 +69,19 @@ namespace TravelAgency.Controllers
         private PresenterRatingsPanel _PresenterRatingsPanel;
         private PresenterPopularityOfAgency _PresenterPopularityOfAgency;
         private PresenterTourRating _PresenterTourRating;
+        private PresenterAgentMainPage _PresenterAgentMainPage;
+        private PresenterPersonalInfo _PresenterPersonalInfo;
+        private PresenterClientPanel _PresenterClientPanel;
+        private PresenterListOfAllClients _PresenterListOfAllClients;
+        private PresenterCreateNewClient _PresenterCreateNewClient;
+        private PresenterOrdersPanel _PresenterOrdersPanel;
+        private PresenterShowBooking _PresenterShowBooking;
+        private PresenterCreateContract _PresenterCreateContract;
+        private PresenterServicePanel _PresenterServicePanel;
+        private PresenterShowTourToStaff _PresenterShowTourToStaff;
+        private PresenterShowAddTourToStaff _PresenterShowAddTourToStaff;
+        private PresenterShowHotelToStaff _PresenterShowHotelToStaff;
+        private PresenterShowTransferToStaff _PresenterShowTransfersToStaff;
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
         ModelDirectorMainPage modelDirectorMainForm = new ModelDirectorMainPage();
@@ -94,6 +117,16 @@ namespace TravelAgency.Controllers
         ModelProfit _ModelProfit;
         ModelTourRating _ModelTourRating;
         ModelPopularityOfAgency _ModelPopularityOfAgency;
+        ModelPersonalInfo _ModelPersonalInfo;
+        ModelAgentMainForm _ModelAgentMainForm;
+        ModelListOfAllClients _ModelListOfAllClients;
+        ModelAddNewClient _ModelAddNewClient;
+        ModelShowBookings _ModelShowBookings;
+        ModelCreateContract _ModelCreateContract;
+        ModelShowHotelToStaff _ModelShowHotelToStaff;
+        ModelShowTourToStaff _ModelShowTourToStaff;
+        ModelShowAddTourToStaff _ModelShowAddTourToStaff;
+        ModelShowTransferToStaff _ModelShowTransferToStaff;
 
         private HumanResourcesForm humanResources = new HumanResourcesForm();
         private CreateNewStaff createNewStaffForm = new CreateNewStaff();
@@ -131,9 +164,23 @@ namespace TravelAgency.Controllers
         private RatingsPanel ratingsPanel;
         private PopularityOfAgency popularityOfAgency;
         private TourRating tourRating;
+        private AgentMainPage agentMainPage;
+        private PersonalInfo personalInfo;
+        private ClientPanel clientPanel;
+        private ShowClients showClients;
+        private AddNewClient addNewClient;
+        private OrdersPanel ordersPanel;
+        private ShowBooking showBooking;
+        private CreateContract createContract;
+        private ServicePanel servicePanel;
+        private ShowAddTourToStaff showAddTourToStaff;
+        private ShowTourToStaff showTourToStaff;
+        private ShowHotelsToStaff showHotelsToStaff;
+        private ShowTransferToStaff showTransferToStaff;
 
         private List<Form> OpenedForms = new List<Form>();
 
+        private int AgentTalonNum;
 
         public ApplicationController(Authorization form)
         {
@@ -144,7 +191,7 @@ namespace TravelAgency.Controllers
             editEmployeeForm = new PresenterEditEmployee(editEmployee, modelEditEmployee);
 
             authorizationForm.openDirectorForm += AuthorizationForm_openDirectorForm;
-
+            authorizationForm.openAgentForm += AuthorizationForm_openAgentForm;
             directorMainForm.OpenHumanResourcesForm += DirectorMainForm_OpenHumanResourcesForm;
             directorMainForm.OpenTransportsAndTransfersForm += DirectorMainForm_TransportsAndTransfers;
             directorMainForm.OpenTourAddTourForm += DirectorMainForm_OpenTourAddTourForm;
@@ -158,6 +205,7 @@ namespace TravelAgency.Controllers
             humanResourcesForm.OpenFormToShowAllStaff += HumanResourcesForm_OpenFormToShowAllStaff;   
         }
 
+      
         #region --- Director ---
 
 
@@ -1321,7 +1369,318 @@ namespace TravelAgency.Controllers
         #endregion
 
         #endregion
+        #region --- Agent ---
 
+        private void ListOfAllClientPanelEvent(PresenterClientPanel presenter)
+        {
+            presenter.AddClient += Presenter_AddClient;
+            presenter.ShowListOfCLient += Presenter_ShowListOfCLient;
+        }
+        private void ListOfAllOrdersPanelEvent(PresenterOrdersPanel presenter)
+        {
+            presenter.ShowAllBookings += Presenter_ShowAllBookings;
+            presenter.ShowAllContracts += Presenter_ShowAllContracts;
+            
+        }
+        private void ListOfAllServicePanelEvent(PresenterServicePanel presenter)
+        {
+            presenter.ShowTour += Presenter_ShowTour;
+            presenter.ShowAddTour += Presenter_ShowAddTour;
+            presenter.ShowHotel += Presenter_ShowHotels;
+            presenter.ShowTransfer += Presenter_ShowTransfer;
+        }
+
+        private void Presenter_ShowTransfer(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(showTransferToStaff))
+            {
+                CloseOpenedFormsInServicePanel();
+                
+                showTransferToStaff = new ShowTransferToStaff();
+                _ModelShowTransferToStaff = new ModelShowTransferToStaff(GetConnection());
+                _PresenterShowTransfersToStaff = new PresenterShowTransferToStaff(showTransferToStaff, _ModelShowTransferToStaff);
+
+                _PresenterServicePanel.AddOnPanel(showTransferToStaff);
+                _PresenterShowTransfersToStaff.Show();
+
+                OpenedForms.Add(showTransferToStaff);
+            }
+        }
+
+        private void Presenter_ShowHotels(object sender, EventArgs e)
+        {
+            CloseOpenedFormsInServicePanel();
+
+            showHotelsToStaff = new ShowHotelsToStaff();
+            _ModelShowHotelToStaff = new ModelShowHotelToStaff(GetConnection());
+            _PresenterShowHotelToStaff = new PresenterShowHotelToStaff(showHotelsToStaff, _ModelShowHotelToStaff);
+
+            _PresenterServicePanel.AddOnPanel(showHotelsToStaff);
+            _PresenterShowHotelToStaff.Show();
+
+            OpenedForms.Add(showHotelsToStaff);
+        }
+
+        private void Presenter_ShowAddTour(object sender, EventArgs e)
+        {
+            CloseOpenedFormsInServicePanel();
+
+            showAddTourToStaff = new ShowAddTourToStaff();
+            _ModelShowAddTourToStaff = new ModelShowAddTourToStaff(GetConnection());
+            _PresenterShowAddTourToStaff = new PresenterShowAddTourToStaff(showAddTourToStaff, _ModelShowAddTourToStaff);
+
+            _PresenterServicePanel.AddOnPanel(showAddTourToStaff);
+            _PresenterShowAddTourToStaff.Show();
+
+            OpenedForms.Add(showAddTourToStaff);
+        }
+        private void Presenter_ShowTour(object sender, EventArgs e)
+        {
+            CloseOpenedFormsInServicePanel();
+
+            showTourToStaff = new ShowTourToStaff();
+            _ModelShowTourToStaff = new ModelShowTourToStaff(GetConnection());
+            _PresenterShowTourToStaff = new PresenterShowTourToStaff(showTourToStaff, _ModelShowTourToStaff);
+
+            _PresenterServicePanel.AddOnPanel(showTourToStaff);
+            _PresenterShowTourToStaff.Show();
+
+            OpenedForms.Add(showTourToStaff);
+        }
+        
+        private void AgentMainPage_OpenPersonalInfo(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(personalInfo))
+            {
+                CloseOpenedFormsInAgentMainForm();
+                personalInfo = new PersonalInfo();
+                _ModelPersonalInfo = new ModelPersonalInfo(GetConnection());
+                _PresenterPersonalInfo = new PresenterPersonalInfo(_ModelPersonalInfo, personalInfo);
+
+                _PresenterAgentMainPage.AddOnPanel(personalInfo);
+                _PresenterPersonalInfo.Show(AgentTalonNum);
+
+                OpenedForms.Add(personalInfo);
+            }
+        }
+   
+        private void AgentMainPage_OpenClientForm(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(clientPanel))
+            {
+                CloseOpenedFormsInAgentMainForm();
+                clientPanel = new ClientPanel();
+                _PresenterClientPanel = new PresenterClientPanel(clientPanel);
+                
+                _PresenterAgentMainPage.AddOnPanel(clientPanel);
+                showClients = new ShowClients();
+                _ModelListOfAllClients = new ModelListOfAllClients(GetConnection());
+                _PresenterListOfAllClients = new PresenterListOfAllClients(_ModelListOfAllClients, showClients);
+                ListOfAllClientPanelEvent(_PresenterClientPanel);
+                _PresenterClientPanel.AddOnPanel(showClients);
+
+                _PresenterClientPanel.Show();
+                _PresenterListOfAllClients.Show();
+
+                OpenedForms.Add(showClients);
+                OpenedForms.Add(clientPanel);
+            }
+        }
+        private void Presenter_ShowListOfCLient(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showClients))
+            {
+                CloseOpenedFormsInClientForm();
+                
+                showClients = new ShowClients();
+                _ModelListOfAllClients = new ModelListOfAllClients(GetConnection());
+                _PresenterListOfAllClients = new PresenterListOfAllClients(_ModelListOfAllClients, showClients);
+                ListOfAllClientPanelEvent(_PresenterClientPanel);
+                _PresenterClientPanel.AddOnPanel(showClients);
+
+                _PresenterListOfAllClients.Show();
+
+                OpenedForms.Add(showClients);
+            }
+        }
+        private void Presenter_AddClient(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(addNewClient))
+            {
+                CloseOpenedFormsInClientForm();
+
+                addNewClient = new AddNewClient();
+                _ModelAddNewClient = new ModelAddNewClient(GetConnection());
+                _PresenterCreateNewClient = new PresenterCreateNewClient(_ModelAddNewClient, addNewClient);
+
+                _PresenterClientPanel.AddOnPanel(addNewClient);
+                _PresenterCreateNewClient.Show();
+
+                OpenedForms.Add(addNewClient);
+            }
+        }
+        
+        private void AgentMainPage_OpenOrdersPanel(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(ordersPanel))
+            {
+                CloseOpenedFormsInAgentMainForm();
+                ordersPanel = new OrdersPanel();
+                _PresenterOrdersPanel = new PresenterOrdersPanel(ordersPanel);
+                ListOfAllOrdersPanelEvent(_PresenterOrdersPanel);
+
+                showBooking = new ShowBooking();
+                _ModelShowBookings = new ModelShowBookings(GetConnection());
+                _PresenterShowBooking = new PresenterShowBooking(_ModelShowBookings, showBooking);
+
+                _PresenterAgentMainPage.AddOnPanel(ordersPanel);
+                _PresenterOrdersPanel.AddOnPanel(showBooking);
+
+                _PresenterOrdersPanel.Show();
+                _PresenterShowBooking.Show();
+
+
+                OpenedForms.Add(showBooking);
+                OpenedForms.Add(ordersPanel);
+            }
+        }
+        private void Presenter_ShowAllContracts(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(createContract))
+            {
+                CloseOpenedFormsInOrdersPanel();
+                createContract = new CreateContract();
+                _ModelCreateContract = new ModelCreateContract(GetConnection(), AgentTalonNum);
+                _PresenterCreateContract = new PresenterCreateContract(createContract, _ModelCreateContract);
+
+                _PresenterOrdersPanel.AddOnPanel(createContract);
+                _PresenterCreateContract.Show();
+                OpenedForms.Add(createContract);
+            }
+        }
+        private void Presenter_ShowAllBookings(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(showBooking))
+            {
+                CloseOpenedFormsInOrdersPanel();
+                showBooking = new ShowBooking();
+                _ModelShowBookings = new ModelShowBookings(GetConnection());
+                _PresenterShowBooking = new PresenterShowBooking(_ModelShowBookings, showBooking);
+
+                _PresenterOrdersPanel.AddOnPanel(showBooking);
+                _PresenterShowBooking.Show();
+                OpenedForms.Add(showBooking);
+            }
+        }
+
+        private void AgentMainPage_OpenServicesPanel(object sender, EventArgs e)
+        {
+            if(!OpenedForms.Contains(servicePanel))
+            {
+                CloseOpenedFormsInAgentMainForm();
+                servicePanel = new ServicePanel();
+                _PresenterServicePanel = new PresenterServicePanel(servicePanel);
+
+                showTourToStaff = new ShowTourToStaff();
+                _ModelShowTourToStaff = new ModelShowTourToStaff(GetConnection());
+                _PresenterShowTourToStaff = new PresenterShowTourToStaff(showTourToStaff, _ModelShowTourToStaff);
+                ListOfAllServicePanelEvent(_PresenterServicePanel);
+
+                _PresenterAgentMainPage.AddOnPanel(servicePanel);
+                _PresenterServicePanel.AddOnPanel(showTourToStaff);
+
+                _PresenterServicePanel.Show();
+                _PresenterShowTourToStaff.Show();
+
+                OpenedForms.Add(servicePanel);
+                OpenedForms.Add(showTourToStaff);
+            }
+        }
+        #region --- Close opened Forms ---
+        public void CloseOpenedFormsInAgentMainForm()
+        {
+            if(OpenedForms.Contains(personalInfo))
+            {
+                _PresenterPersonalInfo.Close();
+                OpenedForms.Remove(personalInfo);
+            }
+            else if(OpenedForms.Contains(clientPanel))
+            {
+                CloseOpenedFormsInClientForm();
+                _PresenterClientPanel.Close();
+                OpenedForms.Remove(clientPanel);
+            }
+            else if(OpenedForms.Contains(ordersPanel))
+            {
+                CloseOpenedFormsInOrdersPanel();
+                _PresenterOrdersPanel.Close();
+                OpenedForms.Remove(ordersPanel);
+            }
+            else if(OpenedForms.Contains(servicePanel))
+            {
+                CloseOpenedFormsInServicePanel();
+                _PresenterServicePanel.Close();
+                OpenedForms.Remove(servicePanel);
+            }
+        }
+
+        //client panel
+        public void CloseOpenedFormsInClientForm()
+        {
+            if(OpenedForms.Contains(showClients))
+            {
+                _PresenterListOfAllClients.Close();
+                OpenedForms.Remove(showClients);
+            }
+            else if(OpenedForms.Contains(addNewClient))
+            {
+                _PresenterCreateNewClient.Close();
+                OpenedForms.Remove(addNewClient);
+            }
+        }
+
+        //orders panel
+        public void CloseOpenedFormsInOrdersPanel()
+        {
+            if(OpenedForms.Contains(showBooking))
+            {
+                _PresenterShowBooking.Close();
+                OpenedForms.Remove(showBooking);
+            }
+            else if(OpenedForms.Contains(createContract))
+            {
+                _PresenterCreateContract.Close();
+                OpenedForms.Remove(createContract);
+            }
+        }
+
+        //service package
+        public void CloseOpenedFormsInServicePanel()
+        {
+            if(OpenedForms.Contains(showTourToStaff))
+            {
+                showTourToStaff.Close();
+                OpenedForms.Remove(showTourToStaff);
+            }
+            else if(OpenedForms.Contains(showAddTourToStaff))
+            {
+                showAddTourToStaff.Close();
+                OpenedForms.Remove(showAddTourToStaff);
+            }
+            else if(OpenedForms.Contains(showHotelsToStaff))
+            {
+                showHotelsToStaff.Close();
+                OpenedForms.Remove(showHotelsToStaff);
+            }
+            else if(OpenedForms.Contains(showTransferToStaff))
+            {
+                showTransferToStaff.Close();
+                OpenedForms.Remove(showTransferToStaff);
+            }
+        }
+        #endregion
+
+        #endregion
         private void AuthorizationForm_openDirectorForm(object sender, EventArgs e)
         {
             authorizationForm.Close();
@@ -1334,6 +1693,33 @@ namespace TravelAgency.Controllers
             OpenedForms.Add(humanResources);
 
             OpenListOfAllStaff();
+        }
+        private void AuthorizationForm_openAgentForm(object sender, EventArgs e)
+        {
+            authorizationForm.Close();
+            agentMainPage = new AgentMainPage();
+            _ModelAgentMainForm = new ModelAgentMainForm(GetConnection());
+            _PresenterAgentMainPage = new PresenterAgentMainPage(agentMainPage, _ModelAgentMainForm);
+
+            AgentTalonNum = _PresenterAgentMainPage.GetTalonNum(authorizationForm.AgentLogin);
+            ListOfAllAgentEvents(_PresenterAgentMainPage);
+            personalInfo = new PersonalInfo();
+            _ModelPersonalInfo = new ModelPersonalInfo(GetConnection());
+            _PresenterPersonalInfo = new PresenterPersonalInfo(_ModelPersonalInfo, personalInfo);
+
+            _PresenterAgentMainPage.AddOnPanel(personalInfo);
+
+            OpenedForms.Add(personalInfo);
+            _PresenterAgentMainPage.Show();
+            _PresenterPersonalInfo.Show(AgentTalonNum);
+
+        }
+        private void ListOfAllAgentEvents(PresenterAgentMainPage agentMainPage)
+        {
+            agentMainPage.OpenPersonalInfo += AgentMainPage_OpenPersonalInfo;
+            agentMainPage.OpenClientForm += AgentMainPage_OpenClientForm;
+            agentMainPage.OpenOrdersPanel += AgentMainPage_OpenOrdersPanel;
+            agentMainPage.OpenServicesPanel += AgentMainPage_OpenServicesPanel;
         }
 
         public void Run()

@@ -21,7 +21,7 @@ namespace TravelAgency.Models.DirectorModels.Booker_panel
         {
             DataTable data = new DataTable();
 
-            using(NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM TourRating", connection))
+            using(NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM agencyPopylarity", connection))
             {
                 using(NpgsqlDataReader reader = cmd.ExecuteReader())
                 {

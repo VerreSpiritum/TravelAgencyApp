@@ -17,6 +17,8 @@ namespace TravelAgency.Presenter
         private IViewAutorizationForm viewAutorizationForm;
         private NpgsqlConnection connection;
         public event EventHandler openDirectorForm;
+        public event EventHandler openAgentForm;
+        public string AgentLogin { get; set; }
 
         public PresenterAuthorizationForm(IViewAutorizationForm v, ModelAuthorizationForm m)
         {
@@ -48,6 +50,11 @@ namespace TravelAgency.Presenter
                         
                         if (openDirectorForm != null)
                             openDirectorForm(sender, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        AgentLogin = model.Login.ToLower();
+                        openAgentForm?.Invoke(sender, EventArgs.Empty);
                     }
                 }
             }

@@ -99,8 +99,12 @@ namespace TravelAgency
 
         private void flightDate_ValueChanged(object sender, EventArgs e)
         {
-            if(tourCityInfoTable.Rows.Count == 0)
-                StartDateD.MinDate = StartDateD.MaxDate = endDateD.MinDate = flightDate.Value;
+            if (tourCityInfoTable.Rows.Count == 0)
+            {
+                StartDateD.MinDate = flightDate.Value;
+                StartDateD.MaxDate = flightDate.Value;
+                endDateD.MinDate = flightDate.Value;
+            }
             else
             {
                 MessageBox.Show("Видаліть міста з минулими датами для зміни", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);

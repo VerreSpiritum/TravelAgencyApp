@@ -14,7 +14,8 @@ namespace TravelAgency.Presenter.AgentPresenter.OrdersPanel
 
         public event EventHandler ShowAllBookings;
         public event EventHandler ShowAllContracts;
-
+        public event EventHandler ViewAllContract;
+        public event EventHandler CreateNewBook;
 
         public PresenterOrdersPanel(IViewOrdersPanel view)
         {
@@ -22,6 +23,18 @@ namespace TravelAgency.Presenter.AgentPresenter.OrdersPanel
 
             view.ShowContracts += View_ShowContracts;
             view.ShowAllBookings += View_ShowAllBookings;
+            view.ViewAllContract += ViewOnViewAllContract;
+            view.CreateNewBook += ViewOnCreateNewBook;
+        }
+
+        private void ViewOnCreateNewBook(object sender, EventArgs e)
+        {
+            CreateNewBook?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void ViewOnViewAllContract(object sender, EventArgs e)
+        {
+            ViewAllContract?.Invoke(this, EventArgs.Empty);
         }
 
         private void View_ShowAllBookings(object sender, EventArgs e)

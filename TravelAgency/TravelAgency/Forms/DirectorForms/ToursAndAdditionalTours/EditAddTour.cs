@@ -106,7 +106,23 @@ namespace TravelAgency
             Operators.Texts = LastInfoInTable[0].ToString();
             TypeOfTour.Texts = LastInfoInTable[1].ToString();
             nameTB.Texts = LastInfoInTable[2].ToString(); 
-            flightDate.Value = Convert.ToDateTime(LastInfoInTable[3].ToString());
+            
+            DateTime date = Convert.ToDateTime(LastInfoInTable[3]); 
+            if (Convert.ToDateTime(LastInfoInTable[3]) > flightDate.Value)
+            {
+                flightDate.MaxDate = date;
+                flightDate.Value = date;
+                flightDate.MinDate = date;
+            }
+            else
+            {
+                flightDate.MinDate = date;
+                flightDate.Value = date;
+                flightDate.MaxDate = date;
+            }
+
+
+            
             childrenCount.Texts = LastInfoInTable[4].ToString();
             transfer.Texts = LastInfoInTable[5].ToString();
             infoT.Texts = LastInfoInTable[6].ToString();
@@ -114,12 +130,14 @@ namespace TravelAgency
             CountOfPeople.Texts = LastInfoInTable[8].ToString();
             availableCity.Texts = LastInfoInTable[9].ToString();
 
+            StartDateD.MinDate = DateTimePicker.MinDateTime;
+            StartDateD.MaxDate = DateTimePicker.MaxDateTime;
+            endDateD.MaxDate = DateTimePicker.MaxDateTime;
+            
             foreach(DataRow row in LastCitiesInTour.Rows)
             {
                 tourCityInfoTable.Rows.Add(row[0], row[1], row[2]);
                 city_in_tour.Rows.Add(row[0], row[1], row[2]);
-
-                StartDateD.MaxDate = new DateTime(9998, 12, 31);
                 StartDateD.MinDate = Convert.ToDateTime(row[2]);
                 StartDateD.Value = Convert.ToDateTime(row[2]);
                 endDateD.MinDate = Convert.ToDateTime(row[2]);

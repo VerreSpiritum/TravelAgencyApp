@@ -39,6 +39,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         }
         public void CreateNewTransport(string name, string shortinfo, string production_date, int seats, string photo, List<string> facilities)
         {
+            Error = string.Empty;
             int id = 0;
             string query = "INSERT INTO transport VALUES " +
                 $"(DEFAULT, '{name}', '{shortinfo}', '1/1/{production_date}', {seats}, '{photo}')" +

@@ -98,7 +98,12 @@ namespace TravelAgency
             Operators.Texts = LastInfoInTable[1].ToString();
             linkPhotoTB.Texts = LastInfoInTable[2].ToString();
             availableCity.Texts = LastInfoInTable[3].ToString();
-            flightDate.Value = Convert.ToDateTime(LastInfoInTable[4]); 
+            DateTime date = Convert.ToDateTime(LastInfoInTable[4]); 
+            flightDate.MinDate = DateTimePicker.MinDateTime;
+            flightDate.MaxDate = DateTimePicker.MaxDateTime;
+            flightDate.Value = date;
+            
+
             CountOfPeople.Texts = LastInfoInTable[5].ToString();
             childrenCount.Texts = LastInfoInTable[6].ToString();
             transfer.Texts = LastInfoInTable[7].ToString();
@@ -109,6 +114,8 @@ namespace TravelAgency
             book.Items.AddRange(orTB.ToArray());
             transfer.Texts = book.Texts = orTB[0];
 
+            StartDateD.MinDate = DateTimePicker.MinDateTime;
+            endDateD.MinDate = DateTimePicker.MinDateTime;
             foreach(DataRow rows in LastCitiesInTour.Rows)
             {
                 tourCityInfoTable.Rows.Add(rows[0], rows[1], rows[2]);
@@ -131,6 +138,9 @@ namespace TravelAgency
 
         private void flightDate_ValueChanged(object sender, EventArgs e)
         {
+            StartDateD.MinDate = DateTimePicker.MinDateTime;
+            StartDateD.MaxDate = DateTimePicker.MaxDateTime;
+            endDateD.MaxDate = DateTimePicker.MaxDateTime;
             if(tourCityInfoTable.Rows.Count == 0)
                 StartDateD.MinDate = StartDateD.MaxDate = endDateD.MinDate = flightDate.Value;
             else

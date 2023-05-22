@@ -12,6 +12,8 @@ namespace TravelAgency.Views.AgentViews.Booking
     {
         event EventHandler ShowAllBookings;
         event EventHandler ShowContracts;
+        event EventHandler ViewAllContract;
+        event EventHandler CreateNewBook;
 
         void ShowForm();
         

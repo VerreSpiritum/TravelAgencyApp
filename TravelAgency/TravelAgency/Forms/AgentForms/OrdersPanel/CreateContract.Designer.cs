@@ -49,7 +49,9 @@
             this.tourNameTB = new TravelAgency.Design.CustomTextBox();
             this.emailCB = new TravelAgency.Design.CustomComboBox();
             this.bookingCB = new TravelAgency.Design.CustomComboBox();
-            this.createNewStaffB = new TravelAgency.Design.RoundedButton();
+            this.generateContract = new TravelAgency.Design.RoundedButton();
+            this.saveBtn = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // errorLabel
@@ -87,10 +89,12 @@
             // 
             // textOfContract
             // 
+            this.textOfContract.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.textOfContract.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textOfContract.Location = new System.Drawing.Point(942, 13);
+            this.textOfContract.Location = new System.Drawing.Point(1150, 70);
+            this.textOfContract.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.textOfContract.Name = "textOfContract";
-            this.textOfContract.Size = new System.Drawing.Size(692, 967);
+            this.textOfContract.Size = new System.Drawing.Size(783, 875);
             this.textOfContract.TabIndex = 32;
             this.textOfContract.Text = "";
             // 
@@ -363,32 +367,48 @@
             this.bookingCB.Texts = "";
             this.bookingCB.OnSelectedIndexChanged += new System.EventHandler(this.bookingCB_OnSelectedIndexChanged);
             // 
-            // createNewStaffB
+            // generateContract
             // 
-            this.createNewStaffB.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.createNewStaffB.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.createNewStaffB.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.createNewStaffB.BorderRadius = 12;
-            this.createNewStaffB.BorderSize = 0;
-            this.createNewStaffB.FlatAppearance.BorderSize = 0;
-            this.createNewStaffB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createNewStaffB.Font = new System.Drawing.Font("Franklin Gothic Book", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createNewStaffB.ForeColor = System.Drawing.Color.White;
-            this.createNewStaffB.Location = new System.Drawing.Point(698, 833);
-            this.createNewStaffB.Name = "createNewStaffB";
-            this.createNewStaffB.Size = new System.Drawing.Size(217, 112);
-            this.createNewStaffB.TabIndex = 19;
-            this.createNewStaffB.Text = "Сгенерувати контракт";
-            this.createNewStaffB.TextColor = System.Drawing.Color.White;
-            this.createNewStaffB.UseVisualStyleBackColor = false;
-            this.createNewStaffB.Visible = false;
+            this.generateContract.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.generateContract.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.generateContract.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.generateContract.BorderRadius = 12;
+            this.generateContract.BorderSize = 0;
+            this.generateContract.FlatAppearance.BorderSize = 0;
+            this.generateContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.generateContract.Font = new System.Drawing.Font("Franklin Gothic Book", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.generateContract.ForeColor = System.Drawing.Color.White;
+            this.generateContract.Location = new System.Drawing.Point(698, 833);
+            this.generateContract.Name = "generateContract";
+            this.generateContract.Size = new System.Drawing.Size(217, 112);
+            this.generateContract.TabIndex = 19;
+            this.generateContract.Text = "Сгенерувати контракт";
+            this.generateContract.TextColor = System.Drawing.Color.White;
+            this.generateContract.UseVisualStyleBackColor = false;
+            this.generateContract.Visible = false;
+            this.generateContract.Click += new System.EventHandler(this.generateContract_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.saveBtn.BackColor = System.Drawing.Color.White;
+            this.saveBtn.BackgroundImage = global::TravelAgency.Properties.Resources.save;
+            this.saveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.saveBtn.Location = new System.Drawing.Point(1888, 12);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(42, 52);
+            this.saveBtn.TabIndex = 47;
+            this.saveBtn.TabStop = false;
+            this.saveBtn.Visible = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // CreateContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1646, 992);
+            this.ClientSize = new System.Drawing.Size(1942, 992);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Cost);
             this.Controls.Add(this.label8);
@@ -409,20 +429,22 @@
             this.Controls.Add(this.emailCB);
             this.Controls.Add(this.bookingCB);
             this.Controls.Add(this.errorLabel);
-            this.Controls.Add(this.createNewStaffB);
+            this.Controls.Add(this.generateContract);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateContract";
             this.Text = "CreateNewStaff";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
+        private System.Windows.Forms.PictureBox saveBtn;
+
         #endregion
-        private Design.RoundedButton createNewStaffB;
+        private TravelAgency.Design.RoundedButton generateContract;
         private System.Windows.Forms.Label errorLabel;
         private Design.CustomComboBox bookingCB;
         private System.Windows.Forms.Label label1;

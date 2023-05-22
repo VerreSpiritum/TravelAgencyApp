@@ -80,7 +80,8 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
         {
             string query = $"SELECT id_transport FROM transport WHERE transport.name = '{data["Name"]}'";
             int IDtransport = 0;
-
+            Error = String.Empty;
+            
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 using (NpgsqlDataReader reader = cmd.ExecuteReader())

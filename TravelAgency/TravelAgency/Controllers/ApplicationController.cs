@@ -82,6 +82,8 @@ namespace TravelAgency.Controllers
         private PresenterShowAddTourToStaff _PresenterShowAddTourToStaff;
         private PresenterShowHotelToStaff _PresenterShowHotelToStaff;
         private PresenterShowTransferToStaff _PresenterShowTransfersToStaff;
+        private PresenterShowAllContract _presenterShowAllContract;
+        private PresenterCreateBooking _presenterCreateBooking;
 
         ModelAuthorizationForm modelAuthorizationForm = new ModelAuthorizationForm();
         ModelDirectorMainPage modelDirectorMainForm = new ModelDirectorMainPage();
@@ -127,6 +129,8 @@ namespace TravelAgency.Controllers
         ModelShowTourToStaff _ModelShowTourToStaff;
         ModelShowAddTourToStaff _ModelShowAddTourToStaff;
         ModelShowTransferToStaff _ModelShowTransferToStaff;
+        private ModelShowAllContract _modelShowAllContract;
+        private ModelCreateBooking _modelCreateBooking;
 
         private HumanResourcesForm humanResources = new HumanResourcesForm();
         private CreateNewStaff createNewStaffForm = new CreateNewStaff();
@@ -177,6 +181,8 @@ namespace TravelAgency.Controllers
         private ShowTourToStaff showTourToStaff;
         private ShowHotelsToStaff showHotelsToStaff;
         private ShowTransferToStaff showTransferToStaff;
+        private ShowAllContract _showAllContract;
+        private CreateBooking _createBooking;
 
         private List<Form> OpenedForms = new List<Form>();
 
@@ -1380,6 +1386,8 @@ namespace TravelAgency.Controllers
         {
             presenter.ShowAllBookings += Presenter_ShowAllBookings;
             presenter.ShowAllContracts += Presenter_ShowAllContracts;
+            presenter.CreateNewBook += PresenterOnCreateNewBook;
+            presenter.ViewAllContract += PresenterOnViewAllContract;
             
         }
         private void ListOfAllServicePanelEvent(PresenterServicePanel presenter)
@@ -1551,7 +1559,7 @@ namespace TravelAgency.Controllers
                 CloseOpenedFormsInOrdersPanel();
                 createContract = new CreateContract();
                 _ModelCreateContract = new ModelCreateContract(GetConnection(), AgentTalonNum);
-                _PresenterCreateContract = new PresenterCreateContract(createContract, _ModelCreateContract);
+                _PresenterCreateContract = new PresenterCreateContract(createContract, _ModelCreateContract, AgentTalonNum);
 
                 _PresenterOrdersPanel.AddOnPanel(createContract);
                 _PresenterCreateContract.Show();
@@ -1596,6 +1604,37 @@ namespace TravelAgency.Controllers
                 OpenedForms.Add(showTourToStaff);
             }
         }
+        private void PresenterOnViewAllContract(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(_showAllContract))
+            {
+                CloseOpenedFormsInOrdersPanel();
+                _showAllContract = new ShowAllContract();
+                _modelShowAllContract = new ModelShowAllContract(GetConnection());
+                _presenterShowAllContract = new PresenterShowAllContract(_modelShowAllContract, _showAllContract);
+                _PresenterOrdersPanel.AddOnPanel(_showAllContract);
+                
+                _presenterShowAllContract.Show();
+                OpenedForms.Add(_showAllContract);
+            }
+        }
+
+        private void PresenterOnCreateNewBook(object sender, EventArgs e)
+        {
+            if (!OpenedForms.Contains(_createBooking))
+            {
+                CloseOpenedFormsInOrdersPanel();
+                _createBooking = new CreateBooking();
+                _modelCreateBooking = new ModelCreateBooking(GetConnection());
+                _presenterCreateBooking = new PresenterCreateBooking(_modelCreateBooking, _createBooking);
+                
+                _PresenterOrdersPanel.AddOnPanel(_createBooking);
+                _presenterCreateBooking.Show();
+                
+                OpenedForms.Add(_createBooking);
+            }
+        }
+
         #region --- Close opened Forms ---
         public void CloseOpenedFormsInAgentMainForm()
         {
@@ -1651,6 +1690,16 @@ namespace TravelAgency.Controllers
             {
                 _PresenterCreateContract.Close();
                 OpenedForms.Remove(createContract);
+            }
+            else if (OpenedForms.Contains(_showAllContract))
+            {
+                _presenterShowAllContract.Close();
+                OpenedForms.Remove(_showAllContract);
+            }
+            else if (OpenedForms.Contains(_createBooking))
+            {
+                _presenterCreateBooking.Close();
+                OpenedForms.Remove(_createBooking);
             }
         }
 

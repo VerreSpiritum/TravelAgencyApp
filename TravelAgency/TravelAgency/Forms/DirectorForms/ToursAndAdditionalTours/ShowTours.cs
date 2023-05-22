@@ -47,7 +47,7 @@ namespace TravelAgency
             foreach (DataRow row in ListOfTours.Rows) 
             {
                 DateTime date = Convert.ToDateTime(row[3]);
-                tourInfoTable.Rows.Add(row[0], row[1], row[2], date.Year, row[4], row[5], row[6], row[7], row[8], row[9], row[10]);
+                tourInfoTable.Rows.Add(row[0], row[1], row[2], $"{date.Day.ToString()}/{date.Month.ToString()}/{date.Year.ToString()}", row[4], row[5], row[6], row[7], row[8], row[9], row[10]);
             }
         }
 

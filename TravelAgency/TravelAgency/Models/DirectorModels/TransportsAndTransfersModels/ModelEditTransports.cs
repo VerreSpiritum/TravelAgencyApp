@@ -215,12 +215,7 @@ namespace TravelAgency.Models.DirectorModels.TransportsAndTransfersModels
             }
             return 1;
         }
-        private string CreateQueryWithFacilities(Dictionary<string, bool> info, string key)
-        {
-            string query = "";
-
-            return "";
-        }
+        
         private string CreateQueryWithInfo(Dictionary<string, object> info, string key)
         {
             switch (key)

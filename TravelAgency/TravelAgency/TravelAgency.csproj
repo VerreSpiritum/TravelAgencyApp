@@ -35,6 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.PDF, Version=23.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.PDF.23.4.0\lib\net4.0\Aspose.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0-preview.2.23128.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -92,8 +101,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TravelAgency">
+      <HintPath>bin\Debug\TravelAgency.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AgentForms\OrdersPanel\CreateBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\CreateBooking.Designer.cs">
+      <DependentUpon>CreateBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\ShowAllContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgentForms\OrdersPanel\ShowAllContract.Designer.cs">
+      <DependentUpon>ShowAllContract.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AgentForms\Service package\ServicePanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +148,7 @@
     <Compile Include="Forms\AgentForms\Service package\ShowHotelsToStaff.Designer.cs">
       <DependentUpon>ShowHotelsToStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AgentModels\BookingsPanel\ModelCreateBooking.cs" />
     <Compile Include="Models\AgentModels\BookingsPanel\ModelCreateContract.cs" />
     <Compile Include="Forms\AgentForms\OrdersPanel\OrdersPanel.cs">
       <SubType>Form</SubType>
@@ -425,6 +450,7 @@
     <Compile Include="Forms\DirectorForms\HumanResourcesForm.Designer.cs">
       <DependentUpon>HumanResourcesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AgentModels\BookingsPanel\ModelShowAllContract.cs" />
     <Compile Include="Models\AgentModels\BookingsPanel\ModelShowBookings.cs" />
     <Compile Include="Models\AgentModels\ClientInfo\ModelAddNewClient.cs" />
     <Compile Include="Models\AgentModels\ModelAgentMainForm.cs" />
@@ -470,8 +496,10 @@
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelListOfAllStaff.cs" />
     <Compile Include="Models\DirectorModels\HumanResourcesModels\ModelShowUsers.cs" />
     <Compile Include="Presenter\AgentPresenter\ClientPanel\PresenterCreateNewClient.cs" />
+    <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterCreateBooking.cs" />
     <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterCreateContract.cs" />
     <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterOrdersPanel.cs" />
+    <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterShowAllContract.cs" />
     <Compile Include="Presenter\AgentPresenter\OrdersPanel\PresenterShowBooking.cs" />
     <Compile Include="Presenter\AgentPresenter\PresenterPersonalInfo.cs" />
     <Compile Include="Presenter\AgentPresenter\PresenterClientPanel.cs" />
@@ -505,8 +533,10 @@
     <Compile Include="Presenter\DirectorPresenter\HotelsAndRooms\PresenterShowHotels.cs" />
     <Compile Include="Presenter\DirectorPresenter\ToursAndAdditionalTours\PresenterShowTours.cs" />
     <Compile Include="Presenter\PresenterAgentMainPage.cs" />
+    <Compile Include="Views\AgentViews\Booking\IViewCreateBooking.cs" />
     <Compile Include="Views\AgentViews\Booking\IViewCreateContract.cs" />
     <Compile Include="Views\AgentViews\Booking\IViewOrdersPanel.cs" />
+    <Compile Include="Views\AgentViews\Booking\IViewShowAllContract.cs" />
     <Compile Include="Views\AgentViews\Booking\IViewShowBookings.cs" />
     <Compile Include="Views\AgentViews\ClientPanel\IViewAddNewClient.cs" />
     <Compile Include="Views\AgentViews\IViewPersonalInfo.cs" />
@@ -591,6 +621,12 @@
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewListOfAllStaff.cs" />
     <Compile Include="Views\DirectorViews\HumanResourcesViews\IViewShowUsers.cs" />
     <Compile Include="Views\IViewBase.cs" />
+    <EmbeddedResource Include="Forms\AgentForms\OrdersPanel\CreateBooking.resx">
+      <DependentUpon>CreateBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AgentForms\OrdersPanel\ShowAllContract.resx">
+      <DependentUpon>ShowAllContract.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AgentForms\Service package\ServicePanel.resx">
       <DependentUpon>ServicePanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -799,6 +835,8 @@
   <ItemGroup>
     <Content Include="img\delete.png" />
     <Content Include="img\DirectorForms\delete.png" />
+    <Content Include="Resources\eye1.png" />
+    <Content Include="Resources\save1.png" />
     <None Include="Properties\add-user.png" />
     <None Include="img\DirectorForms\edit.png" />
   </ItemGroup>

@@ -32,12 +32,14 @@ namespace TravelAgency.Models.DirectorModels.ToursAndAdditionalTours
             
         public void InsertIntoTour(Dictionary<string, object> text, DataTable cit)
         {
+            Error = String.Empty;
+            
             int id = 0;
             Error = "";
             string query = $"INSERT INTO additional_tour VALUES (DEFAULT, '{text["Operator"]}', '{text["TypeOfTour"]}', '{text["Name"]}', " +
-                $"'{text["Date_of_departure"]}', {text["CountOfChildren"]}, '{text["Transfer"]}', " +
-                $"'{text["Info"]}', {text["Price"]}, {text["numberOfAdd"]}, {text["CountOfTour"]}," +
-                $"'{text["DepCity"]}') RETURNING id_additional_tour";
+                           $"'{text["Date_of_departure"]}', {text["CountOfChildren"]}, '{text["Transfer"]}', " + 
+                           $"'{text["Info"]}', {text["Price"]}, {text["numberOfAdd"]}, {text["CountOfTour"]}," +
+                           $"'{text["DepCity"]}') RETURNING id_additional_tour";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection)) 
             {
                 try

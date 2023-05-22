@@ -35,7 +35,8 @@ namespace TravelAgency.Models.DirectorModels.ToursAndAdditionalTours
             string query = "SELECT name, operator, photos, departure_city, date_of_departure, number_of_adults, number_of_children, transfer, advance_booking, price from tour " +
                 $"WHERE id_tour = {ID}";
             List<object> temp = new List<object>();
-
+            Error = String.Empty;
+            
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 try
@@ -71,7 +72,8 @@ namespace TravelAgency.Models.DirectorModels.ToursAndAdditionalTours
         {
             string query = $"SELECT city, start_date, end_date FROM cities_included_in_tour WHERE id_tour = {ID}";
             DataTable temp = new DataTable();
-
+            Error = String.Empty;
+            
             using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 try

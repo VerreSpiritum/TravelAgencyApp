@@ -22,11 +22,15 @@ namespace TravelAgency
             allBookingsL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
             menu.Add(allBookingsL);
             menu.Add(allContractsL);
+            menu.Add(viewContractL);
+            menu.Add(createBookL);
 
         }
         #region --- Interface ---
         public event EventHandler ShowAllBookings;
         public event EventHandler ShowContracts;
+        public event EventHandler ViewAllContract;
+        public event EventHandler CreateNewBook;
 
         public void ShowForm()
         {
@@ -46,7 +50,7 @@ namespace TravelAgency
         public void OpenWindow()
         {
             allBookingsL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            allContractsL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            allContractsL.Font = viewContractL.Font = createBookL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
         }
         
         public void ChangeStyle(string text)
@@ -68,7 +72,7 @@ namespace TravelAgency
         private void allBookingsL_Click(object sender, EventArgs e)
         {
             allBookingsL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            allContractsL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            allContractsL.Font = viewContractL.Font = createBookL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
             ShowAllBookings?.Invoke(this, EventArgs.Empty);
         }
@@ -76,9 +80,25 @@ namespace TravelAgency
         private void allContractsL_Click(object sender, EventArgs e)
         {
             allContractsL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
-            allBookingsL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
+            allBookingsL.Font = viewContractL.Font = createBookL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular);
 
             ShowContracts?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void createBookL_Click(object sender, EventArgs e)
+        {
+            createBookL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
+            allBookingsL.Font = viewContractL.Font = allContractsL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular); 
+            
+            CreateNewBook?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void viewContractL_Click(object sender, EventArgs e)
+        {
+            viewContractL.Font = new Font("Franklin Gothic", 16, FontStyle.Bold);
+            allBookingsL.Font = allContractsL.Font = createBookL.Font = new Font("Franklin Gothic Book", 16, FontStyle.Regular); 
+            
+            ViewAllContract?.Invoke(this, EventArgs.Empty);
         }
     }
 }

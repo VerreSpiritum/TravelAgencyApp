@@ -25,7 +25,7 @@ namespace TravelAgency
         private List<string> facility = new List<string>();
         private DataTable city_in_tour = new DataTable();
         private Dictionary<string, object> infoToAdd = new Dictionary<string, object>();
-
+        private DateTime LastValue = DateTime.Today;
         public CreateNewAddTour()
         {
             InitializeComponent();
@@ -98,11 +98,32 @@ namespace TravelAgency
 
         private void flightDate_ValueChanged(object sender, EventArgs e)
         {
-            if(tourCityInfoTable.Rows.Count == 0)
-                StartDateD.MinDate = StartDateD.MaxDate = endDateD.MinDate = flightDate.Value;
+            if (tourCityInfoTable.Rows.Count == 0)
+            {
+                DateTime date = new DateTime(flightDate.Value.Year, flightDate.Value.Month, flightDate.Value.Day);
+                if (date > StartDateD.Value)
+                {
+                    StartDateD.MaxDate = date;
+                    StartDateD.Value = date;
+                    StartDateD.MinDate = date;
+                    endDateD.MinDate = date;
+                    endDateD.Value = date;
+                }
+                else
+                {
+                    StartDateD.MinDate = date;
+                    StartDateD.Value = date;
+                    StartDateD.MaxDate = date; 
+                    endDateD.MinDate = date;
+                    endDateD.Value = date;
+                }
+                endDateD.MinDate = date;
+                LastValue = flightDate.Value;
+            }
             else
             {
                 MessageBox.Show("Видаліть міста з минулими датами для зміни", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                flightDate.Value = LastValue;
             }
 
         }
@@ -198,7 +219,38 @@ namespace TravelAgency
                         if (!String.IsNullOrEmpty(Error))
                             MessageBox.Show(Error, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
+                        {
                             MessageBox.Show("Успішно додано!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tourCityInfoTable.Rows.Clear();
+                            city_in_tour.Rows.Clear(); 
+                            
+                            childrenCount.Texts = String.Empty;
+                            infoT.Texts = String.Empty;
+                            CostM.Texts = String.Empty;
+                            countOfTour.Texts = String.Empty;
+                            CountOfPeople.Texts = String.Empty;
+                            flightDate.MinDate = StartDateD.MinDate = endDateD.MinDate = DateTime.Today;
+                            flightDate.Value = flightDate.MinDate;
+                            
+                            nameTB.Texts = String.Empty;
+                            if (tourCityInfoTable.Rows.Count == 0)
+                            {
+                                DateTime temp = new DateTime(flightDate.Value.Year, flightDate.Value.Month, flightDate.Value.Day);
+                                if (temp > StartDateD.Value)
+                                {
+                                    StartDateD.MaxDate = temp;
+                                    StartDateD.Value = temp;
+                                    StartDateD.MinDate = temp;
+                                }
+                                else
+                                {
+                                    StartDateD.MinDate = temp;
+                                    StartDateD.Value = temp;
+                                    StartDateD.MaxDate = temp; 
+                                }
+                                endDateD.MinDate = temp;
+                            } 
+                        }
                         infoToAdd.Clear();
                     }
                     else
@@ -206,6 +258,10 @@ namespace TravelAgency
                         MessageBox.Show("Вкажіть кількість дорослих", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Заповніть усі поля!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

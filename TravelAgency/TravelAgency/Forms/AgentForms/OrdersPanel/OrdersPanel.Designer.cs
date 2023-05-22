@@ -32,12 +32,13 @@
             this.allContractsL = new System.Windows.Forms.Label();
             this.panelToWork = new System.Windows.Forms.Panel();
             this.allBookingsL = new System.Windows.Forms.Label();
+            this.createBookL = new System.Windows.Forms.Label();
+            this.viewContractL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 91);
             this.label1.Name = "label1";
@@ -48,11 +49,11 @@
             // 
             this.allContractsL.AutoSize = true;
             this.allContractsL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.allContractsL.Location = new System.Drawing.Point(259, 42);
+            this.allContractsL.Location = new System.Drawing.Point(800, 42);
             this.allContractsL.Name = "allContractsL";
-            this.allContractsL.Size = new System.Drawing.Size(141, 36);
+            this.allContractsL.Size = new System.Drawing.Size(239, 36);
             this.allContractsL.TabIndex = 1;
-            this.allContractsL.Text = "Контракти";
+            this.allContractsL.Text = "Створити контракт";
             this.allContractsL.Click += new System.EventHandler(this.allContractsL_Click);
             // 
             // panelToWork
@@ -73,12 +74,36 @@
             this.allBookingsL.Text = "Бронювання";
             this.allBookingsL.Click += new System.EventHandler(this.allBookingsL_Click);
             // 
+            // createBookL
+            // 
+            this.createBookL.AutoSize = true;
+            this.createBookL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createBookL.Location = new System.Drawing.Point(242, 42);
+            this.createBookL.Name = "createBookL";
+            this.createBookL.Size = new System.Drawing.Size(288, 36);
+            this.createBookL.TabIndex = 7;
+            this.createBookL.Text = "Створити бронювання";
+            this.createBookL.Click += new System.EventHandler(this.createBookL_Click);
+            // 
+            // viewContractL
+            // 
+            this.viewContractL.AutoSize = true;
+            this.viewContractL.Font = new System.Drawing.Font("Franklin Gothic Book", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.viewContractL.Location = new System.Drawing.Point(589, 42);
+            this.viewContractL.Name = "viewContractL";
+            this.viewContractL.Size = new System.Drawing.Size(141, 36);
+            this.viewContractL.TabIndex = 8;
+            this.viewContractL.Text = "Контракти";
+            this.viewContractL.Click += new System.EventHandler(this.viewContractL_Click);
+            // 
             // OrdersPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1713, 1080);
+            this.Controls.Add(this.viewContractL);
+            this.Controls.Add(this.createBookL);
             this.Controls.Add(this.allBookingsL);
             this.Controls.Add(this.panelToWork);
             this.Controls.Add(this.allContractsL);
@@ -89,8 +114,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Label createBookL;
+        private System.Windows.Forms.Label viewContractL;
 
         #endregion
 
